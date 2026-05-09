@@ -1,0 +1,144 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination --- Solutions}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation
+\renewcommand{\marks}[1]{\hfill [#1]}
+\newcommand{\markstep}[1]{\hfill\textcolor{blue}{[#1]}}
+
+% Boxed final answer
+\newcommand{\finalanswer}[1]{%
+  \begin{tcolorbox}[colback=green!5!white,colframe=green!50!black,boxrule=0.5pt]
+  #1
+  \end{tcolorbox}
+}
+
+% Equation source notation
+\newcommand{\fromsheet}{\textit{(From formula sheet)}}
+\newcommand{\recalled}{\textit{(Recalled --- not on formula sheet)}}
+
+% MCQ answer format
+\newcounter{mcqcounter}
+\newcommand{\mcqanswer}[2]{%
+  \stepcounter{mcqcounter}%
+  \noindent\textbf{\themcqcounter.} \textbf{#1} --- #2\\[0.2cm]%
+}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- SOLUTIONS AND MARK SCHEME}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Total Marks: 100}\\[0.3cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Marking Notes:}
+\begin{itemize}[itemsep=0.1cm]
+\item Mark allocations are shown in \textcolor{blue}{blue} at each step.
+\item Final answers are highlighted in green boxes.
+\item ``\fromsheet'' indicates the equation is on the provided formula sheet.
+\item ``\recalled'' indicates the equation must be known from memory.
+\item Award partial marks for correct method even if the final answer is wrong.
+\item Accept equivalent correct forms of answers.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ ANSWERS
+% ============================================================
+\section*{Section A: Oscillations and Waves --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+% MCQ ANSWERS HERE
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ ANSWERS
+% ============================================================
+\section*{Section B: Quantum Physics --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+% MCQ ANSWERS HERE
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER SOLUTIONS
+% ============================================================
+\section*{Section C: Long Answer Solutions}
+
+\setcounter{questioncounter}{0}
+
+% ---- SOLUTION C1: MECHANICS (15 marks) ----
+% SOLUTION C1 HERE
+
+\newpage
+
+% ---- SOLUTION C2: PROPERTIES OF MATTER (15 marks) ----
+% SOLUTION C2 HERE
+
+\newpage
+
+% ---- SOLUTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+% SOLUTION C3 HERE
+
+\newpage
+
+% ---- SOLUTION C4: QUANTUM PHYSICS (15 marks) ----
+% SOLUTION C4 HERE
+
+\end{document}

@@ -1,0 +1,709 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination 7 --- Solutions}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation
+\renewcommand{\marks}[1]{\hfill [#1]}
+\newcommand{\markstep}[1]{\hfill\textcolor{blue}{[#1]}}
+
+% Boxed final answer
+\newcommand{\finalanswer}[1]{%
+  \begin{tcolorbox}[colback=green!5!white,colframe=green!50!black,boxrule=0.5pt]
+  #1
+  \end{tcolorbox}
+}
+
+% Equation source notation
+\newcommand{\fromsheet}{\textit{(From formula sheet)}}
+\newcommand{\recalled}{\textit{(Recalled --- not on formula sheet)}}
+
+% MCQ answer format
+\newcounter{mcqcounter}
+\newcommand{\mcqanswer}[2]{%
+  \stepcounter{mcqcounter}%
+  \noindent\textbf{\themcqcounter.} \textbf{#1} --- #2\\[0.2cm]%
+}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION 7 (HARD) --- SOLUTIONS AND MARK SCHEME}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Total Marks: 100}\\[0.3cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Marking Notes:}
+\begin{itemize}[itemsep=0.1cm]
+\item Mark allocations are shown in \textcolor{blue}{blue} at each step.
+\item Final answers are highlighted in green boxes.
+\item ``\fromsheet'' indicates the equation is on the provided formula sheet.
+\item ``\recalled'' indicates the equation must be known from memory.
+\item Award partial marks for correct method even if the final answer is wrong.
+\item Accept equivalent correct forms of answers.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ ANSWERS
+% ============================================================
+\section*{Section A: Oscillations and Waves --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{B}{The restoring force is $F = -dV/dx = -2V_0 x/a^2$ \fromsheet. This is SHM with effective spring constant $k_{\text{eff}} = 2V_0/a^2$. Therefore $\omega_0 = \sqrt{k_{\text{eff}}/m} = \sqrt{2V_0/(ma^2)}$.}
+
+\mcqanswer{B}{Energy is proportional to amplitude squared: $E(t) = \tfrac{1}{2}k A(t)^2 \propto A_0^2\,e^{-\gamma t}$ \recalled. At $t = 2/\gamma$: $E/E_0 = e^{-\gamma \cdot 2/\gamma} = e^{-2} = 1/e^2$.}
+
+\mcqanswer{C}{Setting $\tan\delta = 1$ (since $\delta = \pi/4$): $\gamma\omega = \omega_0^2 - \omega^2$ \fromsheet. Rearranging: $\omega^2 + \gamma\omega - \omega_0^2 = 0$. Using the quadratic formula (taking the positive root): $\omega = \tfrac{1}{2}(-\gamma + \sqrt{\gamma^2 + 4\omega_0^2}) = -\gamma/2 + \sqrt{\omega_0^2 + \gamma^2/4}$.}
+
+\mcqanswer{B}{The power reflection coefficient is $R = r^2 = \left(\frac{Z_1 - Z_2}{Z_1 + Z_2}\right)^2 = \left(\frac{Z_1 - 3Z_1}{Z_1 + 3Z_1}\right)^2 = \left(\frac{-2}{4}\right)^2 = 1/4$ \fromsheet. The power transmission coefficient is $T_{\text{power}} = 1 - R = 1 - 1/4 = 3/4$.}
+
+\mcqanswer{D}{When one oscillator is set into motion, the subsequent motion is a superposition of both normal modes. The individual oscillators exhibit beats at the difference of the normal mode frequencies: $f_{\text{beat}} = |f_2 - f_1|$, so $\omega_{\text{beat}} = \omega_2 - \omega_1$ \recalled.}
+
+\mcqanswer{C}{For an open-closed pipe, only odd harmonics are present: $n = 1, 3, 5, \ldots$ \fromsheet. The fundamental ($n=1$) is the 1st harmonic; the 1st overtone is $n = 3$ (3rd harmonic); the 2nd overtone is $n = 5$ (5th harmonic).}
+
+\mcqanswer{A}{Using $\beta = 10\log_{10}(I/I_0)$ \fromsheet. Reducing intensity by factor 100 means $I_{\text{new}} = I/100$. The change in dB is $\Delta\beta = 10\log_{10}(1/100) = 10\times(-2) = -20\;\text{dB}$. New level: $83 - 20 = 63\;\text{dB}$.}
+
+\mcqanswer{B}{Using the Doppler formula $f' = f(v \pm v_o)/(v \mp v_s)$ \fromsheet. The source is behind the observer and both move in the same direction. The source moves \emph{toward} the observer, compressing wavelengths: denominator $= v - v_s$. The observer moves \emph{away} from the source, encountering fewer wavefronts per second: numerator $= v - v_o$. Therefore $f' = f(v - v_o)/(v - v_s)$. Since $v_s > v_o$, we have $v - v_s < v - v_o$, so $f' > f$, which is physically correct --- the source is catching up, producing a net upshift.}
+
+\mcqanswer{C}{The group velocity is $v_g = d\omega/dk$ \fromsheet. From $\omega^2 = \omega_0^2 + c^2k^2$, differentiate: $2\omega\,d\omega = 2c^2k\,dk$, so $v_g = d\omega/dk = c^2k/\omega = c^2k/\sqrt{\omega_0^2 + c^2k^2}$.}
+
+\mcqanswer{B}{For $N$ sources with random (uncorrelated) phases, the amplitudes add as a random walk in the complex plane. The mean total intensity is $I_{\text{total}} = N I_0$ (intensities add, not amplitudes). This contrasts with coherent sources where $I = N^2 I_0$.}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ ANSWERS
+% ============================================================
+\section*{Section B: Quantum Physics --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{B}{$\text{Tr}(\ketbra{\psi}{\phi}) = \sum_j \bra{j}\!\ketbra{\psi}{\phi}\!\ket{j} = \sum_j \braket{j}{\psi}\braket{\phi}{j} = \sum_j \braket{\phi}{j}\braket{j}{\psi} = \bra{\phi}\!\left(\sum_j \ketbra{j}{j}\right)\!\ket{\psi} = \braket{\phi}{\psi}$.}
+
+\mcqanswer{B}{$\sigma_x\sigma_z = \begin{pmatrix}0&1\\1&0\end{pmatrix}\begin{pmatrix}1&0\\0&-1\end{pmatrix} = \begin{pmatrix}0&-1\\1&0\end{pmatrix}$ and $\sigma_z\sigma_x = \begin{pmatrix}1&0\\0&-1\end{pmatrix}\begin{pmatrix}0&1\\1&0\end{pmatrix} = \begin{pmatrix}0&1\\-1&0\end{pmatrix}$. So $[\sigma_x,\sigma_z] = \begin{pmatrix}0&-2\\2&0\end{pmatrix} = -2i\begin{pmatrix}0&-i\\i&0\end{pmatrix} = -2i\sigma_y$.}
+
+\mcqanswer{C}{If $\expect{S_x} = +\hbar/2$, the state must be $\ket{\!\uparrow_x} = \frac{1}{\sqrt{2}}(\ket{\!\uparrow_z} + \ket{\!\downarrow_z})$ \fromsheet. For this state, $\expect{S_z} = \frac{\hbar}{2}(|1/\sqrt{2}|^2 - |1/\sqrt{2}|^2) = 0$.}
+
+\mcqanswer{B}{When a measurement yields a degenerate eigenvalue, the post-measurement state is the \emph{projection} of the original state onto the degenerate eigenspace, normalised. This is the generalisation of the Born rule / state collapse for degenerate eigenvalues.}
+
+\mcqanswer{B}{By Ehrenfest's theorem, $d\expect{\hat{A}}/dt = (i/\hbar)\expect{[H,\hat{A}]} + \expect{\partial\hat{A}/\partial t}$. For $\expect{\hat{A}}$ to be time-independent, we need $[H,\hat{A}] = 0$ and no explicit time dependence in $\hat{A}$.}
+
+\mcqanswer{C}{The state $\ket{\!\uparrow_{\hat{n}}}$ with $\hat{n}$ at angle $\theta$ from the $z$-axis is $\ket{\!\uparrow_{\hat{n}}} = \cos(\theta/2)\ket{\!\uparrow_z} + e^{i\phi}\sin(\theta/2)\ket{\!\downarrow_z}$. The probability of $S_z = +\hbar/2$ is $|\cos(\theta/2)|^2 = \cos^2(\theta/2)$.}
+
+\mcqanswer{D}{Spin-1 has $2(1)+1 = 3$ states; spin-$\frac{1}{2}$ has $2(\frac{1}{2})+1 = 2$ states. The composite Hilbert space has dimension $3 \times 2 = 6$.}
+
+\mcqanswer{C}{No. The reduced density matrix of a subsystem is the same whether the full state is a pure entangled state or a classical mixture (mixed state). Measurements on one subsystem alone cannot distinguish these --- you need correlations between measurements on \emph{both} subsystems to detect entanglement.}
+
+\mcqanswer{B}{By the Pauli exclusion principle, each fermion must occupy a distinct state. The number of ways to choose 3 states from 5 is $\binom{5}{3} = 10$.}
+
+\mcqanswer{C}{Electric charge, baryon number, and lepton number are conserved in all interactions (including weak). However, quark flavour (e.g.\ strangeness) is \emph{not} conserved in weak interactions --- this is precisely what allows processes such as $s \to u + W^-$.}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER SOLUTIONS
+% ============================================================
+\section*{Section C: Long Answer Solutions}
+
+\setcounter{questioncounter}{0}
+
+% ---- SOLUTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Rolling, Angular Momentum, and Reduced Mass}
+
+\begin{parts}
+\item
+\begin{parts}
+\item For a solid sphere rolling without slipping, $v = R\omega$ \recalled, and $I = \tfrac{2}{5}MR^2$ \fromsheet. The total kinetic energy is \recalled:
+\[
+KE_{\text{total}} = \frac{1}{2}Mv^2 + \frac{1}{2}I\omega^2 = \frac{1}{2}Mv^2 + \frac{1}{2}\cdot\frac{2}{5}MR^2\cdot\frac{v^2}{R^2} = \frac{1}{2}Mv^2\left(1 + \frac{2}{5}\right) = \frac{7}{10}Mv^2
+\]
+\markstep{1}
+\[
+KE_{\text{total}} = \frac{7}{10}\times 3\times 25 = 52.5\;\text{J}
+\]
+\markstep{1}
+
+\finalanswer{$KE_{\text{total}} = 52.5$~J}
+
+\item By conservation of energy, the kinetic energy is converted to gravitational PE as the sphere rolls up the incline. Taking the base of the incline as the reference level:
+\[
+KE_{\text{total}} = Mgs\sin\theta
+\]
+\markstep{1}
+\[
+s = \frac{KE_{\text{total}}}{Mg\sin\theta} = \frac{52.5}{3\times 9.81\times\sin 30^\circ} = \frac{52.5}{3\times 9.81\times 0.5} = \frac{52.5}{14.715} = 3.57\;\text{m}
+\]
+\markstep{1}
+
+\finalanswer{$s = 3.57$~m along the incline.}
+\end{parts}
+
+\item
+\begin{parts}
+\item The moment of inertia of a uniform disk about its centre is \fromsheet:
+\[
+I = \frac{1}{2}MR^2 = \frac{1}{2}\times 2\times(0.3)^2 = \frac{1}{2}\times 2\times 0.09 = 0.09\;\text{kg}\cdot\text{m}^2
+\]
+The torque is $\tau = FR = 10\times 0.3 = 3\;\text{N}\cdot\text{m}$ \recalled. \markstep{1}
+
+The angular acceleration is $\alpha = \tau/I$ \recalled:
+\[
+\alpha = \frac{3}{0.09} = 33.33\;\text{rad/s}^2
+\]
+\markstep{1}
+
+\finalanswer{$I = 0.09\;\text{kg}\cdot\text{m}^2$, \quad $\alpha = 33.3\;\text{rad/s}^2$.}
+
+\item Starting from rest with constant angular acceleration:
+\[
+\omega = \alpha t = 33.33\times 4 = 133.3\;\text{rad/s}
+\]
+\markstep{1}
+
+The rotational kinetic energy is \recalled:
+\[
+KE = \frac{1}{2}I\omega^2 = \frac{1}{2}\times 0.09\times(133.3)^2 = 0.045\times 17{,}778 = 800\;\text{J}
+\]
+\markstep{1}
+
+\textit{Check:} $W = \tau\theta = \tau\cdot\tfrac{1}{2}\alpha t^2 = 3\times\tfrac{1}{2}\times 33.33\times 16 = 3\times 266.7 = 800$~J. $\checkmark$
+
+\finalanswer{$\omega = 133.3\;\text{rad/s}$, \quad $KE = 800$~J.}
+\end{parts}
+
+\item Angular momentum is conserved (no external torques) \recalled: $L = I_1\omega_1 = I_2\omega_2$.
+\[
+\omega_2 = \frac{I_1\omega_1}{I_2} = \frac{4\times 2}{1.5} = \frac{8}{1.5} = \frac{16}{3}\;\text{rev/s} \approx 5.33\;\text{rev/s}
+\]
+\markstep{1}
+
+Since $L$ is conserved and $KE = L^2/(2I)$ \recalled:
+\[
+\frac{KE_2}{KE_1} = \frac{L^2/(2I_2)}{L^2/(2I_1)} = \frac{I_1}{I_2} = \frac{4}{1.5} = \frac{8}{3} \approx 2.67
+\]
+\markstep{1}
+
+The final kinetic energy is $8/3$ times the initial --- the extra energy comes from the \textbf{work done by the skater's muscles} as she pulls her arms inward against the centripetal acceleration. \markstep{1}
+
+\finalanswer{$\omega_2 = 16/3 \approx 5.33$~rev/s. \quad $KE_2/KE_1 = 8/3 \approx 2.67$.\\
+Extra energy comes from work done by the skater's muscles pulling arms inward.}
+
+\item The reduced mass is \fromsheet:
+\[
+\mu = \frac{m_1 m_2}{m_1 + m_2} = \frac{3\times 1}{3 + 1} = \frac{3}{4} = 0.75\;\text{kg}
+\]
+\markstep{1}
+
+The angular frequency of oscillation in the two-body problem is:
+\[
+\omega = \sqrt{\frac{k}{\mu}} = \sqrt{\frac{48}{0.75}} = \sqrt{64} = 8\;\text{rad/s}
+\]
+\[
+f = \frac{\omega}{2\pi} = \frac{8}{2\pi} = \frac{4}{\pi} \approx 1.27\;\text{Hz}
+\]
+\markstep{1}
+
+The total energy stored in the spring at maximum compression:
+\[
+E = \frac{1}{2}kx_0^2 = \frac{1}{2}\times 48\times(0.2)^2 = \frac{1}{2}\times 48\times 0.04 = 0.96\;\text{J}
+\]
+
+In the centre-of-mass frame, this energy equals $\tfrac{1}{2}\mu v_{\text{rel}}^2$ at maximum relative speed:
+\[
+v_{\text{rel}} = \sqrt{\frac{2E}{\mu}} = \sqrt{\frac{2\times 0.96}{0.75}} = \sqrt{2.56} = 1.6\;\text{m/s}
+\]
+\markstep{1}
+
+In the CM frame, the momenta are equal and opposite. The speeds of each mass are:
+\[
+v_{1,\text{cm}} = \frac{\mu\, v_{\text{rel}}}{m_1} = \frac{0.75\times 1.6}{3} = 0.4\;\text{m/s}
+\]
+\[
+v_{2,\text{cm}} = \frac{\mu\, v_{\text{rel}}}{m_2} = \frac{0.75\times 1.6}{1} = 1.2\;\text{m/s}
+\]
+\markstep{1}
+
+\textit{Check:} $m_1 v_{1,\text{cm}} = 3\times 0.4 = 1.2\;\text{kg}\cdot\text{m/s}$ and $m_2 v_{2,\text{cm}} = 1\times 1.2 = 1.2\;\text{kg}\cdot\text{m/s}$. Equal and opposite in CM frame. $\checkmark$
+
+\finalanswer{$f = 4/\pi \approx 1.27$~Hz. \quad $v_{1,\text{cm}} = 0.4$~m/s, \quad $v_{2,\text{cm}} = 1.2$~m/s.}
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Multi-Step Thermodynamic Cycle with Entropy Analysis}
+
+\begin{parts}
+\item Using the ideal gas law $PV = nRT$ \fromsheet:
+\[
+T_A = \frac{P_A V_A}{nR} = \frac{1.0\times 10^5 \times 0.025}{1\times 8.314} = \frac{2500}{8.314} = 300.7\;\text{K}
+\]
+\markstep{1}
+
+$A\to B$ is isobaric ($P_B = P_A$), so:
+\[
+T_B = \frac{P_A V_B}{nR} = \frac{1.0\times 10^5 \times 0.075}{8.314} = \frac{7500}{8.314} = 902.1\;\text{K}
+\]
+
+$B\to C$ is isochoric ($V_C = V_B = 0.075\;\text{m}^3$), with $P_C = P_A/3$:
+\[
+T_C = \frac{P_C V_C}{nR} = \frac{(1.0\times 10^5/3)\times 0.075}{8.314} = \frac{2500}{8.314} = 300.7\;\text{K}
+\]
+\markstep{1}
+
+\textbf{Step $A\to B$ (isobaric):}
+\[
+W_{AB} = P_A(V_B - V_A) = 1.0\times 10^5\times(0.075 - 0.025) = 1.0\times 10^5 \times 0.05 = 5000\;\text{J}
+\]
+\[
+\Delta U_{AB} = nC_V\Delta T = 1\times\tfrac{3}{2}\times 8.314\times(902.1 - 300.7) = 12.471\times 601.4 = 7500\;\text{J}
+\]
+\[
+Q_{AB} = \Delta U_{AB} + W_{AB} = 7500 + 5000 = 12{,}500\;\text{J}
+\]
+\markstep{1}
+
+\textbf{Step $B\to C$ (isochoric):}
+\[
+W_{BC} = 0 \quad\text{(constant volume)}
+\]
+\[
+\Delta U_{BC} = nC_V\Delta T = 12.471\times(300.7 - 902.1) = 12.471\times(-601.4) = -7500\;\text{J}
+\]
+\[
+Q_{BC} = \Delta U_{BC} = -7500\;\text{J}
+\]
+\markstep{1}
+
+\finalanswer{$T_A = T_C = 300.7$~K, $T_B = 902.1$~K.\\[4pt]
+$A\to B$: $W = 5000$~J, $\Delta U = 7500$~J, $Q = 12{,}500$~J.\\[4pt]
+$B\to C$: $W = 0$, $\Delta U = -7500$~J, $Q = -7500$~J.}
+
+\item Since $T_C = T_A = 300.7$~K, the process $C\to A$ is \textbf{isothermal}. \markstep{1}
+
+For an isothermal process of an ideal gas, $\Delta U = 0$. \markstep{1}
+
+The work done by the gas is \fromsheet:
+\[
+W_{CA} = nRT_A\ln\!\left(\frac{V_A}{V_C}\right) = 1\times 8.314\times 300.7\times\ln\!\left(\frac{0.025}{0.075}\right) = 2500\times\ln\!\left(\frac{1}{3}\right)
+\]
+\[
+W_{CA} = 2500\times(-1.0986) = -2746.5\;\text{J}
+\]
+\markstep{1}
+
+Since $\Delta U_{CA} = 0$: $Q_{CA} = W_{CA} = -2746.5\;\text{J}$.
+
+\textbf{Verification:}
+\[
+\Delta U_{\text{cycle}} = \Delta U_{AB} + \Delta U_{BC} + \Delta U_{CA} = 7500 + (-7500) + 0 = 0 \;\checkmark
+\]
+\markstep{1}
+
+\finalanswer{$C\to A$ is isothermal. $W_{CA} = -2747$~J, $Q_{CA} = -2747$~J, $\Delta U_{CA} = 0$.\\
+$\Delta U_{\text{cycle}} = 0$. $\checkmark$}
+
+\item The total work done per cycle:
+\[
+W_{\text{total}} = W_{AB} + W_{BC} + W_{CA} = 5000 + 0 + (-2746.5) = 2253.5\;\text{J}
+\]
+\markstep{1}
+
+The total heat absorbed (only positive $Q$ contributions):
+\[
+Q_{\text{in}} = Q_{AB} = 12{,}500\;\text{J}
+\]
+(Both $B\to C$ and $C\to A$ reject heat.)
+
+The efficiency of the cycle is \recalled:
+\[
+\eta = \frac{W_{\text{total}}}{Q_{\text{in}}} = \frac{2253.5}{12{,}500} = 0.180 = 18.0\%
+\]
+\markstep{1}
+
+The Carnot efficiency between $T_{\min} = 300.7$~K and $T_{\max} = 902.1$~K is \fromsheet:
+\[
+\eta_C = 1 - \frac{T_{\min}}{T_{\max}} = 1 - \frac{300.7}{902.1} = 1 - 0.333 = 0.667 = 66.7\%
+\]
+
+The cycle efficiency (18.0\%) is much less than the Carnot efficiency (66.7\%), as expected for an irreversible cycle. \markstep{1}
+
+\finalanswer{$\eta = 18.0\%$. \quad Carnot efficiency $= 66.7\%$. \quad The cycle is much less efficient than Carnot.}
+
+\item \textbf{Entropy changes of the gas:}
+
+$A\to B$ (isobaric, $T$ changes from $T_A$ to $T_B$):
+\[
+\Delta S_{AB} = nC_P\ln\!\left(\frac{T_B}{T_A}\right) = 1\times\frac{5}{2}\times 8.314\times\ln\!\left(\frac{902.1}{300.7}\right) = 20.785\times 1.0986 = 22.84\;\text{J/K}
+\]
+\markstep{1}
+
+$B\to C$ (isochoric, $T$ changes from $T_B$ to $T_C$):
+\[
+\Delta S_{BC} = nC_V\ln\!\left(\frac{T_C}{T_B}\right) = 1\times\frac{3}{2}\times 8.314\times\ln\!\left(\frac{300.7}{902.1}\right) = 12.471\times(-1.0986) = -13.70\;\text{J/K}
+\]
+\markstep{1}
+
+$C\to A$ (isothermal):
+\[
+\Delta S_{CA} = nR\ln\!\left(\frac{V_A}{V_C}\right) = 8.314\times\ln\!\left(\frac{1}{3}\right) = 8.314\times(-1.0986) = -9.134\;\text{J/K}
+\]
+
+\textbf{Verification:}
+\[
+\Delta S_{\text{cycle}} = 22.84 + (-13.70) + (-9.134) = 0.006 \approx 0\;\text{J/K} \;\checkmark
+\]
+(The small residual is due to rounding.)
+
+\textbf{Entropy change of the universe:} Assuming heat exchanges occur with reservoirs at $T_B = 902.1$~K (for heating) and $T_C = T_A = 300.7$~K (for cooling): \markstep{1}
+
+$A\to B$: Gas absorbs $Q_{AB} = 12{,}500$~J from reservoir at $T_B$:
+$\Delta S_{\text{res},AB} = -12{,}500/902.1 = -13.86$~J/K.
+$\Delta S_{\text{univ},AB} = 22.84 - 13.86 = 8.98$~J/K.
+
+$B\to C$: Gas rejects $|Q_{BC}| = 7500$~J to reservoir at $T_C$:
+$\Delta S_{\text{res},BC} = +7500/300.7 = 24.94$~J/K.
+$\Delta S_{\text{univ},BC} = -13.70 + 24.94 = 11.24$~J/K.
+
+$C\to A$: Isothermal at $T_A = 300.7$~K, gas rejects $|Q_{CA}| = 2746.5$~J to reservoir at $T_A$:
+$\Delta S_{\text{res},CA} = +2746.5/300.7 = 9.13$~J/K.
+$\Delta S_{\text{univ},CA} = -9.134 + 9.13 \approx 0$~J/K (reversible isothermal process).
+
+\[
+\Delta S_{\text{universe}} = 8.98 + 11.24 + 0 \approx 20.2\;\text{J/K} > 0 \;\checkmark
+\]
+\markstep{1}
+
+\finalanswer{$\Delta S_{AB} = 22.8$~J/K, $\Delta S_{BC} = -13.7$~J/K, $\Delta S_{CA} = -9.1$~J/K.\\
+$\Delta S_{\text{cycle}} = 0$ (state function). $\Delta S_{\text{universe}} \approx 20.2$~J/K $> 0$.}
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Wave Equation Derivation, Power, and Dispersion}
+
+\begin{parts}
+\item Consider a small element of string between positions $x$ and $x + \delta x$, with transverse displacement $y(x,t)$. The string is under tension $T$ and has linear mass density $\mu$. \markstep{1}
+
+Using the small-angle approximation, the net transverse force on the element is:
+\[
+F_y = T\sin\theta_{x+\delta x} - T\sin\theta_x \approx T\left(\frac{\partial y}{\partial x}\bigg|_{x+\delta x} - \frac{\partial y}{\partial x}\bigg|_x\right) = T\,\frac{\partial^2 y}{\partial x^2}\,\delta x
+\]
+\markstep{1}
+
+The mass of the element is $\delta m = \mu\,\delta x$. Applying Newton's second law ($F = ma$) \recalled:
+\[
+T\,\frac{\partial^2 y}{\partial x^2}\,\delta x = \mu\,\delta x\,\frac{\partial^2 y}{\partial t^2}
+\]
+\markstep{1}
+
+Dividing both sides by $\mu\,\delta x$:
+\[
+\frac{\partial^2 y}{\partial x^2} = \frac{\mu}{T}\,\frac{\partial^2 y}{\partial t^2} = \frac{1}{v^2}\,\frac{\partial^2 y}{\partial t^2}
+\]
+where $v = \sqrt{T/\mu}$. \markstep{1}
+
+\finalanswer{$\displaystyle\frac{\partial^2 y}{\partial x^2} = \frac{1}{v^2}\frac{\partial^2 y}{\partial t^2}$ \quad with $v = \sqrt{T/\mu}$.}
+
+\item For the wave $y = A\sin(kx - \omega t)$:
+
+The transverse force at a point on the string is:
+\[
+F_y = -T\frac{\partial y}{\partial x} = -T\cdot Ak\cos(kx - \omega t)
+\]
+\markstep{1}
+
+The transverse velocity at a point is:
+\[
+v_y = \frac{\partial y}{\partial t} = -A\omega\cos(kx - \omega t)
+\]
+\markstep{1}
+
+The power transmitted in the $+x$ direction is the rate at which the string to the left does work on the string to the right. The transverse force exerted by the left portion on the right is $F_y = -T\,\partial y/\partial x$, and the transverse velocity is $v_y = \partial y/\partial t$. Therefore:
+\[
+P = F_y \cdot v_y = \left(-T\frac{\partial y}{\partial x}\right)\left(\frac{\partial y}{\partial t}\right) = (-TAk\cos(kx-\omega t))(-A\omega\cos(kx-\omega t))
+\]
+\[
+P = T A^2 k\omega\cos^2(kx-\omega t)
+\]
+\markstep{1}
+
+Taking the time average, $\langle\cos^2\rangle = 1/2$, and using $v = \omega/k$ so $Tk = T\omega/v = \mu v\cdot\omega/1\cdot(\omega/v)$. More directly, $T = \mu v^2$ so $Tk = \mu v^2 k = \mu v\omega$:
+\[
+\langle P\rangle = \frac{1}{2}T k\omega A^2 = \frac{1}{2}\mu v\omega\cdot\omega A^2 = \frac{1}{2}\mu\omega^2 A^2 v
+\]
+\markstep{1}
+
+\finalanswer{$\langle P\rangle = \tfrac{1}{2}\mu\omega^2 A^2 v$.}
+
+\item Wave speeds \fromsheet:
+\[
+v_1 = \sqrt{T/\mu_1} = \sqrt{100/0.01} = 100\;\text{m/s}, \qquad v_2 = \sqrt{100/0.04} = 50\;\text{m/s}
+\]
+
+Impedances \fromsheet:
+\[
+Z_1 = \mu_1 v_1 = 0.01\times 100 = 1\;\text{kg/s}, \qquad Z_2 = \mu_2 v_2 = 0.04\times 50 = 2\;\text{kg/s}
+\]
+
+Reflection coefficient \fromsheet:
+\[
+r = \frac{Z_1 - Z_2}{Z_1 + Z_2} = \frac{1 - 2}{1 + 2} = -\frac{1}{3}
+\]
+
+Power coefficients: $R = r^2 = 1/9$, \quad $T_{\text{power}} = 1 - R = 8/9$.
+
+Angular frequency: $\omega = 2\pi f = 400\pi\;\text{rad/s}$.
+
+Incident power \fromsheet:
+\[
+P_{\text{inc}} = \frac{1}{2}\mu_1\omega^2 A_i^2 v_1 = \frac{1}{2}\times 0.01\times(400\pi)^2\times(5\times 10^{-3})^2\times 100
+\]
+\[
+= \frac{1}{2}\times 0.01\times 1.5791\times 10^6\times 2.5\times 10^{-5}\times 100 = \frac{1}{2}\times 0.01\times 3947.8 = 19.74\;\text{W}
+\]
+\markstep{1}
+
+\[
+P_{\text{ref}} = R\times P_{\text{inc}} = \frac{1}{9}\times 19.74 = 2.19\;\text{W}
+\]
+\markstep{1}
+\[
+P_{\text{trans}} = \frac{8}{9}\times 19.74 = 17.55\;\text{W}
+\]
+\markstep{1}
+
+\textit{Check:} $P_{\text{ref}} + P_{\text{trans}} = 2.19 + 17.55 = 19.74 = P_{\text{inc}}$. $\checkmark$
+
+\finalanswer{$P_{\text{inc}} = 19.7$~W, \quad $P_{\text{ref}} = 2.19$~W, \quad $P_{\text{trans}} = 17.5$~W.}
+
+\item The dispersion relation is $\omega(k) = 2\omega_0\left|\sin(ka/2)\right|$.
+
+Phase velocity:
+\[
+v_p = \frac{\omega}{k} = \frac{2\omega_0|\sin(ka/2)|}{k}
+\]
+\markstep{1}
+
+Group velocity (for $0 < ka/2 < \pi/2$, where $\sin(ka/2) > 0$):
+\[
+v_g = \frac{d\omega}{dk} = 2\omega_0\cos\!\left(\frac{ka}{2}\right)\cdot\frac{a}{2} = \omega_0 a\cos\!\left(\frac{ka}{2}\right)
+\]
+\markstep{1}
+
+In the limit $k\to 0$ (long wavelength), $\sin(ka/2) \approx ka/2$, so:
+\[
+v_p \to \frac{2\omega_0\cdot ka/2}{k} = \omega_0 a, \qquad v_g \to \omega_0 a\cos(0) = \omega_0 a
+\]
+Therefore $v_p = v_g$ in the limit $k\to 0$ (no dispersion at long wavelengths). \markstep{1}
+
+At $k = \pi/a$:
+\[
+v_g = \omega_0 a\cos\!\left(\frac{\pi}{2}\right) = 0
+\]
+The group velocity vanishes at $k = \pi/a$. This is the edge of the Brillouin zone; the wave becomes a standing wave and no energy is transported. \markstep{1}
+
+\finalanswer{$v_p = 2\omega_0|\sin(ka/2)|/k$, \quad $v_g = \omega_0 a\cos(ka/2)$.\\
+$v_p = v_g$ at $k\to 0$ (both equal $\omega_0 a$).\\
+At $k = \pi/a$: $v_g = 0$ (standing wave, no energy transport).}
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Bloch Sphere, Larmor Precession, and Entanglement}
+
+\begin{parts}
+\item
+\begin{parts}
+\item Normalisation check:
+\[
+\braket{\psi}{\psi} = \cos^2\!\left(\frac{\theta}{2}\right) + \left|e^{i\phi}\right|^2\sin^2\!\left(\frac{\theta}{2}\right) = \cos^2\!\left(\frac{\theta}{2}\right) + \sin^2\!\left(\frac{\theta}{2}\right) = 1 \;\checkmark
+\]
+\markstep{1}
+
+\item $\expect{S_z} = \bra{\psi}S_z\ket{\psi}$. Using $S_z = \frac{\hbar}{2}(\ketbra{\!\uparrow}{\uparrow\!} - \ketbra{\!\downarrow}{\downarrow\!})$ \fromsheet:
+\[
+\expect{S_z} = \frac{\hbar}{2}\left(\cos^2\!\left(\frac{\theta}{2}\right) - \sin^2\!\left(\frac{\theta}{2}\right)\right) = \frac{\hbar}{2}\cos\theta
+\]
+\markstep{1}
+
+For $\expect{S_x}$, using $S_x = \frac{\hbar}{2}(\ketbra{\!\uparrow}{\downarrow\!} + \ketbra{\!\downarrow}{\uparrow\!})$ \fromsheet:
+\[
+S_x\ket{\psi} = \frac{\hbar}{2}\left(e^{i\phi}\sin\!\left(\frac{\theta}{2}\right)\ket{\!\uparrow_z} + \cos\!\left(\frac{\theta}{2}\right)\ket{\!\downarrow_z}\right)
+\]
+\[
+\expect{S_x} = \frac{\hbar}{2}\left[\cos\!\left(\frac{\theta}{2}\right)\cdot e^{i\phi}\sin\!\left(\frac{\theta}{2}\right) + e^{-i\phi}\sin\!\left(\frac{\theta}{2}\right)\cdot\cos\!\left(\frac{\theta}{2}\right)\right]
+\]
+\[
+= \frac{\hbar}{2}\sin\!\left(\frac{\theta}{2}\right)\cos\!\left(\frac{\theta}{2}\right)\left(e^{i\phi} + e^{-i\phi}\right) = \frac{\hbar}{2}\cdot\frac{\sin\theta}{2}\cdot 2\cos\phi = \frac{\hbar}{2}\sin\theta\cos\phi
+\]
+\markstep{1}
+
+By a similar calculation using $S_y = \frac{\hbar}{2}(-i\ketbra{\!\uparrow}{\downarrow\!} + i\ketbra{\!\downarrow}{\uparrow\!})$ \fromsheet:
+\[
+\expect{S_y} = \frac{\hbar}{2}\left[-i\cos\!\left(\frac{\theta}{2}\right)e^{i\phi}\sin\!\left(\frac{\theta}{2}\right) + i\,e^{-i\phi}\sin\!\left(\frac{\theta}{2}\right)\cos\!\left(\frac{\theta}{2}\right)\right]
+\]
+\[
+= \frac{\hbar}{2}\cdot i\sin\!\left(\frac{\theta}{2}\right)\cos\!\left(\frac{\theta}{2}\right)\left(-e^{i\phi} + e^{-i\phi}\right) = \frac{\hbar}{2}\cdot i\cdot\frac{\sin\theta}{2}\cdot(-2i\sin\phi) = \frac{\hbar}{2}\sin\theta\sin\phi
+\]
+\markstep{1}
+
+\finalanswer{$\expect{S_z} = \dfrac{\hbar}{2}\cos\theta$, \quad $\expect{S_x} = \dfrac{\hbar}{2}\sin\theta\cos\phi$, \quad $\expect{S_y} = \dfrac{\hbar}{2}\sin\theta\sin\phi$.\\[4pt]
+The expectation value vector is $\expect{\mathbf{S}} = \dfrac{\hbar}{2}(\sin\theta\cos\phi,\;\sin\theta\sin\phi,\;\cos\theta)$ --- the Bloch vector.}
+\end{parts}
+
+\item
+\begin{parts}
+\item The Hamiltonian is $H = \omega_0 S_x = \frac{\omega_0\hbar}{2}\sigma_x$. The eigenstates of $S_x$ are \fromsheet:
+\[
+\ket{\!\uparrow_x} = \frac{1}{\sqrt{2}}(\ket{\!\uparrow_z} + \ket{\!\downarrow_z}), \qquad \ket{\!\downarrow_x} = \frac{1}{\sqrt{2}}(\ket{\!\uparrow_z} - \ket{\!\downarrow_z})
+\]
+with eigenvalues $S_x = +\hbar/2$ and $-\hbar/2$ respectively. Thus the energy eigenvalues are:
+\[
+E_+ = +\frac{\omega_0\hbar}{2}, \qquad E_- = -\frac{\omega_0\hbar}{2}
+\]
+\markstep{1} for eigenvalues; \markstep{1} for eigenstates.
+
+\finalanswer{$E_\pm = \pm\omega_0\hbar/2$, with eigenstates $\ket{\!\uparrow_x}$ and $\ket{\!\downarrow_x}$.}
+
+\item The initial state $\ket{\!\uparrow_z}$ in the energy eigenbasis:
+\[
+\ket{\!\uparrow_z} = \frac{1}{\sqrt{2}}\left(\ket{\!\uparrow_x} + \ket{\!\downarrow_x}\right)
+\]
+
+Time evolution \fromsheet:
+\[
+\ket{\psi(t)} = \frac{1}{\sqrt{2}}\left(e^{-i\omega_0 t/2}\ket{\!\uparrow_x} + e^{+i\omega_0 t/2}\ket{\!\downarrow_x}\right)
+\]
+\markstep{1}
+
+Expanding back into the $z$-basis:
+\begin{align*}
+\ket{\psi(t)} &= \frac{1}{\sqrt{2}}\left[e^{-i\omega_0 t/2}\cdot\frac{1}{\sqrt{2}}(\ket{\!\uparrow_z}+\ket{\!\downarrow_z}) + e^{+i\omega_0 t/2}\cdot\frac{1}{\sqrt{2}}(\ket{\!\uparrow_z}-\ket{\!\downarrow_z})\right]\\
+&= \frac{1}{2}\left[(e^{-i\omega_0 t/2}+e^{i\omega_0 t/2})\ket{\!\uparrow_z} + (e^{-i\omega_0 t/2}-e^{i\omega_0 t/2})\ket{\!\downarrow_z}\right]\\
+&= \cos\!\left(\frac{\omega_0 t}{2}\right)\ket{\!\uparrow_z} - i\sin\!\left(\frac{\omega_0 t}{2}\right)\ket{\!\downarrow_z}
+\end{align*}
+\markstep{1}
+
+\finalanswer{$\ket{\psi(t)} = \cos(\omega_0 t/2)\ket{\!\uparrow_z} - i\sin(\omega_0 t/2)\ket{\!\downarrow_z}$.}
+\end{parts}
+
+\item The probabilities are:
+\[
+P(\uparrow_z,\,t) = \left|\cos\!\left(\frac{\omega_0 t}{2}\right)\right|^2 = \cos^2\!\left(\frac{\omega_0 t}{2}\right)
+\]
+\markstep{1}
+\[
+P(\downarrow_z,\,t) = \left|-i\sin\!\left(\frac{\omega_0 t}{2}\right)\right|^2 = \sin^2\!\left(\frac{\omega_0 t}{2}\right)
+\]
+\markstep{1}
+
+\textit{Check:} $P(\uparrow_z) + P(\downarrow_z) = \cos^2(\omega_0 t/2) + \sin^2(\omega_0 t/2) = 1$. $\checkmark$
+
+\textbf{Physical interpretation:} The spin undergoes \textbf{Larmor precession} about the $x$-axis (the direction of the magnetic field). At $t = 0$, the spin is fully in the $+z$ direction. As time progresses, it rotates (precesses) in the $y$-$z$ plane, reaching $-z$ at $t = \pi/\omega_0$, then returning to $+z$ at $t = 2\pi/\omega_0$. The oscillation period is $T = 2\pi/\omega_0$. \markstep{1}
+
+\finalanswer{$P(\uparrow_z) = \cos^2(\omega_0 t/2)$, \quad $P(\downarrow_z) = \sin^2(\omega_0 t/2)$.\\
+The spin precesses (Larmor precession) around the $x$-axis with period $2\pi/\omega_0$.}
+
+\item
+\begin{parts}
+\item If $S_z$ is measured on particle~1:
+
+\textbf{Outcome $+\hbar/2$} (probability $1/2$): The full state collapses to $\ket{\!\uparrow\downarrow}$, so particle~2 is in $\ket{\!\downarrow_z}$.
+
+\textbf{Outcome $-\hbar/2$} (probability $1/2$): The full state collapses to $\ket{\!\downarrow\uparrow}$, so particle~2 is in $\ket{\!\uparrow_z}$.
+
+The reduced density matrix of particle~2 is \markstep{1}:
+\[
+\rho_2 = \frac{1}{2}\ketbra{\!\downarrow}{\downarrow\!} + \frac{1}{2}\ketbra{\!\uparrow}{\uparrow\!} = \frac{1}{2}\,\hat{I}
+\]
+This is the maximally mixed state, independent of the outcome. \markstep{1}
+
+\finalanswer{$\rho_2 = \tfrac{1}{2}\hat{I}$ regardless of the outcome of the $S_z$ measurement on particle~1.}
+
+\item This property is \textbf{not unique to $S_z$} --- it also holds for $S_x$ (and indeed for measurement along \emph{any} axis). \markstep{1}
+
+\textbf{Justification:} Express the singlet in the $x$-basis. Using \fromsheet:
+\begin{align*}
+\ket{\!\uparrow_z} &= \frac{1}{\sqrt{2}}(\ket{\!\uparrow_x}+\ket{\!\downarrow_x}), \qquad \ket{\!\downarrow_z} = \frac{1}{\sqrt{2}}(\ket{\!\uparrow_x}-\ket{\!\downarrow_x})
+\end{align*}
+
+\begin{align*}
+\ket{\!\uparrow_z\downarrow_z} &= \frac{1}{2}(\ket{\!\uparrow_x}+\ket{\!\downarrow_x})(\ket{\!\uparrow_x}-\ket{\!\downarrow_x})\\
+\ket{\!\downarrow_z\uparrow_z} &= \frac{1}{2}(\ket{\!\uparrow_x}-\ket{\!\downarrow_x})(\ket{\!\uparrow_x}+\ket{\!\downarrow_x})
+\end{align*}
+
+\[
+\ket{\Psi} = \frac{1}{\sqrt{2}}(\ket{\!\uparrow_z\downarrow_z}-\ket{\!\downarrow_z\uparrow_z}) = \frac{1}{\sqrt{2}}(\ket{\!\downarrow_x\uparrow_x}-\ket{\!\uparrow_x\downarrow_x})
+\]
+This has the same singlet form in the $x$-basis! By the same argument as in~(i), measuring $S_x$ on particle~1 gives $\rho_2 = \tfrac{1}{2}\hat{I}$.
+
+This is because the singlet state is \textbf{rotationally invariant} --- it has the same form in any spin basis. \markstep{1}
+
+\finalanswer{The property holds for $S_x$ as well (and for any axis). The singlet state is rotationally invariant: it has the same form $\frac{1}{\sqrt{2}}(\ket{\!\downarrow\uparrow}-\ket{\!\uparrow\downarrow})$ in any basis.}
+\end{parts}
+\end{parts}
+
+\end{document}

@@ -1,0 +1,626 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination --- Solutions}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation
+\renewcommand{\marks}[1]{\hfill [#1]}
+\newcommand{\markstep}[1]{\hfill\textcolor{blue}{[#1]}}
+
+% Boxed final answer
+\newcommand{\finalanswer}[1]{%
+  \begin{tcolorbox}[colback=green!5!white,colframe=green!50!black,boxrule=0.5pt]
+  #1
+  \end{tcolorbox}
+}
+
+% Equation source notation
+\newcommand{\fromsheet}{\textit{(From formula sheet)}}
+\newcommand{\recalled}{\textit{(Recalled --- not on formula sheet)}}
+
+% MCQ answer format
+\newcounter{mcqcounter}
+\newcommand{\mcqanswer}[2]{%
+  \stepcounter{mcqcounter}%
+  \noindent\textbf{\themcqcounter.} \textbf{#1} --- #2\\[0.2cm]%
+}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- SOLUTIONS AND MARK SCHEME}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012 --- Paper 2}\\[0.5cm]
+{\large Total Marks: 100}\\[0.3cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Marking Notes:}
+\begin{itemize}[itemsep=0.1cm]
+\item Mark allocations are shown in \textcolor{blue}{blue} at each step.
+\item Final answers are highlighted in green boxes.
+\item ``\fromsheet'' indicates the equation is on the provided formula sheet.
+\item ``\recalled'' indicates the equation must be known from memory.
+\item Award partial marks for correct method even if the final answer is wrong.
+\item Accept equivalent correct forms of answers.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ ANSWERS
+% ============================================================
+\section*{Section A: Oscillations and Waves --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{C}{From $x(t) = A\cos(\omega_0 t)$, we identify $A = 0.04$ m and $\omega_0 = 10\pi$ rad/s. The acceleration is $a(t) = -\omega_0^2 x(t)$, so the maximum acceleration is $|a_{\max}| = \omega_0^2 A = (10\pi)^2 \times 0.04 = 100\pi^2 \times 0.04 = 4\pi^2 \approx 39.5$ m/s$^2$. \recalled}
+
+\mcqanswer{C}{Total energy $E = \frac{1}{2}kA^2$. At displacement $x$: $\text{PE} = \frac{1}{2}kx^2$ and $\text{KE} = E - \text{PE} = \frac{1}{2}k(A^2 - x^2)$. Setting KE $=$ PE: $\frac{1}{2}k(A^2 - x^2) = \frac{1}{2}kx^2$, so $A^2 = 2x^2$, giving $x = A/\sqrt{2}$. \recalled}
+
+\mcqanswer{A}{The energy in a damped oscillator decays as $E(t) = E_0 e^{-\gamma t}$. After $n$ oscillations, $t = nT = 2\pi n/\omega_0$. Setting $E/E_0 = 1/2$: $e^{-\gamma(2\pi n/\omega_0)} = 1/2$, so $2\pi n\gamma/\omega_0 = \ln 2$. Since $Q = \omega_0/\gamma$ \fromsheet, we get $n = Q\ln 2/(2\pi) = 50 \times 0.693/6.283 \approx 5.5$. The answer is \textbf{A}.}
+
+\mcqanswer{C}{At resonance $\omega = \omega_0$, so $\tan\delta = \gamma\omega_0/(\omega_0^2 - \omega_0^2) = \gamma\omega_0/0 \to \infty$, which gives $\delta = \pi/2$. The displacement lags the driving force by $\pi/2$. \fromsheet}
+
+\mcqanswer{B}{Option B: $y = Ae^{-(x-vt)^2}$ is a function of $(x - vt)$ only. Any function $f(x - vt)$ satisfies the wave equation, since $\partial^2 f/\partial x^2 = f''$ and $(1/v^2)\partial^2 f/\partial t^2 = f''$. Option A: $y = A\sin(kx)\cos(kx) = (A/2)\sin(2kx)$ has no time dependence, so $\partial^2 y/\partial t^2 = 0$ but $\partial^2 y/\partial x^2 \neq 0$; it does not satisfy the wave equation. Option C: $y = Ae^x\cos(vt)$ gives $\partial^2 y/\partial x^2 = Ae^x\cos(vt)$ and $(1/v^2)\partial^2 y/\partial t^2 = -Ae^x\cos(vt)$; these are not equal, so it fails. Option D: $y = A\sin(kx + \omega t^2)$ has $\partial^2 y/\partial t^2$ that produces terms proportional to $\cos(kx + \omega t^2)$ and $\sin(kx + \omega t^2)$ with time-dependent coefficients, so it does not satisfy the wave equation. \fromsheet}
+
+\mcqanswer{B}{$r = (Z_1 - Z_2)/(Z_1 + Z_2) = (0.5 - 1.5)/(0.5 + 1.5) = -1.0/2.0 = -1/2$. The negative sign indicates phase inversion upon reflection (going from a lighter to a heavier string). \fromsheet}
+
+\mcqanswer{B}{From $\beta = 10\log_{10}(I/I_0)$: $I/I_0 = 10^{\beta/10} = 10^{85/10} = 10^{8.5} = \sqrt{10} \times 10^8 = 3.162 \times 10^8$. Hence $I = 3.162\times 10^8 \times 10^{-12} = 3.16\times 10^{-4}$ W/m$^2$. \fromsheet}
+
+\mcqanswer{A}{Source receding: $f' = f\,\dfrac{v}{v + v_s} = 800 \times \dfrac{340}{340 + 40} = 800 \times \dfrac{340}{380} = 800 \times 0.8947 = 715.8 \approx 716$ Hz. \fromsheet}
+
+\mcqanswer{C}{For an open-closed pipe, only odd harmonics are present: $f_n = nv/(4L)$ for $n = 1, 3, 5, 7, 9, \ldots$ \fromsheet}
+
+\mcqanswer{C}{The group velocity $v_g = d\omega/dk$ represents the speed at which the envelope (and energy) of the wave packet propagates. In a dispersive medium, the phase velocity $v_p = \omega/k$ depends on $k$, so generally $v_g \neq v_p$. The group velocity may be greater, equal, or less than the phase velocity depending on the dispersion relation. \fromsheet}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ ANSWERS
+% ============================================================
+\section*{Section B: Quantum Physics --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{C}{$\braket{\phi}{\psi} = \bra{\phi}\ket{\psi}$. Taking the conjugate of $\ket{\phi}$: $\bra{\phi} = \frac{-i}{\sqrt{2}}\bra{1} + \frac{1}{\sqrt{2}}\bra{2}$. Then $\braket{\phi}{\psi} = \frac{-i}{\sqrt{2}}\cdot\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}\cdot\frac{i}{\sqrt{2}} = \frac{-i}{2} + \frac{i}{2} = 0$. The two states are orthogonal. \recalled}
+
+\mcqanswer{B}{Check: $|\frac{1}{\sqrt{2}}|^2 + |\frac{i}{\sqrt{2}}|^2 = \frac{1}{2} + \frac{1}{2} = 1$. Option A gives $1/4 + 1/4 = 1/2 \neq 1$. Option C gives $1 + 1 = 2 \neq 1$. Option D gives $1/3 + 1/3 = 2/3 \neq 1$. \recalled}
+
+\mcqanswer{B}{$\braket{\alpha}{\beta} = \frac{1}{\sqrt{2}}\cdot c + \frac{1}{\sqrt{2}}\cdot\frac{1}{\sqrt{2}} = \frac{c}{\sqrt{2}} + \frac{1}{2}$. For orthogonality, set this to zero: $c/\sqrt{2} = -1/2$, so $c = -1/\sqrt{2}$. \recalled}
+
+\mcqanswer{B}{A unitary operator preserves inner products and norms. The defining property is $U^\dagger U = UU^\dagger = I$. Option A ($U^\dagger = U$) is the condition for a Hermitian operator. Option C ($U^2 = I$) would make $U$ an involution, which is not required. Option D ($U = U^{-1}$) is the same as C. \recalled}
+
+\mcqanswer{B}{$\expect{S_z} = \bra{\psi}S_z\ket{\psi}$. Using $S_z = \frac{\hbar}{2}(\ketbra{\uparrow}{\uparrow} - \ketbra{\downarrow}{\downarrow})$: $\expect{S_z} = \frac{\hbar}{2}\bigl(|\frac{1}{\sqrt{3}}|^2 - |\sqrt{2/3}|^2\bigr) = \frac{\hbar}{2}\bigl(\frac{1}{3} - \frac{2}{3}\bigr) = \frac{\hbar}{2}\times(-\frac{1}{3}) = -\frac{\hbar}{6}$. \fromsheet}
+
+\mcqanswer{C}{$\ket{\uparrow_x} = \frac{1}{\sqrt{2}}(\ket{\uparrow_z} + \ket{\downarrow_z})$. The probability of measuring $S_z = +\hbar/2$ is $|\braket{\uparrow_z}{\uparrow_x}|^2 = |1/\sqrt{2}|^2 = 1/2$. \fromsheet}
+
+\mcqanswer{C}{For a stationary state (energy eigenstate), $\ket{\psi(t)} = e^{-iE_n t/\hbar}\ket{E_n}$. The overall phase factor cancels in all probability calculations: $P(a_k) = |\bra{a_k}e^{-iE_n t/\hbar}\ket{E_n}|^2 = |\braket{a_k}{E_n}|^2$, which is time-independent. Hence all measurement probabilities remain constant. \fromsheet}
+
+\mcqanswer{C}{Option C can be factored: $\frac{1}{2}(\ket{\uparrow}_1 + \ket{\downarrow}_1)(\ket{\uparrow}_2 - \ket{\downarrow}_2)$. This is explicitly a product state $\ket{a}_1\ket{b}_2$. Options A, B, and D cannot be written as product states (they are entangled). \recalled}
+
+\mcqanswer{B}{Bosons have symmetric wave functions under particle exchange. The SWAP operator applied to a bosonic state gives $\text{SWAP}\ket{\Psi} = +\ket{\Psi}$. (Fermions give $-1$.) \recalled}
+
+\mcqanswer{D}{Beta decay ($n \to p + e^- + \bar{\nu}_e$) involves a down quark changing to an up quark via emission of a $W^-$ boson. This is mediated by the weak nuclear force. \recalled}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER SOLUTIONS
+% ============================================================
+\section*{Section C: Long Answer Solutions}
+
+\setcounter{questioncounter}{0}
+
+% ---- SOLUTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Rotational Dynamics and Atwood Machine}
+
+\begin{parts}
+\item \textbf{Rolling cylinder --- energy conservation} \qmarks{3}
+
+The cylinder rolls without slipping, so $v = R\omega$. \markstep{1}
+
+By conservation of energy, the gravitational PE lost equals the sum of translational and rotational KE:
+\[
+Mgh = \frac{1}{2}Mv^2 + \frac{1}{2}I\omega^2 = \frac{1}{2}Mv^2 + \frac{1}{2}\left(\frac{1}{2}MR^2\right)\left(\frac{v}{R}\right)^2 = \frac{1}{2}Mv^2 + \frac{1}{4}Mv^2 = \frac{3}{4}Mv^2
+\]
+\markstep{1}
+
+Solving for $v$:
+\[
+v = \sqrt{\frac{4gh}{3}} = \sqrt{\frac{4 \times 9.81 \times 3}{3}} = \sqrt{39.24} = 6.26 \text{ m/s}
+\]
+\markstep{1}
+
+\finalanswer{$v = \sqrt{4gh/3} = 6.26$ m/s}
+
+\item \textbf{Rolling cylinder --- Newton's second law} \qmarks{3}
+
+Translational equation (along the slope): $Ma = Mg\sin 30^\circ - f$ \markstep{1}
+
+where $f$ is the friction force. Rotational equation about the centre of mass: $I\alpha = fR$, i.e.\ $\frac{1}{2}MR^2 \cdot \frac{a}{R} = fR$, giving $f = \frac{1}{2}Ma$. \markstep{1}
+
+Substituting: $Ma = Mg\sin 30^\circ - \frac{1}{2}Ma$, so $\frac{3}{2}Ma = \frac{1}{2}Mg$, giving:
+\[
+a = \frac{g}{3} = \frac{9.81}{3} = 3.27 \text{ m/s}^2
+\]
+\markstep{1}
+
+\finalanswer{$a = g/3 = 3.27$ m/s$^2$}
+
+\item \textbf{Atwood machine --- massless pulley} \qmarks{4}
+
+For mass $m_1$ (heavier, moving down): $m_1 g - T = m_1 a$ \markstep{1}
+
+For mass $m_2$ (lighter, moving up): $T - m_2 g = m_2 a$ \markstep{1}
+
+Adding the two equations: $(m_1 - m_2)g = (m_1 + m_2)a$ \fromsheet
+\[
+a = \frac{(m_1 - m_2)g}{m_1 + m_2} = \frac{(6 - 4) \times 9.81}{6 + 4} = \frac{19.62}{10} = 1.962 \text{ m/s}^2
+\]
+\markstep{1}
+
+Substituting back: $T = m_1(g - a) = 6(9.81 - 1.962) = 6 \times 7.848 = 47.09$ N.
+
+Alternatively: $T = \dfrac{2m_1 m_2 g}{m_1 + m_2} = \dfrac{2 \times 6 \times 4 \times 9.81}{10} = 47.09$ N. \markstep{1}
+
+\finalanswer{$a = 1.962$ m/s$^2$, $T = 47.09$ N}
+
+\item \textbf{Atwood machine --- pulley with inertia} \qmarks{5}
+
+Let $T_1$ be the tension on the $m_1$ side and $T_2$ on the $m_2$ side.
+
+For $m_1$ (moving down): $m_1 g - T_1 = m_1 a$ \markstep{1}
+
+For $m_2$ (moving up): $T_2 - m_2 g = m_2 a$ \markstep{1}
+
+For the pulley (solid disk, $I = \frac{1}{2}M_p R_p^2$), using $\tau = I\alpha$ and the no-slip condition $\alpha = a/R_p$: \markstep{1}
+
+\[
+(T_1 - T_2)R_p = I\alpha = \frac{1}{2}M_p R_p^2 \cdot \frac{a}{R_p} \implies T_1 - T_2 = \frac{1}{2}M_p a
+\]
+
+Adding all three equations: \markstep{1}
+\[
+(m_1 - m_2)g = \left(m_1 + m_2 + \frac{M_p}{2}\right)a
+\]
+
+\[
+a = \frac{(m_1 - m_2)g}{m_1 + m_2 + M_p/2} = \frac{(6-4)\times 9.81}{6 + 4 + 1} = \frac{19.62}{11} = 1.784 \text{ m/s}^2
+\]
+\markstep{1}
+
+\finalanswer{$a = \dfrac{(m_1 - m_2)g}{m_1 + m_2 + M_p/2} = 1.784$ m/s$^2$}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Ideal Gas, Carnot Engine, and Entropy}
+
+\begin{parts}
+\item \textbf{Volume and internal energy} \qmarks{3}
+
+From the ideal gas law \fromsheet: $PV = nRT$
+\[
+V = \frac{nRT}{P} = \frac{3 \times 8.314 \times 400}{2 \times 10^5} = \frac{9976.8}{200000} = 0.04988 \text{ m}^3 \approx 0.0499 \text{ m}^3
+\]
+\markstep{2}
+
+Internal energy (diatomic gas, 5 degrees of freedom):
+\[
+U = \frac{5}{2}nRT = \frac{5}{2} \times 3 \times 8.314 \times 400 = 24{,}942 \text{ J} \approx 24.9 \text{ kJ}
+\]
+\markstep{1}
+
+\finalanswer{$V = 0.0499$ m$^3$, $U = 24.9$ kJ}
+
+\item \textbf{Adiabatic compression to half volume} \qmarks{4}
+
+Using $TV^{\gamma-1} = \text{const}$ \fromsheet, with $V_2 = V_1/2$ and $\gamma = 7/5$:
+\[
+T_2 = T_1 \left(\frac{V_1}{V_2}\right)^{\gamma - 1} = 400 \times 2^{0.4}
+\]
+\markstep{1}
+
+Computing $2^{0.4}$: $2^{0.4} = e^{0.4\ln 2} = e^{0.2773} = 1.3195$
+\[
+T_2 = 400 \times 1.3195 = 527.8 \text{ K}
+\]
+\markstep{1}
+
+Using $PV^\gamma = \text{const}$ \fromsheet:
+\[
+P_2 = P_1\left(\frac{V_1}{V_2}\right)^\gamma = 2 \times 10^5 \times 2^{1.4}
+\]
+\markstep{1}
+
+Computing $2^{1.4} = 2^1 \times 2^{0.4} = 2 \times 1.3195 = 2.639$:
+\[
+P_2 = 2 \times 10^5 \times 2.639 = 5.278 \times 10^5 \text{ Pa}
+\]
+\markstep{1}
+
+\finalanswer{$T_2 = 527.8$ K, $P_2 = 5.28 \times 10^5$ Pa}
+
+\item \textbf{Carnot engine} \qmarks{4}
+
+Carnot efficiency \fromsheet:
+\[
+\eta = 1 - \frac{T_c}{T_h} = 1 - \frac{300}{600} = 0.5 = 50\%
+\]
+\markstep{1}
+
+Work done per cycle \recalled:
+\[
+W = \eta Q_h = 0.5 \times 2000 = 1000 \text{ J}
+\]
+\markstep{1}
+
+Heat rejected \recalled ($Q_h = W + Q_c$):
+\[
+Q_c = Q_h - W = 2000 - 1000 = 1000 \text{ J}
+\]
+\markstep{1}
+
+Check: $Q_c/Q_h = 1000/2000 = T_c/T_h = 300/600 = 0.5$ \checkmark \markstep{1}
+
+\finalanswer{$\eta = 50\%$, $W = 1000$ J, $Q_c = 1000$ J}
+
+\item \textbf{Entropy changes} \qmarks{4}
+
+Entropy change of the copper block \fromsheet:
+\[
+\Delta S_{\text{Cu}} = mc\ln\left(\frac{T_f}{T_i}\right) = 2 \times 385 \times \ln\left(\frac{300}{500}\right) = 770\ln(0.6)
+\]
+\[
+\ln(0.6) = -0.5108, \qquad \Delta S_{\text{Cu}} = 770 \times (-0.5108) = -393.3 \text{ J/K}
+\]
+\markstep{1}
+
+Heat released by the copper:
+\[
+Q = mc(T_i - T_f) = 2 \times 385 \times (500 - 300) = 770 \times 200 = 154{,}000 \text{ J}
+\]
+
+Entropy change of the reservoir \recalled:
+\[
+\Delta S_{\text{res}} = \frac{Q}{T_R} = \frac{154{,}000}{300} = 513.3 \text{ J/K}
+\]
+\markstep{1}
+
+Total entropy change of the universe:
+\[
+\Delta S_{\text{total}} = \Delta S_{\text{Cu}} + \Delta S_{\text{res}} = -393.3 + 513.3 = 120.0 \text{ J/K}
+\]
+\markstep{1}
+
+Comment: $\Delta S_{\text{total}} > 0$, which is consistent with the second law of thermodynamics. The process is irreversible (there is a finite temperature difference between the copper and the reservoir), so the total entropy of the universe must increase. \markstep{1}
+
+\finalanswer{$\Delta S_{\text{Cu}} = -393.3$ J/K, $\Delta S_{\text{res}} = +513.3$ J/K, $\Delta S_{\text{total}} = +120.0$ J/K $> 0$}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Waves on Strings and Sound}
+
+\begin{parts}
+\item \textbf{String properties} \qmarks{3}
+
+Linear mass density:
+\[
+\mu = \frac{m}{L} = \frac{0.012}{1.5} = 0.008 \text{ kg/m}
+\]
+\markstep{1}
+
+Wave speed \fromsheet:
+\[
+v = \sqrt{\frac{T}{\mu}} = \sqrt{\frac{75}{0.008}} = \sqrt{9375} = 96.82 \text{ m/s}
+\]
+\markstep{1}
+
+Fundamental frequency (string fixed at both ends) \fromsheet:
+\[
+f_1 = \frac{v}{2L} = \frac{96.82}{2 \times 1.5} = \frac{96.82}{3.0} = 32.27 \text{ Hz}
+\]
+\markstep{1}
+
+\finalanswer{$\mu = 0.008$ kg/m, $v = 96.82$ m/s, $f_1 = 32.27$ Hz}
+
+\item \textbf{Harmonic wave at 3rd harmonic} \qmarks{3}
+
+The 3rd harmonic frequency:
+\[
+f_3 = 3f_1 = 3 \times 32.27 = 96.82 \text{ Hz}
+\]
+\markstep{1}
+
+Angular frequency and wavenumber \recalled:
+\[
+\omega = 2\pi f_3 = 2\pi \times 96.82 = 608.3 \text{ rad/s}
+\]
+
+The 3rd harmonic wavelength: $\lambda_3 = 2L/3 = 2 \times 1.5/3 = 1.0$ m
+\[
+k = \frac{2\pi}{\lambda_3} = \frac{2\pi}{1.0} = 6.283 \text{ rad/m}
+\]
+\markstep{1}
+
+The travelling wave equation \fromsheet:
+\[
+y(x,t) = A\sin(kx - \omega t) = 0.002\sin(6.28\,x - 608.3\,t) \text{ m}
+\]
+\markstep{1}
+
+\finalanswer{$y(x,t) = 0.002\sin(6.28\,x - 608.3\,t)$ m, with $\omega = 608.3$ rad/s and $k = 6.28$ rad/m}
+
+\item \textbf{Impedance and reflection/transmission} \qmarks{4}
+
+Impedance of string 1 \fromsheet:
+\[
+Z_1 = \mu_1 v_1 = 0.008 \times 96.82 = 0.7746 \text{ kg/s}
+\]
+\markstep{1}
+
+Wave speed in string 2: $v_2 = \sqrt{T/\mu_2} = \sqrt{75/0.032} = \sqrt{2343.75} = 48.41$ m/s
+
+Impedance of string 2:
+\[
+Z_2 = \mu_2 v_2 = 0.032 \times 48.41 = 1.549 \text{ kg/s}
+\]
+\markstep{1}
+
+Amplitude reflection coefficient \fromsheet:
+\[
+r = \frac{Z_1 - Z_2}{Z_1 + Z_2} = \frac{0.7746 - 1.549}{0.7746 + 1.549} = \frac{-0.7746}{2.324} = -\frac{1}{3}
+\]
+\markstep{1}
+
+Amplitude transmission coefficient \fromsheet:
+\[
+t = \frac{2Z_1}{Z_1 + Z_2} = \frac{2 \times 0.7746}{2.324} = \frac{1.549}{2.324} = \frac{2}{3}
+\]
+\markstep{1}
+
+Note: $Z_2 = 2Z_1$ exactly (since $\mu_2/\mu_1 = 4$ and $v_2/v_1 = 1/2$, so $Z_2/Z_1 = 2$), giving the clean fractions $r = -1/3$ and $t = 2/3$.
+
+\finalanswer{$Z_1 = 0.775$ kg/s, $Z_2 = 1.549$ kg/s, $r = -1/3$, $t = 2/3$}
+
+\item \textbf{Power reflection and transmission} \qmarks{2}
+
+Power reflection coefficient:
+\[
+R = r^2 = \left(-\frac{1}{3}\right)^2 = \frac{1}{9} \approx 0.111
+\]
+\markstep{1}
+
+Power transmission coefficient: \recalled
+\[
+\mathcal{T} = 1 - R = 1 - \frac{1}{9} = \frac{8}{9} \approx 0.889
+\]
+
+Verification: $\mathcal{T} = \frac{Z_2}{Z_1}t^2 = 2 \times \left(\frac{2}{3}\right)^2 = 2 \times \frac{4}{9} = \frac{8}{9}$ \checkmark
+
+$R + \mathcal{T} = 1/9 + 8/9 = 1$ \checkmark \markstep{1}
+
+\finalanswer{$R = 1/9 \approx 0.111$, $\mathcal{T} = 8/9 \approx 0.889$, $R + \mathcal{T} = 1$}
+
+\item \textbf{Open-closed organ pipe} \qmarks{3}
+
+For an open-closed pipe, only odd harmonics are present \fromsheet:
+\[
+f_n = \frac{nv_s}{4\ell}, \quad n = 1, 3, 5, \ldots
+\]
+\markstep{1}
+
+First resonant mode ($n = 1$):
+\[
+f_1 = \frac{340}{4 \times 0.85} = \frac{340}{3.4} = 100 \text{ Hz}
+\]
+\markstep{1}
+
+Second resonant mode ($n = 3$): $f_3 = 3 \times 100 = 300$ Hz
+
+Third resonant mode ($n = 5$): $f_5 = 5 \times 100 = 500$ Hz \markstep{1}
+
+\finalanswer{$f_1 = 100$ Hz, $f_3 = 300$ Hz, $f_5 = 500$ Hz}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Mach-Zehnder Interferometer and Two-Particle States}
+
+\begin{parts}
+\item \textbf{MZ interferometer --- no phase shifter} \qmarks{4}
+
+After the first beam splitter (BS1):
+\[
+\ket{T} \to \frac{1}{\sqrt{2}}\bigl(\ket{T} + i\ket{B}\bigr)
+\]
+\markstep{1}
+
+After the mirrors (each path picks up a phase factor of $i$):
+\[
+\frac{1}{\sqrt{2}}\bigl(i\ket{T} + i \cdot i\ket{B}\bigr) = \frac{1}{\sqrt{2}}\bigl(i\ket{T} - \ket{B}\bigr)
+\]
+\markstep{1}
+
+After the second beam splitter (BS2), using $\ket{T} \to \frac{1}{\sqrt{2}}(\ket{T} + i\ket{B})$ and $\ket{B} \to \frac{1}{\sqrt{2}}(i\ket{T} + \ket{B})$:
+\begin{align*}
+&\frac{1}{\sqrt{2}}\left[i \cdot \frac{1}{\sqrt{2}}(\ket{T} + i\ket{B}) + (-1) \cdot \frac{1}{\sqrt{2}}(i\ket{T} + \ket{B})\right] \\
+&= \frac{1}{2}\left[i\ket{T} + i^2\ket{B} - i\ket{T} - \ket{B}\right] \\
+&= \frac{1}{2}\left[i\ket{T} - \ket{B} - i\ket{T} - \ket{B}\right] \\
+&= \frac{1}{2}\left[-2\ket{B}\right] = -\ket{B}
+\end{align*}
+\markstep{1}
+
+The final state is $-\ket{B}$ (overall phase is unphysical).
+\[
+P(T) = 0, \qquad P(B) = |-1|^2 = 1
+\]
+
+All photons exit through port $B$. \markstep{1}
+
+\finalanswer{Final state: $-\ket{B}$. \quad $P(T) = 0$, $P(B) = 1$.}
+
+\item \textbf{MZ with phase shifter} \qmarks{3}
+
+With phase shifter $e^{i\varphi}$ on the top path, the state before BS2 becomes:
+\[
+\frac{1}{\sqrt{2}}\bigl(ie^{i\varphi}\ket{T} - \ket{B}\bigr)
+\]
+\markstep{1}
+
+After BS2:
+\begin{align*}
+&\frac{1}{\sqrt{2}}\left[ie^{i\varphi} \cdot \frac{1}{\sqrt{2}}(\ket{T} + i\ket{B}) + (-1)\cdot\frac{1}{\sqrt{2}}(i\ket{T} + \ket{B})\right] \\
+&= \frac{1}{2}\left[ie^{i\varphi}\ket{T} - e^{i\varphi}\ket{B} - i\ket{T} - \ket{B}\right] \\
+&= \frac{1}{2}\left[i(e^{i\varphi} - 1)\ket{T} - (e^{i\varphi} + 1)\ket{B}\right]
+\end{align*}
+\markstep{1}
+
+Detection probabilities:
+\[
+P(T) = \frac{|e^{i\varphi} - 1|^2}{4} = \frac{(e^{i\varphi} - 1)(e^{-i\varphi} - 1)}{4} = \frac{2 - 2\cos\varphi}{4} = \frac{1 - \cos\varphi}{2} = \sin^2\!\left(\frac{\varphi}{2}\right)
+\]
+\[
+P(B) = \frac{|e^{i\varphi} + 1|^2}{4} = \frac{2 + 2\cos\varphi}{4} = \frac{1 + \cos\varphi}{2} = \cos^2\!\left(\frac{\varphi}{2}\right)
+\]
+
+Check: $P(T) + P(B) = \sin^2(\varphi/2) + \cos^2(\varphi/2) = 1$ \checkmark \markstep{1}
+
+\finalanswer{$P(T) = \sin^2(\varphi/2)$, \quad $P(B) = \cos^2(\varphi/2)$}
+
+\item \textbf{Entanglement proof} \qmarks{4}
+
+Suppose $\ket{\Psi}$ can be written as a product state:
+\[
+\ket{\Psi} = (\alpha\ket{\uparrow} + \beta\ket{\downarrow})_1 \otimes (\gamma\ket{\uparrow} + \delta\ket{\downarrow})_2
+\]
+Expanding:
+\[
+= \alpha\gamma\ket{\uparrow\uparrow} + \alpha\delta\ket{\uparrow\downarrow} + \beta\gamma\ket{\downarrow\uparrow} + \beta\delta\ket{\downarrow\downarrow}
+\]
+\markstep{1}
+
+Comparing with $\ket{\Psi} = \frac{1}{\sqrt{2}}(\ket{\uparrow\downarrow} - \ket{\downarrow\uparrow})$, we need:
+\[
+\alpha\gamma = 0, \quad \alpha\delta = \frac{1}{\sqrt{2}}, \quad \beta\gamma = -\frac{1}{\sqrt{2}}, \quad \beta\delta = 0
+\]
+\markstep{1}
+
+From $\alpha\gamma = 0$: either $\alpha = 0$ or $\gamma = 0$.
+\begin{itemize}
+\item If $\alpha = 0$: then $\alpha\delta = 0 \neq 1/\sqrt{2}$. Contradiction.
+\item If $\gamma = 0$: then $\beta\gamma = 0 \neq -1/\sqrt{2}$. Contradiction.
+\end{itemize}
+Therefore no product decomposition exists, and the state is entangled. \markstep{1}
+
+If $S_z$ is measured on particle 1 and gives $+\hbar/2$ (i.e.\ outcome $\ket{\uparrow}_1$), the state collapses to the component of $\ket{\Psi}$ associated with $\ket{\uparrow}_1$, which is $\ket{\downarrow}_2$. Particle 2 is in state $\ket{\downarrow}_2$ ($S_z = -\hbar/2$). \markstep{1}
+
+\finalanswer{The state is entangled (proof by contradiction above). After measuring $S_z = +\hbar/2$ on particle 1, particle 2 is in state $\ket{\downarrow}_2$.}
+
+\item \textbf{Time evolution of spin state} \qmarks{4}
+
+\textbf{(i)} The energy eigenstates and eigenvalues are $\ket{\uparrow_z}$ with $E_+ = E_0/2$, and $\ket{\downarrow_z}$ with $E_- = -E_0/2$. The initial state is:
+\[
+\ket{\psi(0)} = \ket{\uparrow_x} = \frac{1}{\sqrt{2}}\bigl(\ket{\uparrow_z} + \ket{\downarrow_z}\bigr)
+\]
+
+Using the time evolution formula \fromsheet:
+\[
+\ket{\psi(t)} = \frac{1}{\sqrt{2}}\Bigl(e^{-iE_0 t/(2\hbar)}\ket{\uparrow_z} + e^{iE_0 t/(2\hbar)}\ket{\downarrow_z}\Bigr)
+\]
+\markstep{1}
+
+\textbf{(ii)} The probability of measuring $S_z = +\hbar/2$:
+\[
+P(\uparrow_z) = \left|\frac{1}{\sqrt{2}}e^{-iE_0 t/(2\hbar)}\right|^2 = \frac{1}{2}
+\]
+
+The probability is constant: $P(\uparrow_z) = 1/2$ for all $t$. \markstep{1}
+
+This makes sense because $\ket{\uparrow_z}$ and $\ket{\downarrow_z}$ are energy eigenstates with equal weights $|c_n|^2 = 1/2$, which do not change in time.
+
+\textbf{(iii)} To find $\expect{S_x}(t)$: \fromsheet{} $S_x = \frac{\hbar}{2}(\ketbra{\uparrow}{\downarrow} + \ketbra{\downarrow}{\uparrow})$.
+
+\[
+S_x\ket{\psi(t)} = \frac{\hbar}{2} \cdot \frac{1}{\sqrt{2}}\Bigl(e^{-iE_0 t/(2\hbar)}\ket{\downarrow_z} + e^{iE_0 t/(2\hbar)}\ket{\uparrow_z}\Bigr)
+\]
+
+\begin{align*}
+\expect{S_x}(t) &= \bra{\psi(t)}S_x\ket{\psi(t)} \\
+&= \frac{\hbar}{2}\cdot\frac{1}{2}\Bigl(e^{iE_0 t/(2\hbar)}e^{iE_0 t/(2\hbar)} + e^{-iE_0 t/(2\hbar)}e^{-iE_0 t/(2\hbar)}\Bigr) \\
+&= \frac{\hbar}{4}\Bigl(e^{iE_0 t/\hbar} + e^{-iE_0 t/\hbar}\Bigr) = \frac{\hbar}{2}\cos\!\left(\frac{E_0 t}{\hbar}\right)
+\end{align*}
+\markstep{2}
+
+Check: at $t = 0$, $\expect{S_x} = \hbar/2$, which is correct since the state is $\ket{\uparrow_x}$. \checkmark
+
+\finalanswer{$\ket{\psi(t)} = \dfrac{1}{\sqrt{2}}\bigl(e^{-iE_0 t/(2\hbar)}\ket{\uparrow_z} + e^{iE_0 t/(2\hbar)}\ket{\downarrow_z}\bigr)$\\[6pt]
+$P(\uparrow_z) = 1/2$ (constant)\\[6pt]
+$\expect{S_x}(t) = \dfrac{\hbar}{2}\cos\!\bigl(E_0 t/\hbar\bigr)$}
+
+\end{parts}
+
+\end{document}

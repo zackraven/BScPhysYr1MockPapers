@@ -1,0 +1,435 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation in sub-parts
+\renewcommand{\marks}[1]{\hfill [#1]}
+
+% MCQ environment
+\newcounter{mcqcounter}
+\newcommand{\mcq}[1]{%
+  \stepcounter{mcqcounter}%
+  \vspace{0.3cm}%
+  \noindent\textbf{\themcqcounter.} #1 \hfill [2 marks]%
+  \vspace{0.1cm}%
+}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=\Alph*.,leftmargin=2.5em,itemsep=0.1cm}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- Paper 6 (Easy)}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Duration: 3 Hours}\\[0.3cm]
+{\large Total Marks: 100}\\[0.5cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Instructions:}
+\begin{itemize}[itemsep=0.1cm]
+\item Answer \textbf{ALL} questions.
+\item \textbf{Section A} (Oscillations and Waves): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section B} (Quantum Physics): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section C}: 4 long-answer questions, 60 marks total.
+\item An approved calculator is permitted.
+\item A formula sheet is provided at the end of this paper.
+\item Show all working for Section C. Marks will be awarded for clear, logical solutions.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ
+% ============================================================
+\section*{Section A: Oscillations and Waves}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION A1: SHM definition
+\mcq{A particle undergoes simple harmonic motion (SHM). Which of the following correctly describes the restoring force acting on the particle?}
+\begin{choices}
+\item The force is constant in magnitude and always directed toward the equilibrium position.
+\item The force is proportional to the displacement from equilibrium and directed toward the equilibrium position: $F = -kx$.
+\item The force is proportional to the square of the displacement from equilibrium.
+\item The force is proportional to the velocity of the particle.
+\end{choices}
+
+% QUESTION A2: Period of mass-spring
+\mcq{A mass of $m = 0.5\;\text{kg}$ is attached to a spring with spring constant $k = 200\;\text{N/m}$. What is the period of oscillation?}
+\begin{choices}
+\item $T = 0.157\;\text{s}$
+\item $T = 0.201\;\text{s}$
+\item $T = 0.314\;\text{s}$
+\item $T = 0.628\;\text{s}$
+\end{choices}
+
+% QUESTION A3: SHM max velocity
+\mcq{A mass oscillates in SHM with amplitude $A = 0.10\;\text{m}$ and angular frequency $\omega_0 = 5\;\text{rad/s}$. What is the maximum speed of the mass?}
+\begin{choices}
+\item $0.25\;\text{m/s}$
+\item $0.50\;\text{m/s}$
+\item $2.5\;\text{m/s}$
+\item $5.0\;\text{m/s}$
+\end{choices}
+
+% QUESTION A4: Quality factor
+\mcq{In a damped oscillating system, the quality factor $Q$ is defined as:}
+\begin{choices}
+\item $Q = \gamma/\omega_0$, the ratio of the damping constant to the natural frequency.
+\item $Q = \omega_0/\gamma$, the ratio of the natural angular frequency to the damping constant.
+\item $Q = \omega_0 \gamma$, the product of the natural frequency and damping constant.
+\item $Q = \omega_d/\omega_0$, the ratio of the damped frequency to the natural frequency.
+\end{choices}
+
+% QUESTION A5: Wave speed
+\mcq{A wave has frequency $f = 500\;\text{Hz}$ and wavelength $\lambda = 0.68\;\text{m}$. What is the speed of the wave?}
+\begin{choices}
+\item $170\;\text{m/s}$
+\item $340\;\text{m/s}$
+\item $500\;\text{m/s}$
+\item $735\;\text{m/s}$
+\end{choices}
+
+% QUESTION A6: Standing waves
+\mcq{A string of length $L$ is fixed at both ends and vibrates in its 3rd harmonic. How many antinodes are present on the string?}
+\begin{choices}
+\item $1$
+\item $2$
+\item $3$
+\item $4$
+\end{choices}
+
+% QUESTION A7: Sound level
+\mcq{The sound intensity level of $0\;\text{dB}$ corresponds to a sound intensity of:}
+\begin{choices}
+\item $0\;\text{W/m}^2$
+\item $1\;\text{W/m}^2$
+\item $10^{-12}\;\text{W/m}^2$
+\item $10^{-6}\;\text{W/m}^2$
+\end{choices}
+
+% QUESTION A8: Doppler
+\mcq{A sound source moves \emph{toward} a stationary observer at speed $v_s$ (where $v_s < v$, the speed of sound). The frequency heard by the observer is:}
+\begin{choices}
+\item Lower than the emitted frequency.
+\item Equal to the emitted frequency.
+\item Higher than the emitted frequency.
+\item Zero, because the source is moving.
+\end{choices}
+
+% QUESTION A9: Beats
+\mcq{Two tuning forks produce sound waves with frequencies $f_1 = 256\;\text{Hz}$ and $f_2 = 260\;\text{Hz}$. What is the beat frequency heard when both sound simultaneously?}
+\begin{choices}
+\item $2\;\text{Hz}$
+\item $4\;\text{Hz}$
+\item $258\;\text{Hz}$
+\item $516\;\text{Hz}$
+\end{choices}
+
+% QUESTION A10: Simple pendulum
+\mcq{The period of a simple pendulum undergoing small oscillations depends on which of the following quantities?}
+\begin{choices}
+\item The mass of the bob and the length of the string only.
+\item The length of the string and the acceleration due to gravity only.
+\item The amplitude of oscillation and the mass of the bob only.
+\item The mass of the bob, the length of the string, and the acceleration due to gravity.
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ
+% ============================================================
+\section*{Section B: Quantum Physics}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION B1: What is |psi>?
+\mcq{In Dirac notation, the symbol $\ket{\psi}$ represents:}
+\begin{choices}
+\item A probability
+\item A complex number
+\item A quantum state (state vector/ket)
+\item An operator
+\end{choices}
+
+% QUESTION B2: Inner product type
+\mcq{In Dirac notation, the quantity $\braket{\phi}{\psi}$ is:}
+\begin{choices}
+\item A ket (column vector)
+\item A bra (row vector)
+\item An operator (matrix)
+\item A complex scalar (complex number)
+\end{choices}
+
+% QUESTION B3: Born rule
+\mcq{For two normalised quantum states $\ket{\phi}$ and $\ket{\psi}$, the quantity $|\braket{\phi}{\psi}|^2$ represents:}
+\begin{choices}
+\item The energy of the state $\ket{\psi}$
+\item The probability of finding the system in state $\ket{\phi}$ given that it is in state $\ket{\psi}$
+\item The expectation value of the Hamiltonian
+\item The phase difference between the two states
+\end{choices}
+
+% QUESTION B4: Eigenvalue equation
+\mcq{In the eigenvalue equation $\hat{A}\ket{a} = a\ket{a}$, the quantity $a$ is called:}
+\begin{choices}
+\item The expectation value
+\item The normalisation constant
+\item The eigenvalue
+\item The eigenvector
+\end{choices}
+
+% QUESTION B5: Spin-1/2 S_z eigenvalues
+\mcq{For a spin-$\frac{1}{2}$ particle, the possible results of measuring $S_z$ are:}
+\begin{choices}
+\item $0$ and $\hbar$
+\item $+\hbar/2$ and $-\hbar/2$
+\item $+\hbar$ and $-\hbar$
+\item $+1$ and $-1$
+\end{choices}
+
+% QUESTION B6: Normalisation
+\mcq{A spin-$\frac{1}{2}$ particle is in the state $\ket{\psi} = \alpha\ket{\!\uparrow} + \beta\ket{\!\downarrow}$, where $\alpha$ and $\beta$ are complex numbers. For this state to be normalised, which condition must hold?}
+\begin{choices}
+\item $\alpha + \beta = 1$
+\item $\alpha^2 + \beta^2 = 1$
+\item $|\alpha|^2 + |\beta|^2 = 1$
+\item $|\alpha| + |\beta| = 1$
+\end{choices}
+
+% QUESTION B7: Hermitian
+\mcq{An operator $\hat{A}$ is said to be Hermitian if:}
+\begin{choices}
+\item $\hat{A}^2 = \hat{I}$
+\item $\hat{A}^\dagger = -\hat{A}$
+\item $\hat{A}^\dagger = \hat{A}$
+\item $\hat{A}^\dagger \hat{A} = \hat{I}$
+\end{choices}
+
+% QUESTION B8: Spin-1 states
+\mcq{A particle with spin quantum number $s = 1$ has how many distinct spin states (i.e.\ distinct values of $m_s$)?}
+\begin{choices}
+\item $1$
+\item $2$
+\item $3$
+\item $4$
+\end{choices}
+
+% QUESTION B9: Proton charge from quarks
+\mcq{The proton has quark content $uud$. Given that the up quark has charge $+\frac{2}{3}e$ and the down quark has charge $-\frac{1}{3}e$, what is the total charge of the proton?}
+\begin{choices}
+\item $0$
+\item $+\frac{1}{3}e$
+\item $+e$
+\item $+2e$
+\end{choices}
+
+% QUESTION B10: Electron classification
+\mcq{An electron is classified as which type of particle?}
+\begin{choices}
+\item A boson and a baryon
+\item A fermion and a lepton
+\item A boson and a lepton
+\item A fermion and a baryon
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER QUESTIONS
+% ============================================================
+\section*{Section C: Long Answer Questions}
+\noindent\textit{Answer all 4 questions. Show all working.}
+
+\setcounter{questioncounter}{0}
+
+% ---- QUESTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{SUVAT, Forces, and Energy --- Direct Application}
+
+\begin{parts}
+\item A ball is thrown vertically upward from ground level with an initial speed of $20\;\text{m/s}$. Take $g = 9.81\;\text{m/s}^2$.
+\begin{parts}
+\item Find the time taken to reach the maximum height. \qmarks{1}
+\item Find the maximum height reached. \qmarks{1}
+\item Find the total time of flight (i.e.\ the time for the ball to return to ground level). \qmarks{1}
+\end{parts}
+
+\item A $10\;\text{kg}$ box is pushed across a horizontal floor by a horizontal force of $60\;\text{N}$. The coefficient of kinetic friction between the box and the floor is $\mu_k = 0.4$.
+\begin{parts}
+\item List all the forces acting on the box and describe the direction of each (i.e.\ describe the free body diagram). \qmarks{1}
+\item Calculate the kinetic friction force. \qmarks{1}
+\item Find the acceleration of the box. \qmarks{1}
+\end{parts}
+
+\item A $2\;\text{kg}$ ball is dropped from a height of $5\;\text{m}$ above the ground. It reaches the ground and then slides onto a frictionless horizontal surface where it encounters a spring with spring constant $k = 500\;\text{N/m}$. Assume no energy is lost.
+\begin{parts}
+\item What is the speed of the ball just before it reaches the ground? \qmarks{2}
+\item Using energy conservation, find the maximum compression of the spring. \qmarks{2}
+\end{parts}
+
+\item A $3\;\text{kg}$ object moving at $4\;\text{m/s}$ to the right collides with a $1\;\text{kg}$ object that is initially at rest.
+\begin{parts}
+\item If the collision is perfectly inelastic (the objects stick together), find the final velocity of the combined mass. \qmarks{2}
+\item Calculate the kinetic energy lost in the perfectly inelastic collision. \qmarks{1}
+\item If instead the collision is elastic, use the elastic collision formula from the formula sheet to find the final velocity of the $1\;\text{kg}$ object. \qmarks{2}
+\end{parts}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Heat, Ideal Gas, and Basic Thermodynamics}
+
+\begin{parts}
+\item $0.5\;\text{kg}$ of water at $20\;^\circ\text{C}$ is heated to $100\;^\circ\text{C}$ and then completely converted to steam at $100\;^\circ\text{C}$. Calculate the total energy required. Use $c_\text{water} = 4200\;\text{J/(kg\,K)}$ and $L_\text{vap} = 2.26\times 10^6\;\text{J/kg}$. \qmarks{3}
+
+\item A container holds $1\;\text{mol}$ of ideal monatomic gas at $300\;\text{K}$ and $1.0\times 10^5\;\text{Pa}$.
+\begin{parts}
+\item Find the volume of the gas. \qmarks{1}
+\item The gas is heated at constant pressure until its temperature reaches $600\;\text{K}$. Find the new volume. \qmarks{1}
+\item Calculate the work done by the gas during this isobaric expansion. \qmarks{1}
+\item Calculate the heat absorbed by the gas. \qmarks{1}
+\end{parts}
+
+\item The gas from part~(b), now at $600\;\text{K}$ and pressure $1.0\times 10^5\;\text{Pa}$, undergoes an adiabatic expansion to twice its volume. Take $\gamma = 5/3$.
+\begin{parts}
+\item Find the final temperature after the adiabatic expansion. \qmarks{2}
+\item Find the final pressure. Is it higher or lower than the initial pressure $1.0\times 10^5\;\text{Pa}$? \qmarks{2}
+\end{parts}
+
+\item A Carnot engine operates between a hot reservoir at $T_h = 500\;\text{K}$ and a cold reservoir at $T_c = 300\;\text{K}$. The engine absorbs $Q_h = 1000\;\text{J}$ of heat per cycle from the hot reservoir.
+\begin{parts}
+\item What is the efficiency of the engine? \qmarks{1}
+\item How much work does the engine do per cycle? \qmarks{1}
+\item How much heat is rejected to the cold reservoir per cycle? \qmarks{1}
+\item What is the entropy change of the hot reservoir per cycle? Of the cold reservoir? Of the universe? \qmarks{1}
+\end{parts}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Direct SHM and Wave Applications}
+
+\begin{parts}
+\item A mass $m = 0.25\;\text{kg}$ is attached to a spring with spring constant $k = 100\;\text{N/m}$ and oscillates with amplitude $A = 4\;\text{cm} = 0.04\;\text{m}$.
+\begin{parts}
+\item Find the angular frequency $\omega_0$ and the period $T$. \qmarks{2}
+\item Find the total energy of the oscillator. \qmarks{1}
+\item Find the maximum speed of the mass. \qmarks{1}
+\end{parts}
+
+\item A transverse wave on a string is described by $y(x,t) = 0.04\sin(3x - 12t)\;\text{m}$, where $x$ is in metres and $t$ is in seconds.
+\begin{parts}
+\item Determine the amplitude, wavelength, frequency, and wave speed. \qmarks{2}
+\item In which direction is the wave travelling? \qmarks{1}
+\end{parts}
+
+\item A string of length $L = 2\;\text{m}$ is fixed at both ends. The wave speed on the string is $v = 200\;\text{m/s}$.
+\begin{parts}
+\item Find the fundamental frequency $f_1$. \qmarks{1}
+\item Find the frequencies of the 2nd and 3rd harmonics. \qmarks{1}
+\item Sketch the displacement patterns for the first three harmonics on the string, clearly indicating nodes (N) and antinodes (A). \qmarks{2}
+\end{parts}
+
+\item A fire engine siren emits sound at $f = 800\;\text{Hz}$. The speed of sound is $v = 340\;\text{m/s}$.
+\begin{parts}
+\item The fire engine approaches a stationary observer at $v_s = 30\;\text{m/s}$. What frequency does the observer hear? \qmarks{2}
+\item The fire engine passes and moves away from the observer at $v_s = 30\;\text{m/s}$. What frequency does the observer now hear? \qmarks{2}
+\end{parts}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Basic Dirac Notation and Spin Measurements}
+
+\begin{parts}
+\item A spin-$\frac{1}{2}$ particle is in the state
+\[
+\ket{\psi} = \frac{3}{5}\ket{\!\uparrow_z} + \frac{4}{5}\ket{\!\downarrow_z}.
+\]
+\begin{parts}
+\item Verify that the state is normalised. \qmarks{1}
+\item If $S_z$ is measured, what are the possible outcomes and their probabilities? \qmarks{2}
+\end{parts}
+
+\item Using the spin eigenstates from the formula sheet, express $\ket{\!\uparrow_z}$ and $\ket{\!\downarrow_z}$ in terms of $\ket{\!\uparrow_x}$ and $\ket{\!\downarrow_x}$. Hence write $\ket{\psi}$ from part~(a) in the $x$-basis and find the probability of measuring $S_x = +\hbar/2$. \qmarks{4}
+
+\item Consider the operator $\hat{A} = \ketbra{\!\uparrow}{\uparrow\!} - \ketbra{\!\downarrow}{\downarrow\!}$ (written in the $z$-basis).
+\begin{parts}
+\item Write $\hat{A}$ as a $2\times 2$ matrix in the $z$-basis. \qmarks{1}
+\item What are the eigenvalues and eigenvectors of $\hat{A}$? \qmarks{2}
+\item Is $\hat{A}$ Hermitian? How do you know? \qmarks{1}
+\end{parts}
+
+\item The state $\ket{\psi} = \frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} + \ket{\!\downarrow_z}\bigr)$ is an eigenstate of which spin operator ($S_x$, $S_y$, or $S_z$)? What is the corresponding eigenvalue? If $S_z$ is measured on this state, what is the expectation value $\expect{S_z}$? \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ============================================================
+% FORMULA SHEET
+% ============================================================
+\input{equation_sheet}
+
+\end{document}

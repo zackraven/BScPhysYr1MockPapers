@@ -1,0 +1,182 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation in sub-parts
+\renewcommand{\marks}[1]{\hfill [#1]}
+
+% MCQ environment
+\newcounter{mcqcounter}
+\newcommand{\mcq}[1]{%
+  \stepcounter{mcqcounter}%
+  \vspace{0.3cm}%
+  \noindent\textbf{\themcqcounter.} #1 \hfill [2 marks]%
+  \vspace{0.1cm}%
+}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=\Alph*.,leftmargin=2.5em,itemsep=0.1cm}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Duration: 3 Hours}\\[0.3cm]
+{\large Total Marks: 100}\\[0.5cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Instructions:}
+\begin{itemize}[itemsep=0.1cm]
+\item Answer \textbf{ALL} questions.
+\item \textbf{Section A} (Oscillations and Waves): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section B} (Quantum Physics): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section C}: 4 long-answer questions, 60 marks total.
+\item An approved calculator is permitted.
+\item A formula sheet is provided at the end of this paper.
+\item Show all working for Section C. Marks will be awarded for clear, logical solutions.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ
+% ============================================================
+\section*{Section A: Oscillations and Waves}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION A1 HERE
+
+% QUESTION A2 HERE
+
+% QUESTION A3 HERE
+
+% QUESTION A4 HERE
+
+% QUESTION A5 HERE
+
+% QUESTION A6 HERE
+
+% QUESTION A7 HERE
+
+% QUESTION A8 HERE
+
+% QUESTION A9 HERE
+
+% QUESTION A10 HERE
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ
+% ============================================================
+\section*{Section B: Quantum Physics}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION B1 HERE
+
+% QUESTION B2 HERE
+
+% QUESTION B3 HERE
+
+% QUESTION B4 HERE
+
+% QUESTION B5 HERE
+
+% QUESTION B6 HERE
+
+% QUESTION B7 HERE
+
+% QUESTION B8 HERE
+
+% QUESTION B9 HERE
+
+% QUESTION B10 HERE
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER QUESTIONS
+% ============================================================
+\section*{Section C: Long Answer Questions}
+\noindent\textit{Answer all 4 questions. Show all working.}
+
+\setcounter{questioncounter}{0}
+
+% ---- QUESTION C1: MECHANICS (15 marks) ----
+% QUESTION C1 HERE
+
+\newpage
+
+% ---- QUESTION C2: PROPERTIES OF MATTER (15 marks) ----
+% QUESTION C2 HERE
+
+\newpage
+
+% ---- QUESTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+% QUESTION C3 HERE
+
+\newpage
+
+% ---- QUESTION C4: QUANTUM PHYSICS (15 marks) ----
+% QUESTION C4 HERE
+
+\newpage
+
+% ============================================================
+% FORMULA SHEET
+% ============================================================
+\input{equation_sheet}
+
+\end{document}

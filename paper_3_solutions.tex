@@ -1,0 +1,566 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination --- Solutions}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation
+\renewcommand{\marks}[1]{\hfill [#1]}
+\newcommand{\markstep}[1]{\hfill\textcolor{blue}{[#1]}}
+
+% Boxed final answer
+\newcommand{\finalanswer}[1]{%
+  \begin{tcolorbox}[colback=green!5!white,colframe=green!50!black,boxrule=0.5pt]
+  #1
+  \end{tcolorbox}
+}
+
+% Equation source notation
+\newcommand{\fromsheet}{\textit{(From formula sheet)}}
+\newcommand{\recalled}{\textit{(Recalled --- not on formula sheet)}}
+
+% MCQ answer format
+\newcounter{mcqcounter}
+\newcommand{\mcqanswer}[2]{%
+  \stepcounter{mcqcounter}%
+  \noindent\textbf{\themcqcounter.} \textbf{#1} --- #2\\[0.2cm]%
+}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- Paper 3 --- SOLUTIONS AND MARK SCHEME}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Total Marks: 100}\\[0.3cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Marking Notes:}
+\begin{itemize}[itemsep=0.1cm]
+\item Mark allocations are shown in \textcolor{blue}{blue} at each step.
+\item Final answers are highlighted in green boxes.
+\item ``\fromsheet'' indicates the equation is on the provided formula sheet.
+\item ``\recalled'' indicates the equation must be known from memory.
+\item Award partial marks for correct method even if the final answer is wrong.
+\item Accept equivalent correct forms of answers.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ ANSWERS
+% ============================================================
+\section*{Section A: Oscillations and Waves --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{C}{The period of a mass--spring system is $T = 2\pi\sqrt{m/k}$ \fromsheet. Doubling the mass gives $T' = 2\pi\sqrt{2m/k} = \sqrt{2}\,T$. The period increases by a factor of $\sqrt{2}$.}
+
+\mcqanswer{C}{In SHM, the total energy is $E = \tfrac{1}{2}kA^2$. At displacement $x$: $\text{PE} = \tfrac{1}{2}kx^2$, $\text{KE} = \tfrac{1}{2}k(A^2 - x^2)$. Setting $\text{KE} = 3\,\text{PE}$: $A^2 - x^2 = 3x^2$, so $x^2 = A^2/4$, giving $x = A/2$.}
+
+\mcqanswer{C}{The amplitude decays as $A(t) = A_0 e^{-\gamma t/2}$ \fromsheet. It reaches $A_0/e$ when $\gamma t/2 = 1$, i.e.\ $t = 2/\gamma$. The number of cycles is $n = t/T \approx \omega_0/(2\pi\gamma) = Q/\pi$. For $Q = 50$: $n = 50/\pi \approx 16$ cycles.}
+
+\mcqanswer{B}{The phase lag satisfies $\tan\delta = \gamma\omega/(\omega_0^2 - \omega^2)$ \fromsheet. For $\delta = \pi/2$, $\tan\delta \to \infty$, which requires the denominator $\omega_0^2 - \omega^2 = 0$, i.e.\ $\omega = \omega_0$.}
+
+\mcqanswer{C}{At a fixed (rigid) end, the displacement must be zero. This boundary condition is satisfied by a reflected pulse that is inverted (phase change of $\pi$). This can also be seen from the reflection coefficient $r = (Z_1 - Z_2)/(Z_1 + Z_2)$ \fromsheet{} with $Z_2 \to \infty$, giving $r \to -1$.}
+
+\mcqanswer{B}{The string impedance is $Z = \sqrt{\mu T}$ \fromsheet. $Z = \sqrt{0.04 \times 100} = \sqrt{4} = 2.0\;\text{kg/s}$.}
+
+\mcqanswer{B}{The sound level in decibels is $\beta = 10\log_{10}(I/I_0)$ \fromsheet. If $I$ doubles: $\Delta\beta = 10\log_{10}(2I/I_0) - 10\log_{10}(I/I_0) = 10\log_{10}(2) = 10 \times 0.301 = 3.01\;\text{dB} \approx 3.0\;\text{dB}$.}
+
+\mcqanswer{A}{The Doppler formula is $f' = f\dfrac{v + v_o}{v - v_s}$ \fromsheet{} (upper signs for approach). $f' = 500 \times \dfrac{340 + 10}{340 - 20} = 500 \times \dfrac{350}{320} = 500 \times 1.09375 = 546.9\;\text{Hz} \approx 547\;\text{Hz}$.}
+
+\mcqanswer{C}{In the $n$th harmonic on a string fixed at both ends, the number of nodes is $n + 1$ (including both endpoints). For $n = 4$: there are $4 + 1 = 5$ nodes.}
+
+\mcqanswer{A}{For two identical pendulums coupled by a spring: In the symmetric (in-phase) mode, both pendulums swing together and the coupling spring is never stretched, so $\omega_1 = \sqrt{g/L}$, i.e.\ $f_1 = \sqrt{g/L}/(2\pi)$. In the antisymmetric (antiphase) mode, the spring is alternately stretched and compressed, contributing an additional restoring force $2k_c x$ to each pendulum, so $\omega_2 = \sqrt{g/L + 2k_c/m}$, i.e.\ $f_2 = \sqrt{g/L + 2k_c/m}/(2\pi)$.}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ ANSWERS
+% ============================================================
+\section*{Section B: Quantum Physics --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{D}{$\braket{a}{b}$ is a scalar (complex number) and $\braket{c}{d}$ is also a scalar. The product of two scalars is a scalar.}
+
+\mcqanswer{C}{A valid quantum state must be normalised: $\braket{\psi}{\psi} = 1$. For option C: $|1/\sqrt{2}|^2 + |i/\sqrt{2}|^2 = 1/2 + 1/2 = 1$. Option A gives norm $\sqrt{2}$; option B gives $|1/2|^2 + |1/2|^2 = 1/4 + 1/4 = 1/2 \neq 1$; option D gives $|1/\sqrt{2}|^2 + |1|^2 = 1/2 + 1 = 3/2 \neq 1$.}
+
+\mcqanswer{C}{The completeness relation states that $\sum_n \ketbra{n}{n} = \hat{I}$ (the identity operator) for any complete orthonormal basis. \recalled}
+
+\mcqanswer{B}{The Hermitian conjugate of a product reverses the order: $(\hat{A}\hat{B})^\dagger = \hat{B}^\dagger\hat{A}^\dagger$. \recalled}
+
+\mcqanswer{B}{The eigenvalues satisfy $\det(M - \lambda I) = 0$: $(3-\lambda)(0-\lambda) - 4 = 0$, i.e.\ $-3\lambda + \lambda^2 - 4 = 0$, so $\lambda^2 - 3\lambda - 4 = 0$, which factors as $(\lambda - 4)(\lambda + 1) = 0$. Eigenvalues: $\lambda = 4$ and $\lambda = -1$.}
+
+\mcqanswer{C}{Upon measuring observable $A$ and obtaining eigenvalue $a_n$ (non-degenerate), the state collapses to the corresponding eigenstate $\ket{a_n}$. This is the measurement postulate (Born rule/projection postulate). \recalled}
+
+\mcqanswer{C}{The time evolution of an energy eigenstate is $\ket{\psi(t)} = e^{-iE_1 t/\hbar}\ket{E_1}$ \fromsheet. Note the minus sign in the exponent.}
+
+\mcqanswer{C}{For spin-$1/2$: $s = 1/2$. The eigenvalue of $\hat{S}^2$ is $s(s+1)\hbar^2 = \frac{1}{2}\cdot\frac{3}{2}\,\hbar^2 = \frac{3}{4}\hbar^2$. Both spin-up and spin-down states share this same eigenvalue of $\hat{S}^2$.}
+
+\mcqanswer{A}{Two identical fermions must be in an antisymmetric state under exchange. The only antisymmetric combination of two states $\ket{\alpha}$ and $\ket{\beta}$ is $\frac{1}{\sqrt{2}}(\ket{\alpha}\ket{\beta} - \ket{\beta}\ket{\alpha})$. There is only 1 distinct two-particle state. (Both particles in the same state, e.g.\ $\ket{\alpha}\ket{\alpha}$, is forbidden by the Pauli exclusion principle.)}
+
+\mcqanswer{B}{The proton is composed of two up quarks and one down quark: $uud$. This gives charge $+\frac{2}{3}+\frac{2}{3}-\frac{1}{3} = +1$, consistent with the proton charge. \recalled}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER SOLUTIONS
+% ============================================================
+\section*{Section C: Long Answer Solutions}
+
+\setcounter{questioncounter}{0}
+
+% ---- SOLUTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Collisions, Impulse, and Centre of Mass}
+
+\begin{parts}
+
+%% (a) Perfectly inelastic collision [3 marks]
+\item Take the positive direction as the direction of the 4\,kg trolley's motion (to the right).
+
+Initial momenta: \recalled
+
+$p_1 = m_1 v_1 = 4 \times 6 = 24\;\text{kg\,m/s}$ \markstep{1}
+
+$p_2 = m_2 v_2 = 2 \times (-3) = -6\;\text{kg\,m/s}$
+
+Total initial momentum: $p_{\text{total}} = 24 + (-6) = 18\;\text{kg\,m/s}$ \markstep{1}
+
+In a perfectly inelastic collision, the two objects stick together. By conservation of momentum:
+
+$(m_1 + m_2)\,v_f = p_{\text{total}}$
+
+$6\,v_f = 18$
+
+\finalanswer{$v_f = 3\;\text{m/s}$ to the right (in the direction of the 4\,kg trolley).} \markstep{1}
+
+%% (b) Kinetic energy loss [3 marks]
+\item Kinetic energy before the collision: \recalled
+
+$\text{KE}_{\text{before}} = \tfrac{1}{2}m_1 v_1^2 + \tfrac{1}{2}m_2 v_2^2 = \tfrac{1}{2}(4)(6^2) + \tfrac{1}{2}(2)(3^2) = 72 + 9 = 81\;\text{J}$ \markstep{1}
+
+Kinetic energy after the collision:
+
+$\text{KE}_{\text{after}} = \tfrac{1}{2}(m_1+m_2)v_f^2 = \tfrac{1}{2}(6)(3^2) = 27\;\text{J}$ \markstep{1}
+
+Fraction of initial KE lost:
+
+\finalanswer{$\dfrac{\text{KE}_{\text{before}} - \text{KE}_{\text{after}}}{\text{KE}_{\text{before}}} = \dfrac{81 - 27}{81} = \dfrac{54}{81} = \dfrac{2}{3} \approx 66.7\%$} \markstep{1}
+
+%% (c) Elastic collision [4 marks]
+\item Using the elastic collision formula for $v_1'$ from the formula sheet: \fromsheet
+
+\[
+v_1' = \frac{m_1 - m_2}{m_1 + m_2}\,v_1 + \frac{2m_2}{m_1 + m_2}\,v_2
+\]
+
+\markstep{1}
+
+Substituting values:
+
+\[
+v_1' = \frac{4 - 2}{4 + 2}\times 6 + \frac{2\times 2}{4 + 2}\times(-3) = \frac{2}{6}\times 6 + \frac{4}{6}\times(-3) = 2 + (-2) = 0\;\text{m/s}
+\]
+
+\markstep{1}
+
+For $v_2'$, we can use conservation of momentum (or the analogous formula with indices swapped):
+
+$m_1 v_1 + m_2 v_2 = m_1 v_1' + m_2 v_2'$ \markstep{1}
+
+$18 = 4(0) + 2\,v_2'$
+
+$v_2' = 9\;\text{m/s}$
+
+\textit{Verification:} KE after $= \tfrac{1}{2}(4)(0)^2 + \tfrac{1}{2}(2)(9)^2 = 0 + 81 = 81\;\text{J} = \text{KE}_{\text{before}}$ \checkmark
+
+\finalanswer{$v_1' = 0\;\text{m/s}$ (the 4\,kg trolley stops); $v_2' = 9\;\text{m/s}$ to the right.} \markstep{1}
+
+%% (d) Impulse and force [2 marks]
+\item The impulse is the change in momentum: \recalled
+
+$J = \Delta p = m(v_f - v_i) = 3\times(8 - 2) = 18\;\text{N\,s}$ \markstep{1}
+
+The average force is:
+
+\finalanswer{$F_{\text{avg}} = \dfrac{J}{\Delta t} = \dfrac{18}{0.5} = 36\;\text{N}$} \markstep{1}
+
+%% (e) Centre of mass [3 marks]
+\item The centre of mass position is: \fromsheet
+
+$\mathbf{R}_{\text{cm}} = \frac{\sum m_i \mathbf{r}_i}{\sum m_i}$ \markstep{1}
+
+$x_{\text{cm}} = \frac{1\times 0 + 2\times 3 + 3\times 0}{1 + 2 + 3} = \frac{0 + 6 + 0}{6} = 1\;\text{m}$ \markstep{1}
+
+$y_{\text{cm}} = \frac{1\times 0 + 2\times 0 + 3\times 4}{6} = \frac{0 + 0 + 12}{6} = 2\;\text{m}$
+
+\finalanswer{$\mathbf{R}_{\text{cm}} = (1,\;2)\;\text{m}$} \markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Thermodynamic Cycle}
+
+\begin{parts}
+
+%% (a) Find V_A [3 marks]
+\item Using the ideal gas law: \fromsheet
+
+$PV = nRT$
+
+\markstep{1}
+
+$V_A = \frac{nRT_A}{P_A} = \frac{2 \times 8.314 \times 300}{1.00 \times 10^5}$ \markstep{1}
+
+$V_A = \frac{4988.4}{1.00 \times 10^5}$
+
+\finalanswer{$V_A = 0.0499\;\text{m}^3 \approx 49.9\;\text{L}$} \markstep{1}
+
+%% (b) Isobaric heating A → B [4 marks]
+\item \textbf{(i)} At constant pressure, $V \propto T$ (from $PV = nRT$). \markstep{1}
+
+$V_B = V_A \times \frac{T_B}{T_A} = 0.0499 \times \frac{600}{300} = 0.0998\;\text{m}^3$
+
+\textbf{(ii)} Work done by the gas in an isobaric process: \recalled
+
+$W = P_A(V_B - V_A) = 1.00\times 10^5 \times (0.0998 - 0.0499) = 1.00\times 10^5 \times 0.0499$ \markstep{1}
+
+\finalanswer{$W_{A\to B} = 4990\;\text{J} \approx 4.99\;\text{kJ}$}
+
+\textbf{(iii)} Heat absorbed at constant pressure: \recalled
+
+$Q = nC_P\,\Delta T$
+
+For a monatomic ideal gas, $C_P = \tfrac{5}{2}R$ (since $C_V = \tfrac{3}{2}R$ and $C_P - C_V = R$). \recalled{} \markstep{1}
+
+$Q = 2 \times \frac{5}{2}\times 8.314 \times (600 - 300) = 2 \times 20.785 \times 300$
+
+\finalanswer{$Q_{A\to B} = 12{,}471\;\text{J} \approx 12.5\;\text{kJ}$} \markstep{1}
+
+\textit{Check:} $\Delta U = nC_V\Delta T = 2\times\frac{3}{2}\times 8.314\times 300 = 7483\;\text{J}$. First law: $\Delta U = Q - W = 12471 - 4990 = 7481\;\text{J}$ \checkmark
+
+%% (c) Adiabatic expansion B → C [4 marks]
+\item For an adiabatic process: $TV^{\gamma - 1} = \text{const}$ \fromsheet
+
+$T_B\,V_B^{\gamma-1} = T_C\,V_C^{\gamma-1}$ \markstep{1}
+
+With $\gamma - 1 = 2/3$, $T_B = 600\;\text{K}$, $T_C = 300\;\text{K}$:
+
+$V_C^{2/3} = V_B^{2/3}\times\frac{T_B}{T_C} = (0.0998)^{2/3}\times\frac{600}{300} = (0.0998)^{2/3}\times 2$ \markstep{1}
+
+Computing: $(0.0998)^{2/3} = e^{(2/3)\ln(0.0998)} = e^{(2/3)(-2.306)} = e^{-1.537} = 0.2154$
+
+$V_C^{2/3} = 0.2154 \times 2 = 0.4309$
+
+$V_C = (0.4309)^{3/2} = 0.4309\times\sqrt{0.4309} = 0.4309\times 0.6564 = 0.2828\;\text{m}^3$
+
+\finalanswer{$V_C \approx 0.283\;\text{m}^3$} \markstep{1}
+
+Using the ideal gas law for the pressure:
+
+$P_C = \frac{nRT_C}{V_C} = \frac{2\times 8.314\times 300}{0.2828} = \frac{4988.4}{0.2828}$
+
+\finalanswer{$P_C \approx 1.76\times 10^4\;\text{Pa}$} \markstep{1}
+
+\textit{Verification:} $P_B V_B^\gamma = 1.00\times 10^5\times(0.0998)^{5/3} = 1.00\times 10^5\times 0.02148 = 2148$. $P_C V_C^\gamma = 1.76\times 10^4\times(0.2828)^{5/3} = 1.76\times 10^4\times 0.1218 = 2144$. \checkmark{} (small rounding error).
+
+%% (d) Isothermal compression C → A, and cycle analysis [4 marks]
+\item \textbf{(i)} Isothermal compression from $V_C = 0.283\;\text{m}^3$ to $V_A = 0.0499\;\text{m}^3$ at $T = 300\;\text{K}$:
+
+$W_{\text{by gas}} = nRT\ln\!\left(\frac{V_A}{V_C}\right) = 2\times 8.314\times 300\times\ln\!\left(\frac{0.0499}{0.283}\right)$ \fromsheet
+
+$= 4988.4\times\ln(0.1764) = 4988.4\times(-1.735)$ \markstep{1}
+
+$W_{\text{by gas}} = -8655\;\text{J}$
+
+Work done \emph{on} the gas $= +8655\;\text{J} \approx 8.66\;\text{kJ}$.
+
+\textbf{(ii)} Total work done by the gas in one complete cycle:
+
+Step A$\to$B (isobaric): $W_1 = 4990\;\text{J}$
+
+Step B$\to$C (adiabatic): $W_2 = -\Delta U = nC_V(T_B - T_C) = 2\times\frac{3}{2}\times 8.314\times 300 = 7483\;\text{J}$ \markstep{1}
+
+Step C$\to$A (isothermal): $W_3 = -8655\;\text{J}$
+
+\finalanswer{$W_{\text{cycle}} = W_1 + W_2 + W_3 = 4990 + 7483 - 8655 = 3818\;\text{J} \approx 3.82\;\text{kJ}$}
+
+\textbf{(iii)} The heat \emph{input} occurs only during the isobaric heating step (A$\to$B), where $Q_{\text{in}} = 12{,}471\;\text{J}$.
+
+(In the adiabatic step $Q = 0$; in the isothermal compression, heat is \emph{released}: $Q_{C\to A} = W_3 = -8655\;\text{J}$.) \markstep{1}
+
+Efficiency:
+
+$\eta = \frac{W_{\text{cycle}}}{Q_{\text{in}}} = \frac{3818}{12471} = 0.306 = 30.6\%$
+
+Carnot efficiency between $T_c = 300\;\text{K}$ and $T_h = 600\;\text{K}$: \fromsheet
+
+$\eta_{\text{Carnot}} = 1 - \frac{T_c}{T_h} = 1 - \frac{300}{600} = 0.5 = 50\%$
+
+\finalanswer{The cycle efficiency is $\eta \approx 30.6\%$, which is less than the Carnot efficiency $\eta_C = 50\%$, as required by the second law of thermodynamics.} \markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Coupled Oscillators and Pendulums}
+
+\begin{parts}
+
+%% (a) Equations of motion [3 marks]
+\item Mass~1 is attached to two springs: one connected to the wall (restoring force $-kx_1$) and one connected to mass~2 (restoring force $-k(x_1 - x_2)$). \markstep{1}
+
+$m\ddot{x}_1 = -kx_1 - k(x_1 - x_2) = -2kx_1 + kx_2$
+
+Similarly, mass~2 is attached to a spring connected to mass~1 and a spring connected to the wall: \markstep{1}
+
+$m\ddot{x}_2 = -k(x_2 - x_1) - kx_2 = kx_1 - 2kx_2$
+
+\finalanswer{%
+$0.5\,\ddot{x}_1 = -80\,x_1 + 40\,x_2$\\[4pt]
+$0.5\,\ddot{x}_2 = 40\,x_1 - 80\,x_2$
+}
+
+Or equivalently: $\ddot{x}_1 = -160\,x_1 + 80\,x_2$ and $\ddot{x}_2 = 80\,x_1 - 160\,x_2$. \markstep{1}
+
+%% (b) Normal mode frequencies [4 marks]
+\item Seek solutions $x_1 = A_1\cos(\omega t)$, $x_2 = A_2\cos(\omega t)$. Substituting: \markstep{1}
+
+$(2k - m\omega^2)A_1 - kA_2 = 0$
+
+$-kA_1 + (2k - m\omega^2)A_2 = 0$
+
+For non-trivial solutions, the determinant must vanish: \markstep{1}
+
+$(2k - m\omega^2)^2 - k^2 = 0$
+
+$2k - m\omega^2 = \pm k$
+
+\textbf{Mode 1} ($+k$): $m\omega_1^2 = k$, so $\omega_1^2 = k/m = 40/0.5 = 80\;\text{rad}^2/\text{s}^2$
+
+\finalanswer{$\omega_1 = \sqrt{80} = 4\sqrt{5} \approx 8.94\;\text{rad/s}$}
+
+In this mode, $A_1 = A_2$: both masses move \textbf{in phase} (symmetric mode). \markstep{1}
+
+\textbf{Mode 2} ($-k$): $m\omega_2^2 = 3k$, so $\omega_2^2 = 3k/m = 120\;\text{rad}^2/\text{s}^2$
+
+\finalanswer{$\omega_2 = \sqrt{120} = 2\sqrt{30} \approx 10.95\;\text{rad/s}$}
+
+In this mode, $A_1 = -A_2$: the masses move in \textbf{antiphase} (antisymmetric mode). \markstep{1}
+
+%% (c) Superposition from initial conditions [3 marks]
+\item Define normal coordinates: $q_1 = x_1 + x_2$ (in-phase) and $q_2 = x_1 - x_2$ (antiphase).
+
+Then $x_1 = \tfrac{1}{2}(q_1 + q_2)$ and $x_2 = \tfrac{1}{2}(q_1 - q_2)$.
+
+Initial conditions: $x_1(0) = 0.05\;\text{m}$, $x_2(0) = 0$, $\dot{x}_1(0) = \dot{x}_2(0) = 0$. \markstep{1}
+
+So: $q_1(0) = 0.05 + 0 = 0.05\;\text{m}$, $q_2(0) = 0.05 - 0 = 0.05\;\text{m}$, $\dot{q}_1(0) = \dot{q}_2(0) = 0$.
+
+Each normal coordinate oscillates at its own frequency with zero initial velocity, so:
+
+$q_1(t) = 0.05\cos(\omega_1 t)$, \quad $q_2(t) = 0.05\cos(\omega_2 t)$ \markstep{1}
+
+Therefore:
+
+\finalanswer{%
+$x_1(t) = 0.025\bigl[\cos(\omega_1 t) + \cos(\omega_2 t)\bigr]$\\[4pt]
+$x_2(t) = 0.025\bigl[\cos(\omega_1 t) - \cos(\omega_2 t)\bigr]$
+}
+
+where $\omega_1 = 4\sqrt{5} \approx 8.94\;\text{rad/s}$ and $\omega_2 = 2\sqrt{30} \approx 10.95\;\text{rad/s}$. \markstep{1}
+
+This describes beats: energy transfers periodically between the two masses at the beat frequency $|\omega_2 - \omega_1|/2$.
+
+%% (d) Simple pendulum [2 marks]
+\item Using the simple pendulum formula: \fromsheet
+
+$T = 2\pi\sqrt{\frac{L}{g}} = 2\pi\sqrt{\frac{1.2}{9.81}}$ \markstep{1}
+
+$= 2\pi\sqrt{0.1223} = 2\pi \times 0.3497$
+
+\finalanswer{$T = 2.20\;\text{s}$} \markstep{1}
+
+%% (e) Physical pendulum [3 marks]
+\item \textbf{(i)} Moment of inertia of a uniform thin rod about one end: \fromsheet
+
+$I = \frac{1}{3}M\ell^2 = \frac{1}{3}\times 0.8 \times (0.6)^2 = \frac{1}{3}\times 0.8 \times 0.36$
+
+\finalanswer{$I = 0.096\;\text{kg\,m}^2$} \markstep{1}
+
+\textbf{(ii)} The centre of mass of a uniform rod is at its midpoint:
+
+\finalanswer{$h = \ell/2 = 0.3\;\text{m}$} \markstep{1}
+
+\textbf{(iii)} Physical pendulum period: \fromsheet
+
+$T = 2\pi\sqrt{\frac{I}{Mgh}} = 2\pi\sqrt{\frac{0.096}{0.8\times 9.81\times 0.3}} = 2\pi\sqrt{\frac{0.096}{2.354}}$
+
+$= 2\pi\sqrt{0.04078} = 2\pi\times 0.2020$
+
+\finalanswer{$T = 1.27\;\text{s}$} \markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Operators, Eigenvalues, and Expectation Values}
+
+\begin{parts}
+
+%% (a) Hermitian proof and matrix [3 marks]
+\item The operator is $\hat{A} = 2\ketbra{1}{1} - \ketbra{2}{2} + 2\ketbra{1}{2} + 2\ketbra{2}{1}$.
+
+Taking the Hermitian conjugate: $(\ketbra{i}{j})^\dagger = \ketbra{j}{i}$, and all coefficients are real. \markstep{1}
+
+$\hat{A}^\dagger = 2\ketbra{1}{1} - \ketbra{2}{2} + 2\ketbra{2}{1} + 2\ketbra{1}{2} = \hat{A}$
+
+So $\hat{A}$ is Hermitian. \markstep{1}
+
+The matrix elements are $A_{ij} = \bra{i}\hat{A}\ket{j}$:
+
+$A_{11} = 2$, $A_{12} = 2$, $A_{21} = 2$, $A_{22} = -1$.
+
+\finalanswer{$\hat{A} \leftrightarrow \begin{pmatrix} 2 & 2 \\ 2 & -1 \end{pmatrix}$} \markstep{1}
+
+%% (b) Eigenvalues and eigenvectors [4 marks]
+\item The characteristic equation is $\det(\hat{A} - \lambda I) = 0$: \markstep{1}
+
+$(2 - \lambda)(-1 - \lambda) - 4 = 0$
+
+$-2 - 2\lambda + \lambda + \lambda^2 - 4 = 0$
+
+$\lambda^2 - \lambda - 6 = 0$
+
+$(\lambda - 3)(\lambda + 2) = 0$
+
+\finalanswer{Eigenvalues: $\lambda_+ = 3$ and $\lambda_- = -2$.} \markstep{1}
+
+\textbf{Eigenvector for $\lambda_+ = 3$:} $(2-3)a + 2b = 0 \Rightarrow -a + 2b = 0 \Rightarrow a = 2b$.
+
+Taking $b = 1$, $a = 2$. Normalising: $N = \sqrt{4+1} = \sqrt{5}$.
+
+\finalanswer{$\ket{\lambda_+} = \frac{1}{\sqrt{5}}(2\ket{1} + \ket{2})$} \markstep{1}
+
+\textbf{Eigenvector for $\lambda_- = -2$:} $(2+2)a + 2b = 0 \Rightarrow 4a + 2b = 0 \Rightarrow b = -2a$.
+
+Taking $a = 1$, $b = -2$. Normalising: $N = \sqrt{1+4} = \sqrt{5}$.
+
+\finalanswer{$\ket{\lambda_-} = \frac{1}{\sqrt{5}}(\ket{1} - 2\ket{2})$} \markstep{1}
+
+%% (c) Measurement probabilities and expectation value [4 marks]
+\item The state is $\ket{\psi} = \frac{3}{5}\ket{1} + \frac{4}{5}\ket{2}$.
+
+Project onto the eigenstates: \recalled
+
+$c_+ = \braket{\lambda_+}{\psi} = \frac{1}{\sqrt{5}}\left(2\times\frac{3}{5} + 1\times\frac{4}{5}\right) = \frac{1}{\sqrt{5}}\cdot\frac{10}{5} = \frac{2}{\sqrt{5}}$ \markstep{1}
+
+$c_- = \braket{\lambda_-}{\psi} = \frac{1}{\sqrt{5}}\left(1\times\frac{3}{5} + (-2)\times\frac{4}{5}\right) = \frac{1}{\sqrt{5}}\cdot\frac{-5}{5} = \frac{-1}{\sqrt{5}}$
+
+Probabilities (Born rule): \recalled
+
+$P(\lambda_+ = 3) = |c_+|^2 = \frac{4}{5}$, \quad $P(\lambda_- = -2) = |c_-|^2 = \frac{1}{5}$ \markstep{1}
+
+Check: $\frac{4}{5} + \frac{1}{5} = 1$ \checkmark
+
+\finalanswer{Possible outcomes: $3$ (with probability $4/5$) and $-2$ (with probability $1/5$).} \markstep{1}
+
+Expectation value: \recalled
+
+$\expect{A} = \lambda_+ P(\lambda_+) + \lambda_- P(\lambda_-) = 3\times\frac{4}{5} + (-2)\times\frac{1}{5} = \frac{12}{5} - \frac{2}{5} = \frac{10}{5}$
+
+\finalanswer{$\expect{A} = 2$} \markstep{1}
+
+%% (d) Time evolution after measurement [4 marks]
+\item After measuring $\lambda_+ = 3$, the state collapses to: \recalled
+
+$\ket{\psi(0)} = \ket{\lambda_+} = \frac{1}{\sqrt{5}}(2\ket{1} + \ket{2})$
+
+The Hamiltonian is $\hat{H} = E_0\ketbra{1}{1} + 2E_0\ketbra{2}{2}$, so $\ket{1}$ and $\ket{2}$ are energy eigenstates with energies $E_0$ and $2E_0$ respectively.
+
+Time evolution: \fromsheet
+
+$\ket{\psi(t)} = \frac{1}{\sqrt{5}}\bigl(2\,e^{-iE_0 t/\hbar}\ket{1} + e^{-2iE_0 t/\hbar}\ket{2}\bigr)$ \markstep{1}
+
+\finalanswer{$\ket{\psi(t)} = \frac{1}{\sqrt{5}}\bigl(2\,e^{-iE_0 t/\hbar}\ket{1} + e^{-2iE_0 t/\hbar}\ket{2}\bigr)$} \markstep{1}
+
+The probability of measuring $\lambda_+ = 3$ again at time $t$:
+
+$P(\lambda_+, t) = \bigl|\braket{\lambda_+}{\psi(t)}\bigr|^2$
+
+$\braket{\lambda_+}{\psi(t)} = \frac{1}{\sqrt{5}}\bigl(2,\;1\bigr)\cdot\frac{1}{\sqrt{5}}\begin{pmatrix}2e^{-iE_0 t/\hbar}\\ e^{-2iE_0 t/\hbar}\end{pmatrix} = \frac{1}{5}\bigl(4e^{-iE_0 t/\hbar} + e^{-2iE_0 t/\hbar}\bigr)$ \markstep{1}
+
+Factor out $e^{-iE_0 t/\hbar}$:
+
+$= \frac{e^{-iE_0 t/\hbar}}{5}\bigl(4 + e^{-iE_0 t/\hbar}\bigr)$
+
+$P(\lambda_+, t) = \frac{1}{25}\bigl|4 + e^{-iE_0 t/\hbar}\bigr|^2 = \frac{1}{25}\bigl(16 + 8\cos(E_0 t/\hbar) + 1\bigr)$
+
+\finalanswer{$P(\lambda_+ = 3,\;t) = \dfrac{17 + 8\cos(E_0 t/\hbar)}{25}$} \markstep{1}
+
+\textit{Check at $t = 0$:} $P = (17 + 8)/25 = 25/25 = 1$ \checkmark\ (as expected, since the state was prepared in $\ket{\lambda_+}$).
+
+\end{parts}
+
+\end{document}

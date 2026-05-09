@@ -1,0 +1,395 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation in sub-parts
+\renewcommand{\marks}[1]{\hfill [#1]}
+
+% MCQ environment
+\newcounter{mcqcounter}
+\newcommand{\mcq}[1]{%
+  \stepcounter{mcqcounter}%
+  \vspace{0.3cm}%
+  \noindent\textbf{\themcqcounter.} #1 \hfill [2 marks]%
+  \vspace{0.1cm}%
+}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=\Alph*.,leftmargin=2.5em,itemsep=0.1cm}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- Paper 2}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Duration: 3 Hours}\\[0.3cm]
+{\large Total Marks: 100}\\[0.5cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Instructions:}
+\begin{itemize}[itemsep=0.1cm]
+\item Answer \textbf{ALL} questions.
+\item \textbf{Section A} (Oscillations and Waves): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section B} (Quantum Physics): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section C}: 4 long-answer questions, 60 marks total.
+\item An approved calculator is permitted.
+\item A formula sheet is provided at the end of this paper.
+\item Show all working for Section C. Marks will be awarded for clear, logical solutions.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ
+% ============================================================
+\section*{Section A: Oscillations and Waves}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION A1: SHM — find max acceleration from given x(t)
+\mcq{A particle undergoes simple harmonic motion described by $x(t) = 0.04\cos(10\pi t)$, where $x$ is in metres and $t$ is in seconds. What is the magnitude of the maximum acceleration of the particle?}
+\begin{choices}
+\item $0.4\pi$ m/s$^2$
+\item $0.4\pi^2$ m/s$^2$
+\item $4\pi^2$ m/s$^2$
+\item $40\pi^2$ m/s$^2$
+\end{choices}
+
+% QUESTION A2: SHM energy — at what displacement is KE = PE?
+\mcq{A mass on a spring oscillates with amplitude $A$. At what displacement from equilibrium is the kinetic energy equal to the potential energy?}
+\begin{choices}
+\item $A/4$
+\item $A/2$
+\item $A/\sqrt{2}$
+\item $A/\sqrt{3}$
+\end{choices}
+
+% QUESTION A3: Damped oscillation — Q factor application
+\mcq{A damped oscillator has a quality factor $Q = 50$. Approximately how many complete oscillations does it take for the energy of the oscillator to decrease to half of its initial value?}
+\begin{choices}
+\item $5.5$
+\item $11$
+\item $25$
+\item $50$
+\end{choices}
+
+% QUESTION A4: Resonance — phase lag at resonance
+\mcq{A damped harmonic oscillator is driven by an external sinusoidal force at the resonant frequency $\omega = \omega_0$. What is the phase lag $\delta$ of the displacement behind the driving force at this frequency?}
+\begin{choices}
+\item $0$
+\item $\pi/4$
+\item $\pi/2$
+\item $\pi$
+\end{choices}
+
+% QUESTION A5: Wave equation — identify which expression satisfies it
+\mcq{Which of the following expressions is a valid solution to the one-dimensional wave equation $\dfrac{\partial^2 y}{\partial x^2} = \dfrac{1}{v^2}\dfrac{\partial^2 y}{\partial t^2}$?}
+\begin{choices}
+\item $y = A\sin(kx)\cos(kx)$
+\item $y = A e^{-(x - vt)^2}$
+\item $y = A\,e^{x}\cos(vt)$
+\item $y = A\sin(kx + \omega t^2)$
+\end{choices}
+
+% QUESTION A6: Reflection coefficient — light to heavy string
+\mcq{A wave pulse travels along a light string (impedance $Z_1 = 0.5$ kg/s) and reaches a junction with a heavier string (impedance $Z_2 = 1.5$ kg/s). What is the amplitude reflection coefficient $r = A_r/A_i$?}
+\begin{choices}
+\item $+1/2$
+\item $-1/2$
+\item $+1/3$
+\item $-1/3$
+\end{choices}
+
+% QUESTION A7: Sound — calculate intensity from dB level
+\mcq{A sound has an intensity level of $\beta = 85$ dB. Taking $I_0 = 10^{-12}$ W/m$^2$, what is the intensity of the sound?}
+\begin{choices}
+\item $3.16 \times 10^{-5}$ W/m$^2$
+\item $3.16 \times 10^{-4}$ W/m$^2$
+\item $8.5 \times 10^{-4}$ W/m$^2$
+\item $8.5 \times 10^{-10}$ W/m$^2$
+\end{choices}
+
+% QUESTION A8: Doppler — source receding
+\mcq{A fire engine siren emits sound at frequency $f = 800$ Hz. The fire engine moves \textbf{away} from a stationary observer at speed $v_s = 40$ m/s. Taking the speed of sound in air as $v = 340$ m/s, what frequency does the observer hear?}
+\begin{choices}
+\item $716$ Hz
+\item $742$ Hz
+\item $800$ Hz
+\item $863$ Hz
+\end{choices}
+
+% QUESTION A9: Open-closed pipe harmonics
+\mcq{An organ pipe is open at one end and closed at the other. Which of the following sets correctly lists the harmonic numbers $n$ that are present in its resonant modes?}
+\begin{choices}
+\item $n = 1, 2, 3, 4, 5, \ldots$
+\item $n = 2, 4, 6, 8, 10, \ldots$
+\item $n = 1, 3, 5, 7, 9, \ldots$
+\item $n = 0, 1, 2, 3, 4, \ldots$
+\end{choices}
+
+% QUESTION A10: Group velocity vs phase velocity
+\mcq{For a wave packet in a dispersive medium, which of the following correctly describes the relationship between the group velocity $v_g$ and the phase velocity $v_p$?}
+\begin{choices}
+\item The group velocity always equals the phase velocity.
+\item The group velocity is always greater than the phase velocity.
+\item The group velocity is the speed at which the envelope of the wave packet propagates, and may differ from the phase velocity.
+\item The group velocity has no physical significance; only the phase velocity determines energy transport.
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ
+% ============================================================
+\section*{Section B: Quantum Physics}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION B1: Bra-ket — compute inner product
+\mcq{Let $\ket{\psi} = \dfrac{1}{\sqrt{2}}\ket{1} + \dfrac{i}{\sqrt{2}}\ket{2}$ and $\ket{\phi} = \dfrac{i}{\sqrt{2}}\ket{1} + \dfrac{1}{\sqrt{2}}\ket{2}$, where $\{\ket{1}, \ket{2}\}$ is an orthonormal basis. What is $\braket{\phi}{\psi}$?}
+\begin{choices}
+\item $1$
+\item $i$
+\item $0$
+\item $-i$
+\end{choices}
+
+% QUESTION B2: Normalisation — which state is correctly normalised
+\mcq{Which of the following states is correctly normalised? (Assume $\ket{a}$ and $\ket{b}$ are orthonormal.)}
+\begin{choices}
+\item $\ket{\psi} = \dfrac{1}{2}\ket{a} + \dfrac{1}{2}\ket{b}$
+\item $\ket{\psi} = \dfrac{1}{\sqrt{2}}\ket{a} + \dfrac{i}{\sqrt{2}}\ket{b}$
+\item $\ket{\psi} = \ket{a} + \ket{b}$
+\item $\ket{\psi} = \dfrac{1}{\sqrt{3}}\ket{a} + \dfrac{1}{\sqrt{3}}\ket{b}$
+\end{choices}
+
+% QUESTION B3: Orthogonality — find coefficient c
+\mcq{Two states are given by $\ket{\alpha} = \dfrac{1}{\sqrt{2}}\ket{1} + \dfrac{1}{\sqrt{2}}\ket{2}$ and $\ket{\beta} = c\,\ket{1} + \dfrac{1}{\sqrt{2}}\ket{2}$, where $\{\ket{1}, \ket{2}\}$ is an orthonormal basis and $c$ is a real number. Find the value of $c$ such that $\ket{\alpha}$ and $\ket{\beta}$ are orthogonal.}
+\begin{choices}
+\item $c = 1/\sqrt{2}$
+\item $c = -1/\sqrt{2}$
+\item $c = 1/2$
+\item $c = -1$
+\end{choices}
+
+% QUESTION B4: Unitary operator — which property must U satisfy
+\mcq{An operator $U$ acting on a quantum state space is unitary. Which of the following properties must $U$ satisfy?}
+\begin{choices}
+\item $U^\dagger = U$
+\item $U^\dagger U = I$ (the identity operator)
+\item $U^2 = I$
+\item $U = U^{-1}$
+\end{choices}
+
+% QUESTION B5: Expectation value — calculate ⟨S_z⟩
+\mcq{A spin-1/2 particle is in the state $\ket{\psi} = \dfrac{1}{\sqrt{3}}\ket{\!\uparrow_z} + \sqrt{\dfrac{2}{3}}\,\ket{\!\downarrow_z}$. What is the expectation value $\expect{S_z}$?}
+\begin{choices}
+\item $+\hbar/6$
+\item $-\hbar/6$
+\item $+\hbar/3$
+\item $-\hbar/3$
+\end{choices}
+
+% QUESTION B6: Spin-1/2 — particle in |↑x⟩, probability of S_z = +ℏ/2
+\mcq{A spin-1/2 particle is prepared in the state $\ket{\!\uparrow_x} = \dfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} + \ket{\!\downarrow_z}\bigr)$. What is the probability of measuring $S_z = +\hbar/2$?}
+\begin{choices}
+\item $0$
+\item $1/4$
+\item $1/2$
+\item $1$
+\end{choices}
+
+% QUESTION B7: Time evolution — stationary state probability
+\mcq{A quantum system is prepared in an energy eigenstate $\ket{E_n}$ of the Hamiltonian $H$ at time $t = 0$. How does the probability of measuring an observable $A$ to have eigenvalue $a_k$ change with time?}
+\begin{choices}
+\item It oscillates sinusoidally.
+\item It decreases exponentially.
+\item It remains constant.
+\item It increases linearly.
+\end{choices}
+
+% QUESTION B8: Product vs entangled states — identify product state
+\mcq{Consider two spin-1/2 particles. Which of the following two-particle states is a \textbf{product state} (i.e.\ \textbf{not} entangled)?}
+\begin{choices}
+\item $\dfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow}_1\ket{\!\downarrow}_2 - \ket{\!\downarrow}_1\ket{\!\uparrow}_2\bigr)$
+\item $\dfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow}_1\ket{\!\uparrow}_2 + \ket{\!\downarrow}_1\ket{\!\downarrow}_2\bigr)$
+\item $\dfrac{1}{2}\bigl(\ket{\!\uparrow}_1 + \ket{\!\downarrow}_1\bigr)\bigl(\ket{\!\uparrow}_2 - \ket{\!\downarrow}_2\bigr)$
+\item $\dfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow}_1\ket{\!\downarrow}_2 + \ket{\!\downarrow}_1\ket{\!\uparrow}_2\bigr)$
+\end{choices}
+
+% QUESTION B9: Bosons — wave function under exchange
+\mcq{Two identical bosons occupy a joint quantum state $\ket{\Psi}$. What happens to $\ket{\Psi}$ when the labels of the two particles are exchanged (i.e.\ the SWAP operator is applied)?}
+\begin{choices}
+\item $\ket{\Psi}$ acquires a factor of $-1$: $\text{SWAP}\ket{\Psi} = -\ket{\Psi}$
+\item $\ket{\Psi}$ is unchanged: $\text{SWAP}\ket{\Psi} = +\ket{\Psi}$
+\item $\ket{\Psi}$ acquires an arbitrary phase $e^{i\theta}$
+\item $\ket{\Psi}$ becomes zero
+\end{choices}
+
+% QUESTION B10: Particle physics — which force mediates beta decay
+\mcq{In beta decay, a neutron transforms into a proton, an electron, and an electron antineutrino: $n \to p + e^{-} + \bar{\nu}_e$. Which fundamental force mediates this process?}
+\begin{choices}
+\item The gravitational force
+\item The electromagnetic force
+\item The strong nuclear force
+\item The weak nuclear force
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER QUESTIONS
+% ============================================================
+\section*{Section C: Long Answer Questions}
+\noindent\textit{Answer all 4 questions. Show all working.}
+
+\setcounter{questioncounter}{0}
+
+% ---- QUESTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Rotational Dynamics and Atwood Machine}
+
+\begin{parts}
+\item A solid cylinder of mass $M = 4$ kg and radius $R = 0.2$ m rolls without slipping down a slope inclined at $30^\circ$ to the horizontal. Using energy conservation, find the speed of the cylinder after it has descended a vertical height of $h = 3$ m. The moment of inertia of a solid cylinder about its axis is $I = \frac{1}{2}MR^2$. \qmarks{3}
+
+\item For the same cylinder on the same slope, find the linear acceleration using Newton's second law. You should write down both the translational and rotational equations of motion and use the rolling constraint $a = R\alpha$. \qmarks{3}
+
+\item An Atwood machine consists of two masses $m_1 = 6$ kg and $m_2 = 4$ kg connected by a light, inextensible string passing over a frictionless, massless pulley. Find the acceleration of the system and the tension in the string. \qmarks{4}
+
+\item Now suppose the pulley is a solid disk of mass $M_p = 2$ kg and radius $R_p = 0.1$ m. The string does not slip on the pulley. Set up the equations of motion for both masses and the pulley. Hence find the new acceleration of the system. \qmarks{5}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Ideal Gas, Carnot Engine, and Entropy}
+
+\begin{parts}
+\item A container holds $n = 3$ moles of a diatomic ideal gas ($\gamma = 7/5$) at temperature $T = 400$ K and pressure $P = 2 \times 10^5$ Pa. Find the volume of the gas and the internal energy $U$. For a diatomic gas at room temperature, $U = \frac{5}{2}nRT$. \qmarks{3}
+
+\item The gas undergoes a reversible adiabatic compression to half its original volume. Find the final temperature and the final pressure. \qmarks{4}
+
+\item A Carnot engine operates between a hot reservoir at $T_h = 600$ K and a cold reservoir at $T_c = 300$ K. If the engine absorbs $Q_h = 2000$ J per cycle from the hot reservoir, calculate the work done per cycle, the heat rejected to the cold reservoir, and the efficiency of the engine. \qmarks{4}
+
+\item A $2$ kg block of copper with specific heat capacity $c = 385$ J/(kg$\cdot$K) at an initial temperature of $500$ K is placed in thermal contact with a large reservoir at temperature $T_R = 300$ K. Calculate the entropy change of the copper block, the entropy change of the reservoir, and the total entropy change of the universe. Comment on the sign of the total entropy change. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Waves on Strings and Sound}
+
+\begin{parts}
+\item A string of length $L = 1.5$ m and total mass $m = 0.012$ kg is stretched under a tension $T = 75$ N. Calculate the linear mass density $\mu$, the speed $v$ of transverse waves on the string, and the fundamental frequency $f_1$ for standing waves when the string is fixed at both ends. \qmarks{3}
+
+\item Write down the equation $y(x,t)$ for a harmonic wave travelling in the $+x$ direction on this string at the 3rd harmonic frequency, using an amplitude $A = 2$ mm. Give numerical values for the angular frequency $\omega$ and wavenumber $k$. \qmarks{3}
+
+\item This string is joined to a heavier string with linear mass density $\mu_2 = 0.032$ kg/m, with the same tension $T = 75$ N in both strings. Calculate the impedance of each string, and the amplitude reflection coefficient $r$ and the amplitude transmission coefficient $t$ for a wave incident from the lighter string. \qmarks{4}
+
+\item Calculate the fraction of incident power that is reflected and the fraction that is transmitted at the junction. Verify that they sum to unity. \qmarks{2}
+
+\item An organ pipe of length $\ell = 0.85$ m is open at one end and closed at the other. Taking the speed of sound in air as $v_s = 340$ m/s, find the frequencies of the first three resonant modes. \qmarks{3}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Mach-Zehnder Interferometer and Two-Particle States}
+
+\noindent In a Mach-Zehnder interferometer, a photon travels along one of two paths labelled $\ket{T}$ (top) and $\ket{B}$ (bottom). A beam splitter acts as follows:
+\[
+\ket{T} \to \frac{1}{\sqrt{2}}\bigl(\ket{T} + i\ket{B}\bigr), \qquad
+\ket{B} \to \frac{1}{\sqrt{2}}\bigl(i\ket{T} + \ket{B}\bigr).
+\]
+Each mirror adds a phase factor of $i$ to the state reflected from it.
+
+\begin{parts}
+\item A photon enters the interferometer in state $\ket{T}$. Apply the first beam splitter, then the mirrors (which multiply each path by $i$), then the second beam splitter. Find the final state. What is the probability of detection at each output port? \qmarks{4}
+
+\item A phase shifter $e^{i\varphi}$ is now inserted in the top path between the mirrors and the second beam splitter. Show that the detection probabilities become $P(T) = \sin^2(\varphi/2)$ and $P(B) = \cos^2(\varphi/2)$. \qmarks{3}
+
+\item Consider the two-particle state
+\[
+\ket{\Psi} = \frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow}_1\ket{\!\downarrow}_2 - \ket{\!\downarrow}_1\ket{\!\uparrow}_2\bigr).
+\]
+Show that this state is entangled (i.e.\ it cannot be written as a product state $\ket{a}_1\ket{b}_2$). If $S_z$ is measured on particle~1 and the result $+\hbar/2$ is obtained, what is the state of particle~2? \qmarks{4}
+
+\item A spin-1/2 particle in a magnetic field has Hamiltonian
+\[
+H = \frac{E_0}{2}\bigl(\ketbra{\!\uparrow_z}{\uparrow_z\!} - \ketbra{\!\downarrow_z}{\downarrow_z\!}\bigr),
+\]
+so that $H\ket{\!\uparrow_z} = (E_0/2)\ket{\!\uparrow_z}$ and $H\ket{\!\downarrow_z} = -(E_0/2)\ket{\!\downarrow_z}$.
+
+The particle starts at $t = 0$ in the state $\ket{\psi(0)} = \ket{\!\uparrow_x} = \frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} + \ket{\!\downarrow_z}\bigr)$.
+\begin{parts}
+\item Find $\ket{\psi(t)}$.
+\item Calculate the probability of measuring $S_z = +\hbar/2$ as a function of time.
+\item Calculate $\expect{S_x}(t)$.
+\end{parts}
+\qmarks{4}
+\end{parts}
+
+\newpage
+
+% ============================================================
+% FORMULA SHEET
+% ============================================================
+\input{equation_sheet}
+
+\end{document}

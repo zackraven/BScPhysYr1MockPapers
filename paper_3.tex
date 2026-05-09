@@ -1,0 +1,413 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation in sub-parts
+\renewcommand{\marks}[1]{\hfill [#1]}
+
+% MCQ environment
+\newcounter{mcqcounter}
+\newcommand{\mcq}[1]{%
+  \stepcounter{mcqcounter}%
+  \vspace{0.3cm}%
+  \noindent\textbf{\themcqcounter.} #1 \hfill [2 marks]%
+  \vspace{0.1cm}%
+}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=\Alph*.,leftmargin=2.5em,itemsep=0.1cm}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- Paper 3}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Duration: 3 Hours}\\[0.3cm]
+{\large Total Marks: 100}\\[0.5cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Instructions:}
+\begin{itemize}[itemsep=0.1cm]
+\item Answer \textbf{ALL} questions.
+\item \textbf{Section A} (Oscillations and Waves): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section B} (Quantum Physics): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section C}: 4 long-answer questions, 60 marks total.
+\item An approved calculator is permitted.
+\item A formula sheet is provided at the end of this paper.
+\item Show all working for Section C. Marks will be awarded for clear, logical solutions.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ
+% ============================================================
+\section*{Section A: Oscillations and Waves}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION A1: SHM
+\mcq{A mass $m$ on a spring of spring constant $k$ oscillates with period $T$. If the mass is replaced by one of mass $2m$ (with the same spring), what is the new period?}
+\begin{choices}
+\item $T/\sqrt{2}$
+\item $T$
+\item $\sqrt{2}\,T$
+\item $2T$
+\end{choices}
+
+% QUESTION A2: Energy in SHM
+\mcq{A particle undergoes simple harmonic motion with amplitude $A$. At what displacement from equilibrium is the kinetic energy equal to three times the potential energy?}
+\begin{choices}
+\item $A/4$
+\item $A/\sqrt{3}$
+\item $A/2$
+\item $A/\sqrt{2}$
+\end{choices}
+
+% QUESTION A3: Damped oscillation
+\mcq{An underdamped oscillator has quality factor $Q = 50$. Approximately how many complete oscillation cycles does it take for the amplitude to fall to $1/e$ of its initial value?}
+\begin{choices}
+\item $\pi/Q \approx 0.063$ cycles
+\item $Q/(2\pi) \approx 8$ cycles
+\item $Q/\pi \approx 16$ cycles
+\item $2\pi Q \approx 314$ cycles
+\end{choices}
+
+% QUESTION A4: Forced oscillation
+\mcq{A driven damped oscillator has natural frequency $\omega_0$ and damping constant $\gamma$. At what driving frequency $\omega$ is the phase lag $\delta$ between the driving force and the displacement exactly $\pi/2$?}
+\begin{choices}
+\item $\omega = \omega_0/2$
+\item $\omega = \omega_0$
+\item $\omega = \omega_0\sqrt{1-\gamma^2/(2\omega_0^2)}$
+\item $\omega = \sqrt{\omega_0^2 + \gamma^2}$
+\end{choices}
+
+% QUESTION A5: Transverse wave at fixed end
+\mcq{A transverse pulse travels along a taut string and arrives at an end that is rigidly fixed to a wall. Which of the following best describes what happens?}
+\begin{choices}
+\item The pulse is transmitted into the wall with no reflection.
+\item The pulse is reflected with no change in phase (upright).
+\item The pulse is reflected with a phase change of $\pi$ (inverted).
+\item The pulse is absorbed and the string returns to rest.
+\end{choices}
+
+% QUESTION A6: String impedance
+\mcq{A string has a linear mass density $\mu = 0.04\;\text{kg/m}$ and is held under a tension $T = 100\;\text{N}$. What is the impedance $Z$ of the string?}
+\begin{choices}
+\item $0.8\;\text{kg/s}$
+\item $2.0\;\text{kg/s}$
+\item $4.0\;\text{kg/s}$
+\item $50\;\text{kg/s}$
+\end{choices}
+
+% QUESTION A7: Decibels
+\mcq{If the intensity of a sound wave is doubled, by how many decibels does the sound level increase?}
+\begin{choices}
+\item $1.5\;\text{dB}$
+\item $3.0\;\text{dB}$
+\item $6.0\;\text{dB}$
+\item $10\;\text{dB}$
+\end{choices}
+
+% QUESTION A8: Doppler
+\mcq{A source emitting sound at frequency $f = 500\;\text{Hz}$ moves toward a stationary observer at $v_s = 20\;\text{m/s}$. At the same time, the observer moves toward the source at $v_o = 10\;\text{m/s}$. Taking the speed of sound as $v = 340\;\text{m/s}$, what is the frequency heard by the observer?}
+\begin{choices}
+\item $547\;\text{Hz}$
+\item $531\;\text{Hz}$
+\item $469\;\text{Hz}$
+\item $556\;\text{Hz}$
+\end{choices}
+
+% QUESTION A9: Standing waves
+\mcq{A string of length $L$ is fixed at both ends and vibrates in its 4th harmonic. How many nodes are present on the string (including the endpoints)?}
+\begin{choices}
+\item $3$
+\item $4$
+\item $5$
+\item $8$
+\end{choices}
+
+% QUESTION A10: Coupled oscillators
+\mcq{Two identical simple pendulums of length $L$ and mass $m$ are connected by a light spring of spring constant $k_c$. Which of the following correctly describes the two normal modes of oscillation?}
+\begin{choices}
+\item Both pendulums swing in phase at frequency $\sqrt{g/L}/(2\pi)$; both swing in antiphase at frequency $\sqrt{g/L + 2k_c/m}/(2\pi)$.
+\item Both swing in phase at frequency $\sqrt{g/L + k_c/m}/(2\pi)$; both swing in antiphase at frequency $\sqrt{g/L + k_c/m}/(2\pi)$.
+\item Both swing in phase at frequency $\sqrt{g/L + 2k_c/m}/(2\pi)$; both swing in antiphase at frequency $\sqrt{g/L}/(2\pi)$.
+\item Both swing in phase at frequency $\sqrt{g/L}/(2\pi)$; both swing in antiphase at frequency $\sqrt{g/L + k_c/m}/(2\pi)$.
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ
+% ============================================================
+\section*{Section B: Quantum Physics}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION B1: Dirac notation
+\mcq{In Dirac notation, what type of mathematical object is $\braket{a}{b}\braket{c}{d}$?}
+\begin{choices}
+\item A ket
+\item A bra
+\item An operator
+\item A scalar (complex number)
+\end{choices}
+
+% QUESTION B2: State validity
+\mcq{Which of the following represents a valid (normalised) quantum state?}
+\begin{choices}
+\item $\ket{\psi} = \ket{1} + \ket{2}$
+\item $\ket{\psi} = \frac{1}{2}\ket{1} + \frac{1}{2}\ket{2}$
+\item $\ket{\psi} = \frac{1}{\sqrt{2}}\ket{1} + \frac{i}{\sqrt{2}}\ket{2}$
+\item $\ket{\psi} = \frac{1}{\sqrt{2}}\ket{1} + \ket{2}$
+\end{choices}
+
+% QUESTION B3: Completeness relation
+\mcq{If $\{\ket{n}\}$ is a complete orthonormal basis, what does $\sum_n \ketbra{n}{n}$ equal?}
+\begin{choices}
+\item $0$
+\item The Hamiltonian $\hat{H}$
+\item The identity operator $\hat{I}$
+\item $\sum_n \braket{n}{n}$
+\end{choices}
+
+% QUESTION B4: Hermitian conjugate
+\mcq{Given two operators $\hat{A}$ and $\hat{B}$, which of the following equals $(\hat{A}\hat{B})^\dagger$?}
+\begin{choices}
+\item $\hat{A}^\dagger \hat{B}^\dagger$
+\item $\hat{B}^\dagger \hat{A}^\dagger$
+\item $\hat{B}\hat{A}$
+\item $(\hat{A}\hat{B})^{-1}$
+\end{choices}
+
+% QUESTION B5: Eigenvalue
+\mcq{What are the eigenvalues of the matrix $M = \begin{pmatrix} 3 & 2 \\ 2 & 0 \end{pmatrix}$?}
+\begin{choices}
+\item $1$ and $2$
+\item $4$ and $-1$
+\item $3$ and $0$
+\item $5$ and $-2$
+\end{choices}
+
+% QUESTION B6: Measurement
+\mcq{A system is in state $\ket{\psi}$ and observable $A$ is measured, yielding eigenvalue $a_n$ (which is non-degenerate). Immediately after the measurement, the state of the system is:}
+\begin{choices}
+\item $\ket{\psi}$ (unchanged)
+\item $\hat{A}\ket{\psi}$
+\item The eigenstate $\ket{a_n}$ corresponding to eigenvalue $a_n$
+\item A uniform superposition of all eigenstates of $\hat{A}$
+\end{choices}
+
+% QUESTION B7: Time evolution
+\mcq{A system is prepared in the energy eigenstate $\ket{E_1}$ at time $t=0$. What is its state at time $t$?}
+\begin{choices}
+\item $\ket{E_1}$
+\item $e^{+iE_1 t/\hbar}\ket{E_1}$
+\item $e^{-iE_1 t/\hbar}\ket{E_1}$
+\item $\cos(E_1 t/\hbar)\ket{E_1}$
+\end{choices}
+
+% QUESTION B8: Spin-1/2
+\mcq{For a spin-$\frac{1}{2}$ particle, what are the eigenvalues of the operator $\hat{S}^2 = \hat{S}_x^2 + \hat{S}_y^2 + \hat{S}_z^2$?}
+\begin{choices}
+\item $\pm\hbar/2$
+\item $\hbar^2/4$
+\item $\frac{3}{4}\hbar^2$
+\item $\hbar^2$
+\end{choices}
+
+% QUESTION B9: Fermions
+\mcq{Two identical fermions can each occupy one of two single-particle states $\ket{\alpha}$ or $\ket{\beta}$. How many distinct two-particle states are allowed?}
+\begin{choices}
+\item $1$
+\item $2$
+\item $3$
+\item $4$
+\end{choices}
+
+% QUESTION B10: Quarks
+\mcq{What is the quark composition of a proton?}
+\begin{choices}
+\item $udd$
+\item $uud$
+\item $uds$
+\item $u\bar{d}$
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER QUESTIONS
+% ============================================================
+\section*{Section C: Long Answer Questions}
+\noindent\textit{Answer all 4 questions. Show all working.}
+
+\setcounter{questioncounter}{0}
+
+% ---- QUESTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Collisions, Impulse, and Centre of Mass}
+
+\begin{parts}
+\item A 4\,kg trolley moving at 6\,m/s to the right collides head-on with a 2\,kg trolley moving at 3\,m/s to the left. The collision is perfectly inelastic (the trolleys stick together). Find the velocity of the combined mass after the collision, and state its direction of motion. \qmarks{3}
+
+\item Calculate the total kinetic energy before and after the collision in part~(a). What fraction of the initial kinetic energy is lost? \qmarks{3}
+
+\item Suppose instead that the collision described in part~(a) is \emph{elastic}. Using conservation of momentum and kinetic energy (or the elastic collision formula provided on the formula sheet), find the velocity of each trolley after the collision. \qmarks{4}
+
+\item A constant force acts on a 3\,kg object for 0.5\,s, changing its velocity from 2\,m/s to 8\,m/s (in the same direction). Calculate the impulse delivered to the object and the average force exerted. \qmarks{2}
+
+\item Three point particles of masses 1\,kg, 2\,kg, and 3\,kg are located at positions $(0,\,0)$, $(3,\,0)$, and $(0,\,4)$ metres, respectively. Find the position of the centre of mass of the system. \qmarks{3}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Thermodynamic Cycle}
+
+\noindent Two moles of monatomic ideal gas ($\gamma = 5/3$) begin in state~A at pressure $P_A = 1.00 \times 10^5\;\text{Pa}$ and temperature $T_A = 300\;\text{K}$.
+
+\begin{parts}
+\item Find the volume $V_A$ of the gas in state~A. \qmarks{3}
+
+\item The gas is heated at constant pressure (isobaric process) until the temperature reaches $T_B = 600\;\text{K}$ (state~B). Find:
+\begin{parts}
+\item the volume $V_B$;
+\item the work done by the gas;
+\item the heat absorbed by the gas.
+\end{parts}
+\qmarks{4}
+
+\item From state~B, the gas expands adiabatically until its temperature returns to $300\;\text{K}$ (state~C). Find the volume $V_C$ and the pressure $P_C$. \qmarks{4}
+
+\item The gas is then compressed isothermally at $300\;\text{K}$ back to its original state~A.
+\begin{parts}
+\item Calculate the work done on the gas in this step.
+\item What is the total work done by the gas in one complete cycle?
+\item Determine the efficiency of this cycle and compare it with the Carnot efficiency for the same temperature extremes.
+\end{parts}
+\qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Coupled Oscillators and Pendulums}
+
+\begin{parts}
+\item Two identical masses $m = 0.5\;\text{kg}$ are connected in a line by three identical springs, each with spring constant $k = 40\;\text{N/m}$, in the arrangement:
+
+\begin{center}
+wall --- spring --- mass\,1 --- spring --- mass\,2 --- spring --- wall
+\end{center}
+
+Let $x_1$ and $x_2$ denote the displacements of mass~1 and mass~2 from their respective equilibrium positions. Write down the equations of motion for the two masses. \qmarks{3}
+
+\item Find the two normal mode angular frequencies. Describe the motion of the two masses in each normal mode. \qmarks{4}
+
+\item At $t = 0$, mass~1 is displaced by $5\;\text{cm}$ from equilibrium and mass~2 is at its equilibrium position. Both masses are released from rest. Express the subsequent motion of each mass as a superposition of the two normal modes. \qmarks{3}
+
+\item A simple pendulum has length $L = 1.2\;\text{m}$. Find its period of small oscillations. \qmarks{2}
+
+\item A thin uniform rod of mass $M = 0.8\;\text{kg}$ and length $\ell = 0.6\;\text{m}$ is pivoted at one end and swings as a physical (compound) pendulum. Find:
+\begin{parts}
+\item the moment of inertia of the rod about the pivot;
+\item the distance from the pivot to the centre of mass;
+\item the period of small oscillations.
+\end{parts}
+\qmarks{3}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Operators, Eigenvalues, and Expectation Values}
+
+\noindent Let $\{\ket{1},\,\ket{2}\}$ be an orthonormal basis. Consider the operator
+\[
+\hat{A} = 2\ketbra{1}{1} - \ketbra{2}{2} + 2\ketbra{1}{2} + 2\ketbra{2}{1}.
+\]
+
+\begin{parts}
+\item Show that $\hat{A}$ is Hermitian. Write $\hat{A}$ as a $2\times 2$ matrix in the $\{\ket{1},\,\ket{2}\}$ basis. \qmarks{3}
+
+\item Find the eigenvalues and normalised eigenvectors of $\hat{A}$. \qmarks{4}
+
+\item A system is prepared in the state
+\[
+\ket{\psi} = \frac{3}{5}\ket{1} + \frac{4}{5}\ket{2}.
+\]
+If observable $A$ is measured, what are the possible outcomes and their probabilities? Calculate the expectation value $\expect{A}$. \qmarks{4}
+
+\item Suppose the measurement in part~(c) yields the \emph{larger} eigenvalue. The system then evolves under the Hamiltonian
+\[
+\hat{H} = E_0\ketbra{1}{1} + 2E_0\ketbra{2}{2},
+\]
+where $E_0 > 0$. Find the state of the system at time~$t$, and determine the probability of again measuring the larger eigenvalue of $A$ at that time. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ============================================================
+% FORMULA SHEET
+% ============================================================
+\input{equation_sheet}
+
+\end{document}

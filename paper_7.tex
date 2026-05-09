@@ -1,0 +1,412 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation in sub-parts
+\renewcommand{\marks}[1]{\hfill [#1]}
+
+% MCQ environment
+\newcounter{mcqcounter}
+\newcommand{\mcq}[1]{%
+  \stepcounter{mcqcounter}%
+  \vspace{0.3cm}%
+  \noindent\textbf{\themcqcounter.} #1 \hfill [2 marks]%
+  \vspace{0.1cm}%
+}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=\Alph*.,leftmargin=2.5em,itemsep=0.1cm}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- Paper 7 (Hard)}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Duration: 3 Hours}\\[0.3cm]
+{\large Total Marks: 100}\\[0.5cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Instructions:}
+\begin{itemize}[itemsep=0.1cm]
+\item Answer \textbf{ALL} questions.
+\item \textbf{Section A} (Oscillations and Waves): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section B} (Quantum Physics): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section C}: 4 long-answer questions, 60 marks total.
+\item An approved calculator is permitted.
+\item A formula sheet is provided at the end of this paper.
+\item Show all working for Section C. Marks will be awarded for clear, logical solutions.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ
+% ============================================================
+\section*{Section A: Oscillations and Waves}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION A1: SHM from potential
+\mcq{A particle of mass $m$ moves in a potential $V(x) = V_0(x/a)^2$, where $V_0$ and $a$ are positive constants. The particle undergoes small oscillations about the equilibrium at $x = 0$. What is the angular frequency $\omega_0$ of these oscillations?}
+\begin{choices}
+\item $\displaystyle\sqrt{\frac{V_0}{ma^2}}$
+\item $\displaystyle\sqrt{\frac{2V_0}{ma^2}}$
+\item $\displaystyle\sqrt{\frac{V_0}{2ma^2}}$
+\item $\displaystyle\sqrt{\frac{4V_0}{ma^2}}$
+\end{choices}
+
+% QUESTION A2: Energy decay in damped SHM
+\mcq{A damped harmonic oscillator has damping constant $\gamma$. The amplitude decays as $A(t) = A_0\,e^{-\gamma t/2}$. After a time $t = 2/\gamma$, what fraction of the \emph{initial energy} remains?}
+\begin{choices}
+\item $1/e$
+\item $1/e^2$
+\item $1/e^4$
+\item $1/\sqrt{e}$
+\end{choices}
+
+% QUESTION A3: Forced oscillation phase lag
+\mcq{A forced oscillator has natural frequency $\omega_0$ and damping constant $\gamma$. The phase lag between the driving force and the steady-state response is given by $\tan\delta = \gamma\omega/(\omega_0^2 - \omega^2)$. At what driving frequency $\omega$ is the phase lag exactly $\pi/4$?}
+\begin{choices}
+\item $\omega = \omega_0$
+\item $\omega = \omega_0 - \gamma$
+\item $\displaystyle\omega = -\frac{\gamma}{2} + \sqrt{\omega_0^2 + \frac{\gamma^2}{4}}$
+\item $\displaystyle\omega = \frac{\gamma}{2} + \sqrt{\omega_0^2 + \frac{\gamma^2}{4}}$
+\end{choices}
+
+% QUESTION A4: Impedance ratio and power transmission
+\mcq{A transverse wave travels from a string with impedance $Z_1$ to a string with impedance $Z_2 = 3Z_1$. What fraction of the incident power is transmitted?}
+\begin{choices}
+\item $1/4$
+\item $3/4$
+\item $9/16$
+\item $3/16$
+\end{choices}
+
+% QUESTION A5: Coupled oscillators — beats
+\mcq{Two identical coupled oscillators have normal mode frequencies $\omega_1$ and $\omega_2$ (with $\omega_2 > \omega_1$). When one oscillator is displaced and released, energy transfers back and forth between them. What is the beat (energy-exchange) frequency?}
+\begin{choices}
+\item $\omega_1 + \omega_2$
+\item $\omega_1\omega_2$
+\item $(\omega_2 - \omega_1)/2$
+\item $\omega_2 - \omega_1$
+\end{choices}
+
+% QUESTION A6: Standing waves in open-closed pipe
+\mcq{An organ pipe of length $L$ is open at one end and closed at the other. The 2nd overtone of this pipe corresponds to which harmonic?}
+\begin{choices}
+\item The 3rd harmonic ($n = 3$)
+\item The 4th harmonic ($n = 4$)
+\item The 5th harmonic ($n = 5$)
+\item The 6th harmonic ($n = 6$)
+\end{choices}
+
+% QUESTION A7: Decibel subtraction
+\mcq{A sound source produces a sound level of $83\;\text{dB}$ at a certain point. If the intensity is reduced by a factor of 100, what is the new sound level at that point?}
+\begin{choices}
+\item $63\;\text{dB}$
+\item $0.83\;\text{dB}$
+\item $81\;\text{dB}$
+\item $41.5\;\text{dB}$
+\end{choices}
+
+% QUESTION A8: Doppler — both moving, same direction
+\mcq{A sound source emitting frequency $f$ and an observer are both moving in the \emph{same} direction. The source moves at speed $v_s$ and the observer at speed $v_o$, with $v_s > v_o$ (source faster, approaching the observer from behind). Taking $v$ as the speed of sound, which expression gives the frequency $f'$ heard by the observer?}
+\begin{choices}
+\item $\displaystyle f' = f\,\frac{v + v_o}{v + v_s}$
+\item $\displaystyle f' = f\,\frac{v - v_o}{v - v_s}$
+\item $\displaystyle f' = f\,\frac{v + v_o}{v - v_s}$
+\item $\displaystyle f' = f\,\frac{v - v_o}{v + v_s}$
+\end{choices}
+
+% QUESTION A9: Group velocity from dispersion relation
+\mcq{A medium has the dispersion relation $\omega^2 = \omega_0^2 + c^2k^2$, where $\omega_0$ and $c$ are constants. What is the group velocity $v_g$?}
+\begin{choices}
+\item $c$
+\item $\omega/k$
+\item $\displaystyle\frac{c^2 k}{\sqrt{\omega_0^2 + c^2 k^2}}$
+\item $\displaystyle\frac{\omega_0^2 + c^2 k^2}{ck}$
+\end{choices}
+
+% QUESTION A10: Superposition of N random-phase sources
+\mcq{$N$ identical sound sources, each of intensity $I_0$, are placed at the same location but with \emph{random} (uncorrelated) phases. How does the total intensity scale with $N$?}
+\begin{choices}
+\item $I_\text{total} = N^2 I_0$
+\item $I_\text{total} = N I_0$
+\item $I_\text{total} = \sqrt{N}\, I_0$
+\item $I_\text{total} = I_0$ (independent of $N$)
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ
+% ============================================================
+\section*{Section B: Quantum Physics}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION B1: Trace of outer product
+\mcq{For two normalised quantum states $\ket{\psi}$ and $\ket{\phi}$, what is $\text{Tr}\!\left(\ketbra{\psi}{\phi}\right)$?}
+\begin{choices}
+\item $\braket{\psi}{\phi}$
+\item $\braket{\phi}{\psi}$
+\item $|\braket{\phi}{\psi}|^2$
+\item $1$
+\end{choices}
+
+% QUESTION B2: Commutator of Pauli matrices
+\mcq{The commutator $[\sigma_x, \sigma_z] = \sigma_x\sigma_z - \sigma_z\sigma_x$ is equal to:}
+\begin{choices}
+\item $2i\sigma_y$
+\item $-2i\sigma_y$
+\item $i\sigma_y$
+\item $0$
+\end{choices}
+
+% QUESTION B3: Uncertainty — maximum S_x implies S_z
+\mcq{A spin-$\frac{1}{2}$ particle is in a state for which $\expect{S_x} = +\hbar/2$ (the maximum possible value). What can you conclude about $\expect{S_z}$ in this state?}
+\begin{choices}
+\item $\expect{S_z} = +\hbar/2$
+\item $\expect{S_z} = -\hbar/2$
+\item $\expect{S_z} = 0$
+\item $\expect{S_z}$ cannot be determined without more information
+\end{choices}
+
+% QUESTION B4: Degenerate eigenvalues
+\mcq{A Hermitian operator $\hat{A}$ has a degenerate eigenvalue $a$ with a two-dimensional eigenspace. A system is in a state $\ket{\psi}$ that is \emph{not} an eigenstate of $\hat{A}$, but has a non-zero overlap with the eigenspace. After a measurement of $\hat{A}$ yields the result $a$, the post-measurement state is:}
+\begin{choices}
+\item Any one of the degenerate eigenstates, chosen at random.
+\item The projection of $\ket{\psi}$ onto the degenerate eigenspace, normalised.
+\item Unchanged --- the state remains $\ket{\psi}$.
+\item An equal superposition of all eigenstates of $\hat{A}$.
+\end{choices}
+
+% QUESTION B5: Time evolution of expectation value
+\mcq{The expectation value $\expect{\hat{A}}$ of an observable $\hat{A}$ in a state $\ket{\psi(t)}$ evolving under a Hamiltonian $H$ is time-independent if:}
+\begin{choices}
+\item $\hat{A}$ is Hermitian.
+\item $\hat{A}$ commutes with $H$ and $\hat{A}$ has no explicit time dependence.
+\item $\hat{A}$ is unitary.
+\item $\ket{\psi}$ is normalised.
+\end{choices}
+
+% QUESTION B6: Spin-1/2 probability for general direction
+\mcq{A spin-$\frac{1}{2}$ particle is prepared in the state $\ket{\!\uparrow_{\hat{n}}}$ where $\hat{n}$ is a unit vector making an angle $\theta$ with the $z$-axis. What is the probability of measuring $S_z = +\hbar/2$?}
+\begin{choices}
+\item $\cos\theta$
+\item $\sin^2(\theta/2)$
+\item $\cos^2(\theta/2)$
+\item $\tfrac{1}{2}(1 + \sin\theta)$
+\end{choices}
+
+% QUESTION B7: Two-particle Hilbert space dimension
+\mcq{Consider a composite system of two particles: particle 1 has spin $s_1 = 1$ and particle 2 has spin $s_2 = \frac{1}{2}$. What is the dimension of the composite Hilbert space?}
+\begin{choices}
+\item $3$
+\item $4$
+\item $5$
+\item $6$
+\end{choices}
+
+% QUESTION B8: Entanglement from local measurements
+\mcq{Given a bipartite system of particles 1 and 2, can you determine whether the two-particle state is entangled by performing measurements \emph{only} on particle 1?}
+\begin{choices}
+\item Yes --- if the outcomes are random, the state is entangled.
+\item Yes --- if the expectation values differ from $\pm\hbar/2$, the state is entangled.
+\item No --- the reduced state of particle 1 alone cannot distinguish entangled from mixed states.
+\item No --- entanglement is not a physical property and cannot be measured.
+\end{choices}
+
+% QUESTION B9: Fermion counting
+\mcq{Three identical fermions are to be placed in 5 distinct quantum states. How many valid configurations are there (respecting the Pauli exclusion principle)?}
+\begin{choices}
+\item $5$
+\item $10$
+\item $35$
+\item $60$
+\end{choices}
+
+% QUESTION B10: Conservation in weak interactions
+\mcq{Which of the following quantities is \emph{not} conserved in weak interactions?}
+\begin{choices}
+\item Electric charge
+\item Baryon number
+\item Quark flavour (e.g.\ strangeness)
+\item Lepton number
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER QUESTIONS
+% ============================================================
+\section*{Section C: Long Answer Questions}
+\noindent\textit{Answer all 4 questions. Show all working.}
+
+\setcounter{questioncounter}{0}
+
+% ---- QUESTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Rolling, Angular Momentum, and Reduced Mass}
+
+\begin{parts}
+\item A solid sphere of mass $M = 3\;\text{kg}$ and radius $R = 0.1\;\text{m}$ rolls without slipping on a horizontal surface at speed $v = 5\;\text{m/s}$. It then encounters an inclined plane at angle $\theta = 30^\circ$ and rolls up it (without slipping).
+\begin{parts}
+\item Find the total kinetic energy (translational plus rotational) of the sphere on the flat surface. \qmarks{2}
+\item Find the distance along the incline the sphere travels before momentarily coming to rest. \qmarks{2}
+\end{parts}
+
+\item A uniform disk of mass $M = 2\;\text{kg}$ and radius $R = 0.3\;\text{m}$ is free to rotate about a fixed axis through its centre. A string wound around the rim is pulled with a constant force $F = 10\;\text{N}$.
+\begin{parts}
+\item Find the moment of inertia of the disk and the angular acceleration produced by the applied force. \qmarks{2}
+\item Starting from rest, find the angular velocity after $4\;\text{s}$ and the rotational kinetic energy at that instant. \qmarks{2}
+\end{parts}
+
+\item An ice skater spinning with arms extended has moment of inertia $I_1 = 4\;\text{kg}\cdot\text{m}^2$ and angular velocity $\omega_1 = 2\;\text{rev/s}$. She pulls her arms in, reducing her moment of inertia to $I_2 = 1.5\;\text{kg}\cdot\text{m}^2$. Find her new angular velocity. Calculate the ratio of final to initial rotational kinetic energy. Explain where the extra energy comes from. \qmarks{3}
+
+\item Two objects with masses $m_1 = 3\;\text{kg}$ and $m_2 = 1\;\text{kg}$ are connected by a spring of spring constant $k = 48\;\text{N/m}$ and placed on a frictionless surface. Using the concept of reduced mass, find the frequency of oscillation of this system. If the spring is initially compressed by $0.2\;\text{m}$ and the system is released from rest, find the maximum speed of each mass in the centre-of-mass frame. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Multi-Step Thermodynamic Cycle with Entropy Analysis}
+
+\noindent A monatomic ideal gas ($n = 1\;\text{mol}$, $\gamma = 5/3$) undergoes the following cycle:
+
+\noindent\textbf{State A:} $P_A = 1.0\times 10^5\;\text{Pa}$, $V_A = 0.025\;\text{m}^3$.
+
+\noindent $A \to B$: Isobaric expansion to $V_B = 0.075\;\text{m}^3$.
+
+\noindent $B \to C$: Isochoric (constant volume) cooling to $P_C = P_A/3$.
+
+\noindent $C \to A$: A process that returns the gas to state~A.
+
+\begin{parts}
+\item Find the temperatures $T_A$, $T_B$, and $T_C$. Calculate $Q$, $W$, and $\Delta U$ for each of the steps $A\to B$ and $B\to C$. \qmarks{4}
+
+\item Determine the nature of the process $C\to A$ (is it isothermal, adiabatic, or neither?). Calculate $W$, $Q$, and $\Delta U$ for step $C\to A$. Verify that $\Delta U_\text{cycle} = 0$. \qmarks{4}
+
+\item Calculate the efficiency of this cycle. Compare it to the Carnot efficiency operating between the highest and lowest temperatures in the cycle. \qmarks{3}
+
+\item Calculate the entropy change of the gas for each step of the cycle. Verify that the total entropy change of the gas over one complete cycle is zero. Assuming each heat exchange occurs with a reservoir at the appropriate extreme temperature ($T_B$ for heating, $T_C$ for cooling), calculate the total entropy change of the universe for one cycle and verify that it is positive. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Wave Equation Derivation, Power, and Dispersion}
+
+\begin{parts}
+\item Starting from Newton's second law applied to a small element of a stretched string under tension $T$ with linear mass density $\mu$, derive the wave equation
+\[
+\frac{\partial^2 y}{\partial x^2} = \frac{1}{v^2}\frac{\partial^2 y}{\partial t^2}
+\]
+and show that $v = \sqrt{T/\mu}$. \qmarks{4}
+
+\item Show that the average power transmitted by a harmonic wave $y = A\sin(kx - \omega t)$ on a string is $\expect{P} = \tfrac{1}{2}\mu\omega^2 A^2 v$. \\
+\textit{Hint:} The power is given by the product of the transverse force $F_y = -T\,\partial y/\partial x$ and the transverse velocity $\partial y/\partial t$ at a point on the string. \qmarks{4}
+
+\item A string of linear mass density $\mu_1 = 0.01\;\text{kg/m}$ is joined to a string with $\mu_2 = 0.04\;\text{kg/m}$. Both are under tension $T = 100\;\text{N}$. A harmonic wave with amplitude $A_i = 5\;\text{mm}$ and frequency $f = 200\;\text{Hz}$ travels on string~1 toward the junction. Calculate the power carried by the incident wave, the reflected wave, and the transmitted wave. \qmarks{3}
+
+\item The dispersion relation for waves on a loaded string is $\omega(k) = 2\omega_0\left|\sin\!\left(\frac{ka}{2}\right)\right|$, where $a$ is the spacing between masses and $\omega_0$ is a constant. Find the phase velocity $v_p(k)$ and the group velocity $v_g(k)$. At what value of $k$ are $v_p$ and $v_g$ equal? What happens to $v_g$ at $k = \pi/a$? \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Bloch Sphere, Larmor Precession, and Entanglement}
+
+\begin{parts}
+\item A spin-$\frac{1}{2}$ particle is in the general state
+\[
+\ket{\psi} = \cos\!\left(\frac{\theta}{2}\right)\ket{\!\uparrow_z} + e^{i\phi}\sin\!\left(\frac{\theta}{2}\right)\ket{\!\downarrow_z},
+\]
+which describes a spin pointing in the direction $(\theta,\phi)$ on the Bloch sphere.
+\begin{parts}
+\item Verify that this state is normalised. \qmarks{1}
+\item Calculate $\expect{S_z}$, $\expect{S_x}$, and $\expect{S_y}$ in terms of $\theta$ and $\phi$. \qmarks{3}
+\end{parts}
+
+\item The Hamiltonian of a spin-$\frac{1}{2}$ particle in a magnetic field along the $x$-direction is $H = \omega_0 S_x = \dfrac{\omega_0\hbar}{2}\,\sigma_x$.
+\begin{parts}
+\item Find the energy eigenvalues and eigenstates of this Hamiltonian. \qmarks{2}
+\item If the particle starts in the state $\ket{\!\uparrow_z}$ at $t = 0$, find $\ket{\psi(t)}$. Express your answer in the $z$-basis. \qmarks{2}
+\end{parts}
+
+\item For the state found in part~(b)(ii), calculate the probabilities $P(\uparrow_z,\,t)$ and $P(\downarrow_z,\,t)$. Interpret the result physically --- what is the spin doing? \qmarks{3}
+
+\item Consider two spin-$\frac{1}{2}$ particles in the singlet state
+\[
+\ket{\Psi} = \frac{1}{\sqrt{2}}\left(\ket{\!\uparrow\downarrow} - \ket{\!\downarrow\uparrow}\right).
+\]
+\begin{parts}
+\item Show that if $S_z$ is measured on particle~1, the reduced density matrix of particle~2 is $\rho_2 = \tfrac{1}{2}\,\hat{I}$ (the maximally mixed state), regardless of the measurement outcome. \qmarks{2}
+\item Is this property unique to $S_z$ measurements, or does it also hold if $S_x$ is measured on particle~1? Justify your answer. \qmarks{2}
+\end{parts}
+\end{parts}
+
+\newpage
+
+% ============================================================
+% FORMULA SHEET
+% ============================================================
+\input{equation_sheet}
+
+\end{document}

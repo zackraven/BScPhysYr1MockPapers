@@ -1,0 +1,391 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination 4}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation in sub-parts
+\renewcommand{\marks}[1]{\hfill [#1]}
+
+% MCQ environment
+\newcounter{mcqcounter}
+\newcommand{\mcq}[1]{%
+  \stepcounter{mcqcounter}%
+  \vspace{0.3cm}%
+  \noindent\textbf{\themcqcounter.} #1 \hfill [2 marks]%
+  \vspace{0.1cm}%
+}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=\Alph*.,leftmargin=2.5em,itemsep=0.1cm}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION 4}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Duration: 3 Hours}\\[0.3cm]
+{\large Total Marks: 100}\\[0.5cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Instructions:}
+\begin{itemize}[itemsep=0.1cm]
+\item Answer \textbf{ALL} questions.
+\item \textbf{Section A} (Oscillations and Waves): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section B} (Quantum Physics): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section C}: 4 long-answer questions, 60 marks total.
+\item An approved calculator is permitted.
+\item A formula sheet is provided at the end of this paper.
+\item Show all working for Section C. Marks will be awarded for clear, logical solutions.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ
+% ============================================================
+\section*{Section A: Oscillations and Waves}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION A1: SHM pendulum period
+\mcq{A simple pendulum of length $L$ has period $T$. What length of pendulum gives a period of $2T$?}
+\begin{choices}
+\item $2L$
+\item $4L$
+\item $\sqrt{2}\,L$
+\item $L/2$
+\end{choices}
+
+% QUESTION A2: Energy in SHM
+\mcq{A simple harmonic oscillator has spring constant $k = 200$~N/m and amplitude $A = 0.1$~m. What is the total energy of the oscillator?}
+\begin{choices}
+\item $0.5$~J
+\item $1.0$~J
+\item $2.0$~J
+\item $10$~J
+\end{choices}
+
+% QUESTION A3: Critical damping
+\mcq{A damped harmonic oscillator has natural angular frequency $\omega_0$ and damping coefficient $\gamma = b/m$. Critical damping occurs when:}
+\begin{choices}
+\item $\gamma = \omega_0$
+\item $\gamma = 2\omega_0$
+\item $\gamma = \omega_0/2$
+\item $\gamma = \omega_0^2$
+\end{choices}
+
+% QUESTION A4: Power absorption in forced oscillator
+\mcq{A forced harmonic oscillator has natural frequency $\omega_0$ and is driven at angular frequency $\omega$. The average power absorbed from the driving force is maximum when:}
+\begin{choices}
+\item $\omega = \omega_0/\sqrt{2}$
+\item $\omega = \omega_0\sqrt{1 - \gamma^2/(2\omega_0^2)}$
+\item $\omega = \omega_0$
+\item $\omega = 2\omega_0$
+\end{choices}
+
+% QUESTION A5: Wave speed on string
+\mcq{A transverse wave travels along a string with speed $v$. If the tension in the string is quadrupled while the linear mass density remains unchanged, the new wave speed is:}
+\begin{choices}
+\item $v/2$
+\item $v$
+\item $2v$
+\item $4v$
+\end{choices}
+
+% QUESTION A6: Transmission coefficient
+\mcq{A harmonic wave travels from string~1 (impedance $Z_1$) to string~2 (impedance $Z_2 = 3Z_1$). The amplitude transmission coefficient $t$ is:}
+\begin{choices}
+\item $1/2$
+\item $2/3$
+\item $3/4$
+\item $3/2$
+\end{choices}
+
+% QUESTION A7: Sound intensity and decibels
+\mcq{The threshold of hearing is $I_0 = 10^{-12}$~W/m$^2$. What is the intensity of a sound measured at 60~dB?}
+\begin{choices}
+\item $10^{-9}$~W/m$^2$
+\item $10^{-8}$~W/m$^2$
+\item $10^{-6}$~W/m$^2$
+\item $10^{-3}$~W/m$^2$
+\end{choices}
+
+% QUESTION A8: Doppler with reflection off moving wall
+\mcq{A stationary source emits sound of frequency $f_0 = 500$~Hz. The sound reflects off a wall that is moving towards the source at speed $v_w = 10$~m/s. Taking the speed of sound in air to be $v = 340$~m/s, the frequency of the reflected sound heard by the source is closest to:}
+\begin{choices}
+\item $500$~Hz
+\item $515$~Hz
+\item $530$~Hz
+\item $545$~Hz
+\end{choices}
+
+% QUESTION A9: Pipe harmonics comparison
+\mcq{An open-open pipe and an open-closed pipe have the same length $L$. The speed of sound is $v$. The ratio of the second harmonic frequency of the open-open pipe to the fundamental frequency of the open-closed pipe is:}
+\begin{choices}
+\item $2$
+\item $4$
+\item $8$
+\item $1$
+\end{choices}
+
+% QUESTION A10: Beats
+\mcq{Two identical guitar strings are plucked simultaneously. String~A is perfectly tuned to 440~Hz. String~B has a slightly higher tension than string~A. The musician hears beats at a frequency of 3~Hz. Which of the following is true?}
+\begin{choices}
+\item String~B has frequency 437~Hz
+\item String~B has frequency 443~Hz
+\item String~B could have frequency 437~Hz or 443~Hz
+\item The beat frequency depends on the amplitudes of the two strings
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ
+% ============================================================
+\section*{Section B: Quantum Physics}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION B1: Ket notation / outer product
+\mcq{In Dirac notation, the object $\ket{\psi}\bra{\phi}$ is:}
+\begin{choices}
+\item A scalar (complex number)
+\item A ket (state vector)
+\item An operator
+\item A bra (dual vector)
+\end{choices}
+
+% QUESTION B2: Global phase
+\mcq{Let $\ket{\psi}$ be a normalised quantum state and $\theta$ a real number. Are the states $e^{i\theta}\ket{\psi}$ and $\ket{\psi}$ physically distinguishable?}
+\begin{choices}
+\item Yes, they have different norms
+\item Yes, they give different measurement probabilities
+\item No, they differ only by a global phase and are physically equivalent
+\item Only if $\theta = \pi$
+\end{choices}
+
+% QUESTION B3: Trace
+\mcq{For two normalised states $\ket{a}$ and $\ket{b}$ in a finite-dimensional Hilbert space, what is $\text{Tr}\!\left(\ketbra{a}{b}\right)$?}
+\begin{choices}
+\item $1$
+\item $0$
+\item $\braket{b}{a}$
+\item $\braket{a}{b}$
+\end{choices}
+
+% QUESTION B4: Commutator of spin operators
+\mcq{For a spin-$\tfrac{1}{2}$ particle, the commutator $[S_x, S_y]$ is:}
+\begin{choices}
+\item $0$
+\item $i\hbar S_z$
+\item $\tfrac{i\hbar}{2}\,S_z$
+\item $2i\hbar\,S_z$
+\end{choices}
+
+% QUESTION B5: Probability from state
+\mcq{A spin-$\tfrac{1}{2}$ particle is in the state $\ket{\psi} = \dfrac{1}{\sqrt{3}}\ket{\!\uparrow_z} + \sqrt{\dfrac{2}{3}}\,\ket{\!\downarrow_z}$. The probability of measuring $S_z$ and obtaining $-\hbar/2$ is:}
+\begin{choices}
+\item $1/3$
+\item $1/\sqrt{3}$
+\item $2/3$
+\item $1/2$
+\end{choices}
+
+% QUESTION B6: Sequential measurements
+\mcq{A measurement of $S_z$ on a spin-$\tfrac{1}{2}$ particle yields the result $+\hbar/2$, so the post-measurement state is $\ket{\!\uparrow_z}$. A subsequent measurement of $S_y$ is immediately performed. The probability of obtaining $+\hbar/2$ for this $S_y$ measurement is:}
+\begin{choices}
+\item $0$
+\item $1/4$
+\item $1/2$
+\item $1$
+\end{choices}
+
+% QUESTION B7: Stationary vs non-stationary states
+\mcq{Which of the following statements about stationary states is correct?}
+\begin{choices}
+\item A stationary state is any normalised quantum state
+\item A stationary state is an eigenstate of the Hamiltonian; measurement probabilities in \emph{any} basis are time-independent
+\item A stationary state can be a superposition of energy eigenstates with different energies
+\item A stationary state has time-independent probabilities only when measured in the energy eigenbasis
+\end{choices}
+
+% QUESTION B8: Tensor product dimension
+\mcq{Two spin-$\tfrac{1}{2}$ particles form a composite system. The dimension of the composite state space is:}
+\begin{choices}
+\item $2$
+\item $3$
+\item $4$
+\item $8$
+\end{choices}
+
+% QUESTION B9: Pauli exclusion principle
+\mcq{Two electrons cannot occupy the same quantum state simultaneously. This is a consequence of the fact that electrons are:}
+\begin{choices}
+\item Bosons, which must be in symmetric states
+\item Fermions, which must be in antisymmetric states under exchange
+\item Charged particles that repel each other
+\item Particles with spin~$\tfrac{1}{2}$ that obey the uncertainty principle
+\end{choices}
+
+% QUESTION B10: Beta decay
+\mcq{In beta-minus decay, a neutron decays as $n \to p + e^- + \bar{\nu}_e$. Which fundamental force mediates this process?}
+\begin{choices}
+\item The electromagnetic force
+\item The strong nuclear force
+\item The weak nuclear force
+\item Gravity
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER QUESTIONS
+% ============================================================
+\section*{Section C: Long Answer Questions}
+\noindent\textit{Answer all 4 questions. Show all working.}
+
+\setcounter{questioncounter}{0}
+
+% ---- QUESTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Newton's Laws, Friction, and Circular Motion}
+
+\begin{parts}
+\item A block of mass $m_1 = 5$~kg sits on a horizontal surface. The coefficient of static friction is $\mu_s = 0.4$ and the coefficient of kinetic friction is $\mu_k = 0.3$. A horizontal force $F$ is applied to the block.
+\begin{parts}
+\item What is the maximum horizontal force that can be applied before the block begins to move? \qmarks{2}
+\item If a horizontal force $F = 25$~N is applied, find the acceleration of the block. \qmarks{2}
+\end{parts}
+
+\item The same 5~kg block is now placed on a \emph{frictionless} inclined plane at angle $\theta = 30^\circ$ to the horizontal. It is connected by a light, inextensible string passing over a frictionless pulley at the top of the incline to a hanging mass $m_2 = 3$~kg. Find the acceleration of the system and the tension in the string. \qmarks{4}
+
+\item A car of mass $M = 1200$~kg travels at constant speed around a banked curve of radius $r = 80$~m. The banking angle is $\alpha = 20^\circ$ and no friction is required. Find the speed of the car (the ``design speed''). \qmarks{3}
+
+\item A conical pendulum consists of a mass $m = 0.5$~kg on a string of length $L = 1.0$~m. The mass revolves in a horizontal circle, and the string makes a constant angle $\theta = 25^\circ$ with the vertical.
+Find the tension in the string, the radius of the circular orbit, and the period of revolution. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Maxwell--Boltzmann, Lennard-Jones, and Crystal Structure}
+
+\begin{parts}
+\item The Maxwell--Boltzmann speed distribution gives three characteristic speeds for molecules of mass $m$ at temperature $T$. State the formulae for: the most probable speed $c_\mathrm{mp}$, the mean speed $c_\mathrm{avg}$, and the root-mean-square speed $c_\mathrm{rms}$. (These are on the formula sheet.) \qmarks{3}
+
+\item Calculate all three speeds for nitrogen molecules (N$_2$, molar mass $M = 28$~g/mol) at $T = 300$~K. Verify that $c_\mathrm{mp} < c_\mathrm{avg} < c_\mathrm{rms}$. \qmarks{4}
+
+\item The Lennard-Jones potential is given by
+\[
+V(r) = 4\varepsilon\left[\left(\frac{a}{r}\right)^{12} - \left(\frac{a}{r}\right)^{6}\right].
+\]
+By differentiating and setting $\mathrm{d}V/\mathrm{d}r = 0$, find the equilibrium separation $r_\mathrm{eq}$ in terms of $a$. Hence find the depth of the potential well (the binding energy $|V(r_\mathrm{eq})|$) in terms of $\varepsilon$. \qmarks{4}
+
+\item Iron has a body-centred cubic (BCC) crystal structure with lattice parameter $a_\mathrm{latt} = 2.87 \times 10^{-10}$~m. The atomic mass of iron is $55.85$~u, where $1\;\text{u} = 1.661 \times 10^{-27}$~kg. A BCC unit cell contains 2 atoms. Calculate the density of iron. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{SHM, Superposition, and Organ Pipes}
+
+\begin{parts}
+\item A block of mass $m = 0.4$~kg is attached to a horizontal spring with spring constant $k = 160$~N/m on a frictionless surface. The block is pulled 8~cm from equilibrium and released from rest. Write the equation $x(t)$ for the subsequent motion. Find the maximum velocity and the maximum acceleration. \qmarks{3}
+
+\item The same block--spring system is now given an initial displacement $x_0 = 6$~cm and an initial velocity $v_0 = 120$~cm/s in the $+x$ direction at $t = 0$. Find the amplitude $A$ and phase constant $\phi$ of the resulting oscillation, and write the equation $x(t)$. \qmarks{4}
+
+\item Two harmonic waves on the same string have the same amplitude $A = 3$~mm and frequency $f = 200$~Hz, but differ in phase by $\delta = \pi/3$. Both waves travel in the $+x$ direction with speed $v = 100$~m/s. Using phasor addition (or the superposition formula), find the resultant amplitude and write the equation for the combined wave. \qmarks{4}
+
+\item A pipe of length $L = 1.7$~m is open at both ends. The speed of sound is $v = 340$~m/s.
+\begin{parts}
+\item Find the fundamental frequency and the first three harmonics (i.e.\ $f_1$, $f_2$, $f_3$, $f_4$). \qmarks{2}
+\item The pipe is now closed at one end. Find the new fundamental frequency and the first three resonant frequencies. \qmarks{2}
+\end{parts}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Time Evolution and Multi-Particle States}
+
+\begin{parts}
+\item A spin-$\tfrac{1}{2}$ particle has Hamiltonian
+\[
+H = \omega_0\,S_z = \frac{\omega_0\hbar}{2}\left(\ketbra{\!\uparrow}{\uparrow\!} - \ketbra{\!\downarrow}{\downarrow\!}\right).
+\]
+At $t = 0$ the particle is prepared in the state
+\[
+\ket{\psi(0)} = \cos\alpha\,\ket{\!\uparrow} + \sin\alpha\,\ket{\!\downarrow}, \qquad \alpha = \frac{\pi}{6}.
+\]
+Find $\ket{\psi(t)}$. Calculate the probabilities $P(\uparrow_z,\,t)$ and $P(\downarrow_z,\,t)$ and comment on their time dependence. \qmarks{4}
+
+\item For the state in part~(a), calculate the expectation value $\expect{S_x}(t)$. At what times is $\expect{S_x} = 0$? \qmarks{4}
+
+\item Consider two \emph{distinguishable} spin-$\tfrac{1}{2}$ particles. Write down a complete orthonormal basis for the composite system. How many basis states are there? Write down one example of an entangled state in this basis. \qmarks{3}
+
+\item Two identical bosons can each be in one of three single-particle states $\ket{a}$, $\ket{b}$, $\ket{c}$. List all possible two-boson states. How many are there? Repeat for two identical fermions. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ============================================================
+% FORMULA SHEET
+% ============================================================
+\input{equation_sheet}
+
+\end{document}

@@ -1,0 +1,117 @@
+% EQUATION SHEET — PHYS10012 Core Physics I
+% This file is \input{} at the end of each exam paper
+
+\newpage
+\section*{Formula Sheet}
+\noindent\rule{\textwidth}{0.4pt}
+
+\subsection*{Mathematical Formulae}
+
+\begin{align*}
+&\text{Binomial expansion:} & (1+x)^n &\approx 1 + nx + \frac{n(n-1)}{2!}x^2 + \cdots \quad (|x| \ll 1) \\[4pt]
+&\text{Euler's formula:} & e^{i\theta} &= \cos\theta + i\sin\theta \\[4pt]
+&\text{Trig identities:} & \sin A + \sin B &= 2\cos\!\left(\tfrac{A-B}{2}\right)\sin\!\left(\tfrac{A+B}{2}\right) \\
+& & \cos A + \cos B &= 2\cos\!\left(\tfrac{A-B}{2}\right)\cos\!\left(\tfrac{A+B}{2}\right)
+\end{align*}
+
+\subsection*{Mechanics}
+
+\begin{align*}
+&\text{SUVAT:} & v &= u + at, \quad s = ut + \tfrac{1}{2}at^2, \quad v^2 = u^2 + 2as, \quad s = \tfrac{1}{2}(u+v)t \\[4pt]
+&\text{Dot product:} & \mathbf{a}\cdot\mathbf{b} &= |\mathbf{a}||\mathbf{b}|\cos\theta = a_x b_x + a_y b_y + a_z b_z \\[4pt]
+&\text{Cross product:} & \mathbf{a}\times\mathbf{b} &= |\mathbf{a}||\mathbf{b}|\sin\theta\;\hat{\mathbf{n}} = \begin{vmatrix}\hat{\mathbf{i}}&\hat{\mathbf{j}}&\hat{\mathbf{k}}\\a_x&a_y&a_z\\b_x&b_y&b_z\end{vmatrix} \\[4pt]
+&\text{Rocket equation:} & \Delta v &= u \ln\!\left(\frac{m_0}{m_f}\right) \\[4pt]
+&\text{Gravitational PE:} & U &= -\frac{GMm}{r} \\[4pt]
+&\text{Escape velocity:} & v_e &= \sqrt{\frac{2GM}{R}} \\[4pt]
+&\text{Force from PE:} & F &= -\frac{dU}{dx} \\[4pt]
+&\text{Elastic collision (1D):} & v_1' &= \frac{m_1 - m_2}{m_1 + m_2}v_1 + \frac{2m_2}{m_1+m_2}v_2 \\[4pt]
+&\text{Centre of mass:} & \mathbf{R}_\text{cm} &= \frac{\sum m_i\mathbf{r}_i}{\sum m_i} \\[4pt]
+&\text{Reduced mass:} & \mu &= \frac{m_1 m_2}{m_1 + m_2} \\[4pt]
+&\text{Centripetal accel:} & a_c &= \frac{v^2}{r} = \omega^2 r \\[4pt]
+&\text{Parallel axis thm:} & I &= I_\text{cm} + Md^2 \\[4pt]
+&\text{Atwood machine:} & a &= \frac{(m_1-m_2)g}{m_1+m_2}, \quad T = \frac{2m_1 m_2 g}{m_1+m_2}
+\end{align*}
+
+\noindent\textbf{Moments of inertia} (about axis through centre of mass):
+\begin{center}
+\begin{tabular}{ll}
+Thin ring (radius $R$): & $I = MR^2$ \\
+Solid disk (radius $R$): & $I = \tfrac{1}{2}MR^2$ \\
+Solid sphere (radius $R$): & $I = \tfrac{2}{5}MR^2$ \\
+Hollow sphere (radius $R$): & $I = \tfrac{2}{3}MR^2$ \\
+Thin rod (length $L$, about centre): & $I = \tfrac{1}{12}ML^2$ \\
+Thin rod (length $L$, about end): & $I = \tfrac{1}{3}ML^2$ \\
+\end{tabular}
+\end{center}
+
+\subsection*{Properties of Matter}
+
+\begin{align*}
+&\text{Ideal gas:} & PV &= nRT \\[4pt]
+&\text{Heat capacities:} & C_P - C_V &= R \quad\text{(per mole)} \\[4pt]
+&\text{Adiabatic:} & PV^\gamma &= \text{const}, \quad TV^{\gamma-1} = \text{const} \\[4pt]
+&\text{Isothermal work:} & W &= nRT\ln\!\left(\frac{V_2}{V_1}\right) \\[4pt]
+&\text{Carnot efficiency:} & \eta &= 1 - \frac{T_c}{T_h} \\[4pt]
+&\text{Entropy:} & dS &= \frac{dQ_\text{rev}}{T}, \quad \Delta S = mc\ln\!\left(\frac{T_2}{T_1}\right), \quad \Delta S = nR\ln\!\left(\frac{V_2}{V_1}\right) \\[4pt]
+&\text{Lennard-Jones:} & V(r) &= 4\varepsilon\left[\left(\frac{a}{r}\right)^{12} - \left(\frac{a}{r}\right)^{6}\right] \\[4pt]
+&\text{Mean KE:} & \langle KE \rangle &= \tfrac{3}{2}k_B T \\[4pt]
+&\text{MB speeds:} & c_\text{mp} &= \sqrt{\frac{2k_BT}{m}}, \quad c_\text{avg} = \sqrt{\frac{8k_BT}{\pi m}}, \quad c_\text{rms} = \sqrt{\frac{3k_BT}{m}}
+\end{align*}
+
+\subsection*{Oscillations and Waves}
+
+\begin{align*}
+&\text{SHM:} & x(t) &= A\cos(\omega_0 t + \phi), \quad \omega_0 = \sqrt{k/m} \\[4pt]
+&\text{Damped SHM:} & x(t) &= Ae^{-\gamma t/2}\cos(\omega_d t + \phi), \quad \omega_d = \sqrt{\omega_0^2 - \gamma^2/4} \\[4pt]
+&\text{Quality factor:} & Q &= \omega_0/\gamma \\[4pt]
+&\text{Forced amplitude:} & A(\omega) &= \frac{F_0/m}{\sqrt{(\omega_0^2 - \omega^2)^2 + \gamma^2\omega^2}} \\[4pt]
+&\text{Phase lag:} & \tan\delta &= \frac{\gamma\omega}{\omega_0^2 - \omega^2} \\[4pt]
+&\text{Pendulums:} & T_\text{simple} &= 2\pi\sqrt{L/g}, \quad T_\text{physical} = 2\pi\sqrt{I/(Mgh)} \\[4pt]
+&\text{Wave equation:} & \frac{\partial^2 y}{\partial x^2} &= \frac{1}{v^2}\frac{\partial^2 y}{\partial t^2} \\[4pt]
+&\text{String speed:} & v &= \sqrt{T/\mu} \\[4pt]
+&\text{Sound in gas:} & v &= \sqrt{\gamma P/\rho} \\[4pt]
+&\text{Harmonic wave:} & y &= A\sin(kx - \omega t) \\[4pt]
+&\text{String impedance:} & Z &= \mu v = \sqrt{\mu T} \\[4pt]
+&\text{Reflection:} & r &= \frac{Z_1 - Z_2}{Z_1 + Z_2}, \quad t = \frac{2Z_1}{Z_1+Z_2} \\[4pt]
+&\text{Power (string):} & \langle P\rangle &= \tfrac{1}{2}\mu\omega^2 A^2 v \\[4pt]
+&\text{Decibels:} & \beta &= 10\log_{10}(I/I_0), \quad I_0 = 10^{-12}\;\text{W/m}^2 \\[4pt]
+&\text{Doppler:} & f' &= f\frac{v \pm v_o}{v \mp v_s} \\[4pt]
+&\text{Group velocity:} & v_g &= \frac{d\omega}{dk} \\[4pt]
+&\text{String harmonics:} & f_n &= \frac{nv}{2L} \quad (n=1,2,3,\ldots) \\[4pt]
+&\text{Open-closed pipe:} & f_n &= \frac{nv}{4L} \quad (n=1,3,5,\ldots)
+\end{align*}
+
+\subsection*{Quantum Physics}
+
+\begin{align*}
+&\text{Schr\"{o}dinger eq:} & i\hbar\frac{d}{dt}\ket{\psi(t)} &= H\ket{\psi(t)} \\[4pt]
+&\text{Time evolution:} & \ket{\psi(t)} &= \sum_n c_n e^{-iE_n t/\hbar}\ket{E_n}, \quad U(t) = e^{-iHt/\hbar} \\[4pt]
+&\text{Spin operators:} & S_z &= \frac{\hbar}{2}\bigl(\ketbra{\!\uparrow}{\uparrow\!} - \ketbra{\!\downarrow}{\downarrow\!}\bigr) \\
+& & S_x &= \frac{\hbar}{2}\bigl(\ketbra{\!\uparrow}{\downarrow\!} + \ketbra{\!\downarrow}{\uparrow\!}\bigr) \\
+& & S_y &= \frac{\hbar}{2}\bigl(-i\ketbra{\!\uparrow}{\downarrow\!} + i\ketbra{\!\downarrow}{\uparrow\!}\bigr) \\[4pt]
+&\text{Spin eigenstates:} & \ket{\!\uparrow_x} &= \tfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} + \ket{\!\downarrow_z}\bigr), \quad \ket{\!\downarrow_x} = \tfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} - \ket{\!\downarrow_z}\bigr) \\
+& & \ket{\!\uparrow_y} &= \tfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} + i\ket{\!\downarrow_z}\bigr), \quad \ket{\!\downarrow_y} = \tfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} - i\ket{\!\downarrow_z}\bigr) \\[4pt]
+&\text{Pauli matrices:} & \sigma_x &= \begin{pmatrix}0&1\\1&0\end{pmatrix}, \quad \sigma_y = \begin{pmatrix}0&-i\\i&0\end{pmatrix}, \quad \sigma_z = \begin{pmatrix}1&0\\0&-1\end{pmatrix}
+\end{align*}
+
+\subsection*{Physical Constants}
+
+\begin{center}
+\begin{tabular}{lll}
+Speed of light & $c$ & $3.00 \times 10^{8}$ m/s \\
+Planck's constant & $h$ & $6.626 \times 10^{-34}$ J$\cdot$s \\
+Reduced Planck's constant & $\hbar$ & $1.055 \times 10^{-34}$ J$\cdot$s \\
+Boltzmann constant & $k_B$ & $1.381 \times 10^{-23}$ J/K \\
+Gas constant & $R$ & $8.314$ J/(mol$\cdot$K) \\
+Avogadro's number & $N_A$ & $6.022 \times 10^{23}$ mol$^{-1}$ \\
+Gravitational constant & $G$ & $6.674 \times 10^{-11}$ N$\cdot$m$^2$/kg$^2$ \\
+Acceleration due to gravity & $g$ & $9.81$ m/s$^2$ \\
+Electron mass & $m_e$ & $9.109 \times 10^{-31}$ kg \\
+Proton mass & $m_p$ & $1.673 \times 10^{-27}$ kg \\
+Elementary charge & $e$ & $1.602 \times 10^{-19}$ C \\
+Mass of Earth & $M_\oplus$ & $5.97 \times 10^{24}$ kg \\
+Radius of Earth & $R_\oplus$ & $6.37 \times 10^{6}$ m \\
+\end{tabular}
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}

@@ -1,0 +1,384 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation in sub-parts
+\renewcommand{\marks}[1]{\hfill [#1]}
+
+% MCQ environment
+\newcounter{mcqcounter}
+\newcommand{\mcq}[1]{%
+  \stepcounter{mcqcounter}%
+  \vspace{0.3cm}%
+  \noindent\textbf{\themcqcounter.} #1 \hfill [2 marks]%
+  \vspace{0.1cm}%
+}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=\Alph*.,leftmargin=2.5em,itemsep=0.1cm}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- Paper 5}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Duration: 3 Hours}\\[0.3cm]
+{\large Total Marks: 100}\\[0.5cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Instructions:}
+\begin{itemize}[itemsep=0.1cm]
+\item Answer \textbf{ALL} questions.
+\item \textbf{Section A} (Oscillations and Waves): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section B} (Quantum Physics): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section C}: 4 long-answer questions, 60 marks total.
+\item An approved calculator is permitted.
+\item A formula sheet is provided at the end of this paper.
+\item Show all working for Section C. Marks will be awarded for clear, logical solutions.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ
+% ============================================================
+\section*{Section A: Oscillations and Waves}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION A1: Physical pendulum period
+\mcq{A uniform thin rod of mass $M = 2$ kg and length $L = 1.5$ m is pivoted about one end and allowed to swing as a physical pendulum. Given that the moment of inertia about one end is $I = \frac{1}{3}ML^2$ and the distance from the pivot to the centre of mass is $h = L/2$, what is the period of small oscillations? (Take $g = 9.81$ m/s$^2$.)}
+\begin{choices}
+\item $1.27$ s
+\item $2.01$ s
+\item $2.76$ s
+\item $3.14$ s
+\end{choices}
+
+% QUESTION A2: SHM velocity at given displacement
+\mcq{A particle undergoes simple harmonic motion with amplitude $A$ and maximum speed $v_{\max}$. At what displacement from the equilibrium position is the speed of the particle equal to $v_{\max}/2$?}
+\begin{choices}
+\item $x = A/2$
+\item $x = A/4$
+\item $x = A\sqrt{3}/2$
+\item $x = A/\sqrt{2}$
+\end{choices}
+
+% QUESTION A3: Overdamped system qualitative behaviour
+\mcq{An overdamped harmonic oscillator is displaced from equilibrium and released from rest. Which of the following best describes its subsequent motion?}
+\begin{choices}
+\item It oscillates with a slowly decreasing amplitude.
+\item It returns to equilibrium as quickly as possible without oscillating.
+\item It returns to equilibrium without oscillating, but more slowly than the critically damped case.
+\item It oscillates with constant amplitude indefinitely.
+\end{choices}
+
+% QUESTION A4: Forced oscillation amplitude ratio
+\mcq{A forced oscillator has natural frequency $\omega_0 = 10$ rad/s and damping parameter $\gamma = 2$ s$^{-1}$. It is driven at angular frequency $\omega = 10$ rad/s (i.e.\ exactly at $\omega_0$). What is the ratio $A(\omega)/A(0)$ of the steady-state amplitude at this driving frequency to the amplitude at zero driving frequency?}
+\begin{choices}
+\item $1$
+\item $5$
+\item $10$
+\item $20$
+\end{choices}
+
+% QUESTION A5: Relationship between lambda, f, and v
+\mcq{A transverse wave on a string has wavelength $\lambda = 0.50$ m and frequency $f = 120$ Hz. What is the wave speed?}
+\begin{choices}
+\item $24$ m/s
+\item $60$ m/s
+\item $240$ m/s
+\item $600$ m/s
+\end{choices}
+
+% QUESTION A6: Power transmitted by a wave
+\mcq{A harmonic wave on a string has amplitude $A = 0.04$ m, angular frequency $\omega = 50$ rad/s, and travels with speed $v = 10$ m/s on a string of linear mass density $\mu = 0.05$ kg/m. What is the average power transmitted by the wave?}
+\begin{choices}
+\item $0.05$ W
+\item $0.10$ W
+\item $0.50$ W
+\item $1.00$ W
+\end{choices}
+
+% QUESTION A7: Decibels — two identical sources
+\mcq{A single loudspeaker produces a sound level of $80$ dB at a certain point. A second identical loudspeaker is placed next to the first, also producing the same intensity at that point. What is the combined sound level at that point?}
+\begin{choices}
+\item $80$ dB
+\item $83$ dB
+\item $86$ dB
+\item $160$ dB
+\end{choices}
+
+% QUESTION A8: Doppler — observer moving away from stationary source
+\mcq{A stationary siren emits sound at frequency $f = 500$ Hz. An observer moves directly away from the siren at speed $v_o = 34$ m/s. Taking the speed of sound as $v = 340$ m/s, what frequency does the observer hear?}
+\begin{choices}
+\item $450$ Hz
+\item $455$ Hz
+\item $500$ Hz
+\item $550$ Hz
+\end{choices}
+
+% QUESTION A9: String harmonics — 5th harmonic
+\mcq{A string fixed at both ends has a fundamental frequency of $f_1 = 150$ Hz. What is the frequency of the 5th harmonic?}
+\begin{choices}
+\item $30$ Hz
+\item $300$ Hz
+\item $600$ Hz
+\item $750$ Hz
+\end{choices}
+
+% QUESTION A10: Superposition — two waves with phase difference pi
+\mcq{Two travelling waves of the same amplitude $A$ and the same frequency $f$ propagate in the same direction along a string. They have a constant phase difference of $\pi$ radians. What is the amplitude of the resultant wave?}
+\begin{choices}
+\item $0$
+\item $A$
+\item $\sqrt{2}\,A$
+\item $2A$
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ
+% ============================================================
+\section*{Section B: Quantum Physics}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION B1: Bra vs ket — dual space
+\mcq{In Dirac notation, the bra $\bra{\psi}$ lives in which mathematical space?}
+\begin{choices}
+\item The Hilbert space (the same space as kets)
+\item The dual space of the Hilbert space
+\item The space of linear operators on the Hilbert space
+\item The space of eigenvalues of Hermitian operators
+\end{choices}
+
+% QUESTION B2: Probability conservation
+\mcq{A quantum state is expanded in an orthonormal energy eigenbasis as $\ket{\psi} = \sum_n c_n \ket{E_n}$. The condition $\sum_n |c_n|^2 = 1$ is guaranteed at all times by which property of the time-evolution operator?}
+\begin{choices}
+\item Hermiticity
+\item Linearity
+\item Unitarity
+\item Commutativity with the Hamiltonian
+\end{choices}
+
+% QUESTION B3: Completeness relation — insert identity
+\mcq{Given two orthonormal bases $\{\ket{a_i}\}$ and $\{\ket{b_j}\}$ for a Hilbert space, the matrix element for changing from the $\{\ket{b_j}\}$ basis to the $\{\ket{a_i}\}$ basis is obtained by inserting the identity. Which expression gives the components of $\ket{\psi}$ in the $\{\ket{a_i}\}$ basis?}
+\begin{choices}
+\item $\braket{b_j}{\psi}$
+\item $\braket{a_i}{\psi} = \displaystyle\sum_j \braket{a_i}{b_j}\braket{b_j}{\psi}$
+\item $\ketbra{a_i}{a_i}\ket{\psi}$
+\item $\braket{\psi}{a_i}$
+\end{choices}
+
+% QUESTION B4: Eigenvalues of sigma_z
+\mcq{What are the eigenvalues of the Pauli matrix $\sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$?}
+\begin{choices}
+\item $0$ and $1$
+\item $+1$ and $-1$
+\item $+\hbar/2$ and $-\hbar/2$
+\item $+\hbar$ and $-\hbar$
+\end{choices}
+
+% QUESTION B5: Expectation value of sigma_z
+\mcq{A spin-1/2 particle is in the state $\ket{\psi} = \dfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} + \ket{\!\downarrow_z}\bigr)$. What is the expectation value $\expect{\sigma_z}$ in this state?}
+\begin{choices}
+\item $+1$
+\item $-1$
+\item $0$
+\item $1/2$
+\end{choices}
+
+% QUESTION B6: Spin — |up_y> measured with S_z
+\mcq{A spin-1/2 particle is prepared in the state $\ket{\!\uparrow_y} = \dfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} + i\ket{\!\downarrow_z}\bigr)$. If $S_z$ is measured, what are the probabilities of obtaining $+\hbar/2$ and $-\hbar/2$?}
+\begin{choices}
+\item $P(+\hbar/2) = 1$, $P(-\hbar/2) = 0$
+\item $P(+\hbar/2) = 0$, $P(-\hbar/2) = 1$
+\item $P(+\hbar/2) = 1/2$, $P(-\hbar/2) = 1/2$
+\item $P(+\hbar/2) = 1/4$, $P(-\hbar/2) = 3/4$
+\end{choices}
+
+% QUESTION B7: Energy-time relation — period of oscillation
+\mcq{A two-level quantum system has energy levels $E_1$ and $E_2$ with $E_2 > E_1$. The system is prepared in a superposition of both energy eigenstates. The probability of finding the system in either eigenstate oscillates in time. What is the period of this oscillation?}
+\begin{choices}
+\item $T = 2\pi\hbar / E_1$
+\item $T = 2\pi\hbar / E_2$
+\item $T = 2\pi\hbar / (E_2 - E_1)$
+\item $T = 2\pi\hbar / (E_1 + E_2)$
+\end{choices}
+
+% QUESTION B8: SWAP operator
+\mcq{The SWAP operator acts on a two-particle state by exchanging the states of the two particles. What is $\text{SWAP}\,\ket{\!\uparrow}_1\ket{\!\downarrow}_2$?}
+\begin{choices}
+\item $\ket{\!\uparrow}_1\ket{\!\downarrow}_2$
+\item $\ket{\!\downarrow}_1\ket{\!\uparrow}_2$
+\item $-\ket{\!\downarrow}_1\ket{\!\uparrow}_2$
+\item $\dfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow}_1\ket{\!\downarrow}_2 + \ket{\!\downarrow}_1\ket{\!\uparrow}_2\bigr)$
+\end{choices}
+
+% QUESTION B9: Boson wave function symmetry
+\mcq{The wave function of a system of two identical bosons must satisfy which symmetry requirement under particle exchange?}
+\begin{choices}
+\item It must be antisymmetric: $\text{SWAP}\ket{\Psi} = -\ket{\Psi}$
+\item It must be symmetric: $\text{SWAP}\ket{\Psi} = +\ket{\Psi}$
+\item It can be either symmetric or antisymmetric
+\item It must vanish: $\text{SWAP}\ket{\Psi} = 0$
+\end{choices}
+
+% QUESTION B10: Quark charges — up quark
+\mcq{In the Standard Model, what is the electric charge of the up quark?}
+\begin{choices}
+\item $-1/3\;e$
+\item $+1/3\;e$
+\item $+2/3\;e$
+\item $+1\;e$
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER QUESTIONS
+% ============================================================
+\section*{Section C: Long Answer Questions}
+\noindent\textit{Answer all 4 questions. Show all working.}
+
+\setcounter{questioncounter}{0}
+
+% ---- QUESTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Rocket Equation, Impulse, and Escape Velocity}
+
+\begin{parts}
+\item A single-stage rocket has initial mass $m_0 = 5000$ kg and exhaust velocity $u = 3000$ m/s relative to the rocket. After burning all its fuel, the final mass is $m_f = 1000$ kg. Using the Tsiolkovsky rocket equation, find the maximum speed change $\Delta v$. If the rocket starts from rest in deep space (no gravity), what is its final speed? \qmarks{4}
+
+\item During the burn, the rocket engine exerts a thrust of $F_{\text{thrust}} = 15{,}000$ N. Calculate the mass flow rate of the exhaust $|dm/dt|$. Find the initial acceleration $a_0$ of the rocket in deep space. \qmarks{3}
+
+\item Calculate the escape velocity from the surface of the Earth. If a projectile is launched vertically at $8.0$ km/s from the Earth's surface, find the maximum height it reaches above the surface. (Use $M_{\oplus} = 5.97\times 10^{24}$ kg, $R_{\oplus} = 6.37\times 10^{6}$ m, $G = 6.674\times 10^{-11}$ N$\cdot$m$^2$/kg$^2$.) \qmarks{4}
+
+\item A ball of mass $0.05$ kg travelling at $20$ m/s hits a wall and bounces back at $15$ m/s. The contact time is $0.01$ s. Find the impulse delivered to the ball and the average force exerted by the wall on the ball. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Heat Engines and Entropy}
+
+\begin{parts}
+\item State the first and second laws of thermodynamics. Define entropy in terms of a reversible heat transfer. \qmarks{3}
+
+\item A Carnot engine operates between a hot reservoir at $T_h = 800$ K and a cold reservoir at $T_c = 200$ K. It absorbs $Q_h = 4000$ J per cycle from the hot reservoir. Find the efficiency of the engine, the work done per cycle, and the heat rejected to the cold reservoir per cycle. \qmarks{4}
+
+\item A block of aluminium of mass $5$ kg and specific heat capacity $c = 900$ J/(kg$\cdot$K) at an initial temperature of $600$ K is placed in a large lake at $300$ K (which acts as an infinite thermal reservoir). Find: the final equilibrium temperature, the entropy change of the aluminium, the entropy change of the lake, and the total entropy change of the universe. Verify that the second law is satisfied. \qmarks{4}
+
+\item Two identical blocks of metal, each of mass $1$ kg and specific heat capacity $c = 500$ J/(kg$\cdot$K), are initially at temperatures $T_1 = 400$ K and $T_2 = 200$ K. They are brought into thermal contact and allowed to reach equilibrium. Find the final temperature. Calculate the total entropy change. If instead a reversible (Carnot) engine were operated between the two blocks until they reached the same final temperature, what is the maximum work that could be extracted? \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Wave Reflection, Standing Waves, and Energy}
+
+\begin{parts}
+\item A transverse wave is incident on a boundary between two strings with impedances $Z_1$ and $Z_2$. Using the boundary conditions of continuity of displacement and continuity of the transverse force at the junction, derive the reflection and transmission amplitude coefficients:
+\[
+r = \frac{Z_1 - Z_2}{Z_1 + Z_2}, \qquad t = \frac{2Z_1}{Z_1 + Z_2}.
+\]
+\qmarks{3}
+
+\item A wave $y_i = 0.03\sin(5x - 40t)$ m travels on string 1, which has linear mass density $\mu_1 = 0.02$ kg/m, towards a junction with string 2, which has linear mass density $\mu_2 = 0.08$ kg/m. Both strings are under the same tension. Calculate the tension in the strings, the wave speeds on each string, and the impedances $Z_1$ and $Z_2$. \qmarks{4}
+
+\item Find the amplitudes of the reflected and transmitted waves. Write the complete wave equations $y_r(x,t)$ and $y_t(x,t)$ for the reflected and transmitted waves. \qmarks{4}
+
+\item Verify that the power reflection coefficient $R = r^2$ and power transmission coefficient $T_{\text{power}} = (Z_2/Z_1)\,t^2$ satisfy $R + T_{\text{power}} = 1$. Calculate the average power of the incident wave. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Two-Level System and Interferometry}
+
+\noindent A quantum system has two energy levels $E_1 = 0$ and $E_2 = E_0$, with corresponding orthonormal eigenstates $\ket{1}$ and $\ket{2}$.
+
+\begin{parts}
+\item At time $t = 0$, the system is in the state $\ket{\psi(0)} = \dfrac{1}{\sqrt{2}}\bigl(\ket{1} + \ket{2}\bigr)$. Find the state $\ket{\psi(t)}$ at a later time $t$. Calculate the probability of finding the system in state $\ket{1}$ at time $t$. \qmarks{4}
+
+\item Define the operator $\hat{P} = \ketbra{1}{2} + \ketbra{2}{1}$. Calculate the expectation value $\expect{\hat{P}}(t) = \bra{\psi(t)}\hat{P}\ket{\psi(t)}$. \qmarks{3}
+
+\item Consider a Mach--Zehnder interferometer with a phase shifter of angle $\phi$ in the top arm. The beam splitter acts as:
+\[
+\ket{T} \to \frac{1}{\sqrt{2}}\bigl(\ket{T} + i\ket{B}\bigr), \qquad \ket{B} \to \frac{1}{\sqrt{2}}\bigl(i\ket{T} + \ket{B}\bigr).
+\]
+Each mirror gives a phase factor of $i$ (i.e.\ $\ket{T}\to i\ket{T}$, $\ket{B}\to i\ket{B}$). Starting from input $\ket{T}$, trace the photon state through the interferometer (first beam splitter, mirrors, phase shifter on top arm, second beam splitter). Show that the output state is proportional to
+\[
+i(e^{i\phi}-1)\ket{T} + (- e^{i\phi}-1)\ket{B},
+\]
+and hence find $P(T)$ and $P(B)$. \qmarks{4}
+
+\item A ``which-way'' detector is placed in the top arm that records whether the photon took the top path, without destroying the photon. Explain qualitatively what happens to the interference pattern. Write the state of the combined photon+detector system after the first beam splitter and the detector interaction. Show that the detection probabilities at the output become $P(T) = P(B) = 1/2$, regardless of $\phi$. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ============================================================
+% FORMULA SHEET
+% ============================================================
+\input{equation_sheet}
+
+\end{document}

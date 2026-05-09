@@ -1,0 +1,610 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination --- Solutions}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation
+\renewcommand{\marks}[1]{\hfill [#1]}
+\newcommand{\markstep}[1]{\hfill\textcolor{blue}{[#1]}}
+
+% Boxed final answer
+\newcommand{\finalanswer}[1]{%
+  \begin{tcolorbox}[colback=green!5!white,colframe=green!50!black,boxrule=0.5pt]
+  #1
+  \end{tcolorbox}
+}
+
+% Equation source notation
+\newcommand{\fromsheet}{\textit{(From formula sheet)}}
+\newcommand{\recalled}{\textit{(Recalled --- not on formula sheet)}}
+
+% MCQ answer format
+\newcounter{mcqcounter}
+\newcommand{\mcqanswer}[2]{%
+  \stepcounter{mcqcounter}%
+  \noindent\textbf{\themcqcounter.} \textbf{#1} --- #2\\[0.2cm]%
+}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- Paper 8 (Extreme) --- SOLUTIONS AND MARK SCHEME}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Total Marks: 100}\\[0.3cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Marking Notes:}
+\begin{itemize}[itemsep=0.1cm]
+\item Mark allocations are shown in \textcolor{blue}{blue} at each step.
+\item Final answers are highlighted in green boxes.
+\item ``\fromsheet'' indicates the equation is on the provided formula sheet.
+\item ``\recalled'' indicates the equation must be known from memory.
+\item Award partial marks for correct method even if the final answer is wrong.
+\item Accept equivalent correct forms of answers.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ ANSWERS
+% ============================================================
+\section*{Section A: Oscillations and Waves --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{A}{For small $x$, use the Taylor expansion $\cos(x/a) \approx 1 - \frac{1}{2}(x/a)^2$, so $V(x) \approx V_0 \cdot \frac{1}{2}(x/a)^2 = \frac{V_0}{2a^2}\,x^2$. The restoring force is $F = -dV/dx = -(V_0/a^2)\,x$ \fromsheet. Comparing with $F = -kx$, the effective spring constant is $k_\text{eff} = V_0/a^2$, so $\omega = \sqrt{k_\text{eff}/m} = \sqrt{V_0/(ma^2)}$.}
+
+\mcqanswer{B}{Since energy is proportional to amplitude squared, $E(t) = \frac{1}{2}k A(t)^2 \propto A^2$. With $A(t) = A_0\,e^{-\gamma t/2}$, we get $E(t) = E_0\,e^{-\gamma t}$.}
+
+\mcqanswer{B}{For a lightly damped oscillator ($\gamma \ll \omega_0$, so $Q \gg 1$), the power absorption curve is a Lorentzian centred at $\omega_0$. The FWHM is $\Delta\omega = \gamma$. Note that $\gamma = \omega_0/Q$ \fromsheet, so options B and D are equivalent.}
+
+\mcqanswer{C}{When $A_1 \neq A_2$, the superposition can be decomposed as a standing wave with amplitude $\min(A_1,A_2)$ plus a travelling wave with amplitude $|A_1 - A_2|$. The result is \emph{not} a pure standing wave (which requires equal amplitudes) nor a pure travelling wave.}
+
+\mcqanswer{C}{A quarter-wave transformer eliminates reflection when the impedance of the matching section satisfies $Z_m = \sqrt{Z_1 Z_3}$, the geometric mean of the two outer impedances. This is the impedance analogue of quarter-wave anti-reflection coatings in optics.}
+
+\mcqanswer{A}{For mass 1: $m\ddot{x}_1 = -kx_1 - k_c(x_1 - x_2)= -(k+k_c)x_1 + k_c x_2$. For mass 2: $m\ddot{x}_2 = -kx_2 - k_c(x_2 - x_1) = k_c x_1 - (k+k_c)x_2$. In matrix form this gives $\mathbf{K} = \begin{pmatrix} k+k_c & -k_c \\ -k_c & k+k_c\end{pmatrix}$.}
+
+\mcqanswer{B}{Dispersion (spreading of a wave packet) occurs when different frequency components travel at different group velocities, which happens when the group velocity varies with $k$, i.e.\ $dv_g/dk = d^2\omega/dk^2 \neq 0$. A non-zero first derivative $d\omega/dk$ merely means the packet moves; it does not cause spreading.}
+
+\mcqanswer{D}{Expanding to first order in $\beta$: the classical result gives $f'_\text{cl} \approx f_0(1 + \beta)$. The relativistic result is $f'_\text{rel} = f_0\sqrt{(1+\beta)/(1-\beta)} \approx f_0(1+\beta/2)(1+\beta/2) = f_0(1 + \beta)$ to first order. Both agree at order $\beta$; the difference appears only at order $\beta^2$ (the transverse Doppler effect term $\beta^2/2$).}
+
+\mcqanswer{A}{The standing wave $y = 2A\sin(kx)\cos(\omega t)$ has maximum amplitude $2A$, while the travelling wave has amplitude $A$. At the instant of maximum displacement, all energy is potential. The energy density of the standing wave scales as $(2A)^2$ while the travelling wave scales as $A^2$, but averaged over a wavelength, the standing wave energy per unit length is twice that of the single travelling wave. (This is expected since the standing wave is the superposition of two equal-amplitude counter-propagating waves.)}
+
+\mcqanswer{C}{The Mach cone half-angle satisfies $\sin\theta = v_\text{sound}/v_\text{object} = 1/\text{Ma} = 1/2$, so $\theta = 30^\circ$.}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ ANSWERS
+% ============================================================
+\section*{Section B: Quantum Physics --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{B}{By the antisymmetry of the commutator: $[\hat{B},\hat{A}] = \hat{B}\hat{A} - \hat{A}\hat{B} = -(\hat{A}\hat{B} - \hat{B}\hat{A}) = -[\hat{A},\hat{B}] = -i\hat{C}$.}
+
+\mcqanswer{B}{If $[\hat{A},\hat{B}] = 0$, the two operators are said to be compatible. They possess a complete set of simultaneous eigenstates, so both observables can be measured simultaneously with no mutual disturbance. This does \emph{not} mean $\hat{A} = \hat{B}$, nor that their measurement outcomes are equal.}
+
+\mcqanswer{C}{If $U$ is the unitary matrix of eigenvectors of $H$, then $U^\dagger H\,U = D$, where $D$ is the diagonal matrix of eigenvalues. This is the standard spectral decomposition / unitary diagonalisation of a Hermitian matrix.}
+
+\mcqanswer{C}{The no-cloning theorem follows from the linearity of quantum mechanics. If a cloning unitary $U$ could copy any state, then applying it to a superposition would (by linearity) produce a different result from copying each basis state individually, leading to a contradiction. The key ingredient is linearity (unitarity), not the uncertainty principle.}
+
+\mcqanswer{C}{For a pure state, $\rho = \ketbra{\psi}{\psi}$ satisfies $\rho^2 = \rho$ (it is a projector). Therefore $\text{Tr}(\rho^2) = \text{Tr}(\rho) = 1$. (For a mixed state, $\text{Tr}(\rho^2) < 1$, which is the purity criterion.)}
+
+\mcqanswer{B}{A superposition $c_1\ket{E_1} + c_2\ket{E_2}$ evolves with time-dependent phases $e^{-iE_1 t/\hbar}$ and $e^{-iE_2 t/\hbar}$ \fromsheet. Measurement probabilities oscillate with angular frequency $\omega = |E_1 - E_2|/\hbar$, giving a characteristic timescale $\tau = 1/\omega = \hbar/|E_1 - E_2|$.}
+
+\mcqanswer{B}{$S_{1z}S_{2z}\ket{\!\uparrow\downarrow} = (+\hbar/2)(-\hbar/2)\ket{\!\uparrow\downarrow} = -(\hbar^2/4)\ket{\!\uparrow\downarrow}$ and similarly $S_{1z}S_{2z}\ket{\!\downarrow\uparrow} = (-\hbar/2)(+\hbar/2)\ket{\!\downarrow\uparrow} = -(\hbar^2/4)\ket{\!\downarrow\uparrow}$. Therefore $\expect{S_{1z}S_{2z}} = \frac{1}{2}\bigl(-\hbar^2/4\bigr) + \frac{1}{2}\bigl(-\hbar^2/4\bigr) = -\hbar^2/4$.}
+
+\mcqanswer{B}{$\rho = \ketbra{\Phi^+}{\Phi^+} = \frac{1}{2}\bigl(\ket{\!\uparrow\uparrow} + \ket{\!\downarrow\downarrow}\bigr)\bigl(\bra{\!\uparrow\uparrow} + \bra{\!\downarrow\downarrow}\bigr)$. Taking the partial trace over qubit~2: $\rho_1 = \text{Tr}_2(\rho) = \frac{1}{2}\bigl(\braket{\uparrow_2}{\uparrow_2}\ketbra{\!\uparrow_1}{\uparrow_1\!} + \braket{\downarrow_2}{\downarrow_2}\ketbra{\!\downarrow_1}{\downarrow_1\!}\bigr) = \frac{1}{2}\bigl(\ketbra{\!\uparrow}{\uparrow\!} + \ketbra{\!\downarrow}{\downarrow\!}\bigr) = \frac{1}{2}\hat{I}$, the maximally mixed state.}
+
+\mcqanswer{C}{With 6 fermions and 2 per level, we fill levels $n = 1, 2, 3$. The energies are $2(1^2) + 2(2^2) + 2(3^2) = 2 + 8 + 18 = 28$ in units of $E_1$. So the ground-state energy is $28\,E_1$.}
+
+\mcqanswer{B}{Parity ($P$) is violated in weak interactions --- this was demonstrated by Wu's experiment (1957) on $^{60}$Co beta decay. Electromagnetic and strong interactions conserve parity. The combined symmetry $CPT$ is conserved in all known interactions.}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER SOLUTIONS
+% ============================================================
+\section*{Section C: Long Answer Solutions}
+
+\setcounter{questioncounter}{0}
+
+% ---- SOLUTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Snooker Ball Impulse, Rolling Friction, and Loop-the-Loop}
+
+\begin{parts}
+
+%% (a) Impulse on billiard ball [5 marks]
+\item
+
+\textbf{(i)} Applying the impulse--momentum theorem for translation: \recalled
+
+$J = Mv_0 \quad\Longrightarrow\quad v_0 = \frac{J}{M}$ \markstep{1}
+
+For rotation, the impulse $J$ acts at a lever arm $h$ from the centre of mass, producing a torque impulse about the CM:
+
+$Jh = I\omega_0$
+
+For a solid sphere, $I = \frac{2}{5}MR^2$ \fromsheet, so:
+
+$Jh = \frac{2}{5}MR^2\,\omega_0 \quad\Longrightarrow\quad \omega_0 = \frac{5Jh}{2MR^2} = \frac{5v_0 h}{2R^2}$
+
+\finalanswer{$v_0 = J/M$, \quad $\omega_0 = 5Jh/(2MR^2)$} \markstep{1}
+
+\textbf{(ii)} The rolling-without-slipping condition is $v_0 = R\omega_0$: \recalled
+
+$\frac{J}{M} = R\cdot\frac{5Jh}{2MR^2} = \frac{5Jh}{2MR}$ \markstep{1}
+
+Dividing both sides by $J/M$:
+
+$1 = \frac{5h}{2R} \quad\Longrightarrow\quad h = \frac{2R}{5}$ \markstep{1}
+
+The height above the table is the height above the lowest point, which is the centre height $R$ plus $h$:
+
+\finalanswer{$h = \frac{2}{5}R$ above the centre, i.e.\ the cue should strike at height $R + \frac{2}{5}R = \frac{7}{5}R$ above the table.} \markstep{1}
+
+%% (b) Sliding to rolling [5 marks]
+\item
+
+\textbf{(i)} During sliding, kinetic friction $f = \mu_k Mg$ acts backward (opposing the forward sliding motion): \recalled
+
+Translation: $Ma = -\mu_k Mg \quad\Longrightarrow\quad a = -\mu_k g$ \markstep{1}
+
+Rotation (friction torque accelerates rotation): $\tau = fR = \mu_k MgR$
+
+$I\alpha = \mu_k MgR \quad\Longrightarrow\quad \frac{2}{5}MR^2\,\alpha = \mu_k MgR$
+
+\finalanswer{$a = -\mu_k g$ (deceleration), \quad $\alpha = \dfrac{5\mu_k g}{2R}$ (angular acceleration)} \markstep{1}
+
+\textbf{(ii)} The velocities during sliding are:
+
+$v(t) = v_0 - \mu_k g\,t$
+
+$\omega(t) = \omega_0 + \frac{5\mu_k g}{2R}\,t$
+
+Rolling begins when $v = R\omega$: \markstep{1}
+
+$v_0 - \mu_k g\,t = R\left(\omega_0 + \frac{5\mu_k g}{2R}\,t\right) = R\omega_0 + \frac{5\mu_k g}{2}\,t$
+
+$v_0 - R\omega_0 = \mu_k g\,t + \frac{5\mu_k g}{2}\,t = \frac{7\mu_k g}{2}\,t$
+
+\finalanswer{$t_\text{roll} = \dfrac{2(v_0 - R\omega_0)}{7\mu_k g}$} \markstep{1}
+
+For a centre-strike, $h = 0$ so $\omega_0 = 0$:
+
+$t_\text{roll} = \frac{2v_0}{7\mu_k g}$
+
+$v_\text{roll} = v_0 - \mu_k g\cdot\frac{2v_0}{7\mu_k g} = v_0 - \frac{2v_0}{7} = v_0\left(1 - \frac{2}{7}\right)$
+
+\finalanswer{$v_\text{roll} = \dfrac{5}{7}\,v_0$} \markstep{1}
+
+%% (c) Disk on loop-the-loop [5 marks]
+\item
+
+At the top of the loop, for minimum contact the normal force $N = 0$, so gravity alone provides the centripetal force: \recalled
+
+$Mg = \frac{Mv_\text{top}^2}{r}$ \markstep{1}
+
+$v_\text{top}^2 = gr = 9.81\times 0.8 = 7.848\;\text{m}^2/\text{s}^2$ \markstep{1}
+
+Using energy conservation from height $H$ to the top of the loop (height $2r$). The disk rolls without slipping, so the total KE includes rotational energy. For a solid disk, $I = \frac{1}{2}MR^2$ \fromsheet: \markstep{1}
+
+$MgH = Mg(2r) + \frac{1}{2}Mv_\text{top}^2 + \frac{1}{2}I\omega_\text{top}^2$
+
+With rolling condition $v = R\omega$ and $I = \frac{1}{2}MR^2$:
+
+$\frac{1}{2}I\omega^2 = \frac{1}{2}\cdot\frac{1}{2}MR^2\cdot\frac{v^2}{R^2} = \frac{1}{4}Mv^2$
+
+So total KE $= \frac{1}{2}Mv^2 + \frac{1}{4}Mv^2 = \frac{3}{4}Mv^2$. \markstep{1}
+
+$MgH = Mg(2r) + \frac{3}{4}Mv_\text{top}^2$
+
+$gH = 2gr + \frac{3}{4}v_\text{top}^2 = 2gr + \frac{3}{4}gr = \frac{11}{4}gr$
+
+$H = \frac{11r}{4} = \frac{11\times 0.8}{4}$
+
+\finalanswer{$H = 2.2\;\text{m}$} \markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Advanced Entropy, Lennard-Jones Potential, and Maxwell--Boltzmann Distribution}
+
+\begin{parts}
+
+%% (a) Carnot engines between two blocks [4 marks]
+\item
+
+\textbf{(i)} For a reversible (Carnot) process between two finite thermal reservoirs, at each infinitesimal step a Carnot engine operates between temperatures $T_h$ (hot block) and $T_c$ (cold block): \markstep{1}
+
+The hot block loses heat $dQ_h = -mc\,dT_h$ (it cools), and the cold block gains heat $dQ_c = mc\,dT_c$ (it warms). For a Carnot engine:
+
+$\frac{dQ_c}{dQ_h} = \frac{T_c}{T_h}$
+
+$\frac{mc\,dT_c}{-mc\,dT_h} = \frac{T_c}{T_h} \quad\Longrightarrow\quad \frac{dT_c}{T_c} = -\frac{dT_h}{T_h}$
+
+Integrating from initial to final states:
+
+$\ln\!\left(\frac{T_f}{T_2}\right) = -\ln\!\left(\frac{T_f}{T_1}\right) = \ln\!\left(\frac{T_1}{T_f}\right)$
+
+$\frac{T_f}{T_2} = \frac{T_1}{T_f} \quad\Longrightarrow\quad T_f^2 = T_1 T_2$
+
+\finalanswer{$T_f = \sqrt{T_1\,T_2}$} \markstep{1}
+
+\textbf{(ii)} The total entropy change of the two blocks: \fromsheet
+
+$\Delta S = mc\ln\!\left(\frac{T_f}{T_1}\right) + mc\ln\!\left(\frac{T_f}{T_2}\right) = mc\ln\!\left(\frac{T_f^2}{T_1 T_2}\right)$
+
+Since $T_f^2 = T_1 T_2$:
+
+$\Delta S = mc\ln\!\left(\frac{T_1 T_2}{T_1 T_2}\right) = mc\ln(1)$
+
+\finalanswer{$\Delta S_\text{total} = 0$, confirming the process is reversible.} \markstep{2}
+
+%% (b) Irreversible contact [4 marks]
+\item
+
+\textbf{(i)} By conservation of energy with no work done: \recalled
+
+$mc\,T_1 + mc\,T_2 = 2mc\,T_f'$
+
+\finalanswer{$T_f' = \dfrac{T_1 + T_2}{2}$} \markstep{1}
+
+\textbf{(ii)} The total entropy change is: \fromsheet
+
+$\Delta S_\text{total} = mc\ln\!\left(\frac{T_f'}{T_1}\right) + mc\ln\!\left(\frac{T_f'}{T_2}\right) = mc\ln\!\left(\frac{(T_f')^2}{T_1 T_2}\right) = mc\ln\!\left(\frac{(T_1+T_2)^2}{4T_1 T_2}\right)$ \markstep{1}
+
+By the AM--GM inequality, $(T_1 + T_2)/2 \geq \sqrt{T_1 T_2}$, with equality only when $T_1 = T_2$. Therefore $(T_1+T_2)^2/(4T_1T_2) \geq 1$, so $\Delta S_\text{total} \geq 0$.
+
+\finalanswer{$\Delta S_\text{total} = mc\ln\!\left(\dfrac{(T_1+T_2)^2}{4T_1 T_2}\right) > 0$ for $T_1 \neq T_2$.} \markstep{1}
+
+\textbf{(iii)} In the reversible process, the initial total thermal energy is $mc(T_1 + T_2)$ and the final thermal energy of both blocks is $2mc\sqrt{T_1T_2}$. The difference is work extracted:
+
+\finalanswer{$W_\text{max} = mc(T_1 + T_2) - 2mc\sqrt{T_1 T_2} = mc\!\left(T_1 + T_2 - 2\sqrt{T_1 T_2}\right) = mc\!\left(\sqrt{T_1} - \sqrt{T_2}\right)^2$} \markstep{1}
+
+%% (c) Lennard-Jones [4 marks]
+\item
+
+\textbf{(i)} Setting $dV/dr = 0$: \fromsheet
+
+$\frac{dV}{dr} = 4\varepsilon\left[-12\,\frac{a^{12}}{r^{13}} + 6\,\frac{a^6}{r^7}\right] = 0$
+
+$12\,\frac{a^{12}}{r^{13}} = 6\,\frac{a^6}{r^7} \quad\Longrightarrow\quad 2a^6 = r^6$ \markstep{1}
+
+$r_0 = 2^{1/6}\,a$
+
+At $r = r_0$: $V(r_0) = 4\varepsilon\!\left[\left(\frac{a}{2^{1/6}a}\right)^{12} - \left(\frac{a}{2^{1/6}a}\right)^{6}\right] = 4\varepsilon\!\left[\frac{1}{2^2} - \frac{1}{2}\right] = 4\varepsilon\!\left[\frac{1}{4} - \frac{1}{2}\right] = 4\varepsilon\!\left(-\frac{1}{4}\right)$
+
+\finalanswer{$r_0 = 2^{1/6}\,a$, \quad $V(r_0) = -\varepsilon$ (well depth is $\varepsilon$).} \markstep{1}
+
+\textbf{(ii)} Computing $V''(r)$:
+
+$V'(r) = 4\varepsilon\!\left[-12a^{12}r^{-13} + 6a^6 r^{-7}\right]$
+
+$V''(r) = 4\varepsilon\!\left[156\,a^{12}r^{-14} - 42\,a^6 r^{-8}\right]$
+
+At $r_0 = 2^{1/6}a$:
+
+$V''(r_0) = 4\varepsilon\!\left[\frac{156\,a^{12}}{(2^{1/6}a)^{14}} - \frac{42\,a^6}{(2^{1/6}a)^{8}}\right] = \frac{4\varepsilon}{a^2}\!\left[\frac{156}{2^{14/6}} - \frac{42}{2^{8/6}}\right]$
+
+$= \frac{4\varepsilon}{a^2}\!\left[\frac{156}{2^{7/3}} - \frac{42}{2^{4/3}}\right] = \frac{4\varepsilon}{a^2}\!\left[\frac{156}{4\cdot 2^{1/3}} - \frac{42}{2\cdot 2^{1/3}}\right] = \frac{4\varepsilon}{a^2\cdot 2^{1/3}}\!\left[\frac{156}{4} - \frac{42}{2}\right]$
+
+$= \frac{4\varepsilon}{a^2\cdot 2^{1/3}}\!\left[39 - 21\right] = \frac{4\varepsilon\times 18}{a^2\cdot 2^{1/3}}$
+
+\finalanswer{$k = V''(r_0) = \dfrac{72\,\varepsilon}{2^{1/3}\,a^2} = \dfrac{36\times 2^{2/3}\,\varepsilon}{a^2}$} \markstep{1}
+
+Numerically:
+
+$k = \frac{72\times 1.67\times 10^{-21}}{1.2599\times(3.40\times 10^{-10})^2} = \frac{1.202\times 10^{-19}}{1.2599\times 1.156\times 10^{-19}} = \frac{1.202\times 10^{-19}}{1.456\times 10^{-19}} = 0.826\;\text{N/m}$
+
+$\omega = \sqrt{\frac{k}{m_\text{Ar}}} = \sqrt{\frac{0.826}{6.63\times 10^{-26}}} = \sqrt{1.245\times 10^{25}} = 3.53\times 10^{12}\;\text{rad/s}$
+
+$f = \frac{\omega}{2\pi} = \frac{3.53\times 10^{12}}{2\pi}$
+
+\finalanswer{$f \approx 5.6\times 10^{11}\;\text{Hz} \approx 0.56\;\text{THz}$} \markstep{1}
+
+This is in the correct range for atomic vibrations (far-infrared/THz range).
+
+%% (d) Helium escape [3 marks]
+\item
+
+Setting $c_\text{mp} = v_e$: \fromsheet
+
+$\sqrt{\frac{2k_BT}{m}} = v_e \quad\Longrightarrow\quad T = \frac{m v_e^2}{2k_B}$ \markstep{1}
+
+$T = \frac{6.64\times 10^{-27}\times (11{,}200)^2}{2\times 1.381\times 10^{-23}} = \frac{6.64\times 10^{-27}\times 1.254\times 10^{8}}{2.762\times 10^{-23}}$
+
+$= \frac{8.33\times 10^{-19}}{2.762\times 10^{-23}}$ \markstep{1}
+
+\finalanswer{$T \approx 3.0\times 10^{4}\;\text{K} = 30{,}000\;\text{K}$}
+
+At room temperature ($T \approx 300\;\text{K}$), the most probable speed of helium is far below the escape velocity ($c_\text{mp} \approx 1{,}260\;\text{m/s}$ vs $v_e = 11{,}200\;\text{m/s}$). However, the Maxwell--Boltzmann distribution has a long high-energy tail extending well beyond $c_\text{mp}$. Over geological timescales, helium atoms in the tail of the distribution can exceed $v_e$ and escape. This is why the Earth's atmosphere contains very little helium despite it being common in the universe.
+
+\finalanswer{$T \approx 30{,}000\;\text{K}$. Helium \emph{can} escape at room temperature via the high-energy tail of the MB distribution, over geological time.} \markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Advanced Boundary Conditions, Beaded String, and Wave Packets}
+
+\begin{parts}
+
+%% (a) Fixed-free string [5 marks]
+\item
+
+\textbf{(i)} At $x = L$, the ring is massless and free to slide vertically, so there is no transverse restoring force. The vertical component of the string tension must vanish, which requires: \markstep{1}
+
+\finalanswer{$\left.\dfrac{\partial y}{\partial x}\right|_{x=L} = 0$ \quad (a ``free'' or Neumann boundary condition --- $x = L$ is an antinode).}
+
+\textbf{(ii)} The standing wave on a string fixed at $x = 0$ has the form:
+
+$y(x,t) = A\sin(kx)\cos(\omega t)$ \recalled
+
+At $x = 0$: $\sin(0) = 0$ --- satisfied automatically (node). \markstep{1}
+
+At $x = L$: $\dfrac{\partial y}{\partial x}\Big|_{x=L} = Ak\cos(kL)\cos(\omega t) = 0$ for all $t$, so $\cos(kL) = 0$.
+
+$kL = \frac{(2n-1)\pi}{2}, \qquad n = 1, 2, 3, \ldots$
+
+$k_n = \frac{(2n-1)\pi}{2L}, \qquad \lambda_n = \frac{2\pi}{k_n} = \frac{4L}{2n-1}$
+
+\finalanswer{$\lambda_n = \dfrac{4L}{2n-1}$, \quad $n = 1, 2, 3, \ldots$} \markstep{1}
+
+\textbf{(iii)} The resonant frequencies are:
+
+$f_n = \frac{v}{\lambda_n} = \frac{v(2n-1)}{4L} = \frac{100\times(2n-1)}{4\times 2} = 12.5\,(2n-1)\;\text{Hz}$ \markstep{1}
+
+\finalanswer{$f_1 = 12.5\;\text{Hz}$, \quad $f_2 = 37.5\;\text{Hz}$, \quad $f_3 = 62.5\;\text{Hz}$} \markstep{1}
+
+%% (b) Two strings with bead [5 marks]
+\item
+
+\textbf{(i)} Boundary conditions at the walls: \markstep{1}
+
+$y(-L,t) = 0 \quad\text{and}\quad y(+L,t) = 0 \quad\text{(fixed ends)}$
+
+At $x = 0$, the displacement must be continuous: $y(0^-,t) = y(0^+,t)$ \markstep{1}
+
+Force balance on the bead at $x = 0$ (the bead has mass $m$): The net transverse force on the bead equals $m\ddot{y}(0,t)$. The transverse force from the string tension is $T\,\partial y/\partial x$:
+
+\finalanswer{$T\left.\frac{\partial y}{\partial x}\right|_{0^+} - T\left.\frac{\partial y}{\partial x}\right|_{0^-} = m\,\frac{\partial^2 y(0,t)}{\partial t^2}$} \markstep{1}
+
+(The discontinuity in slope is balanced by the bead's inertial force.)
+
+\textbf{(ii)} For symmetric (antisymmetric displacement) modes, $y(0,t) = 0$, meaning the bead is at a node and does not move. Then $\ddot{y}(0,t) = 0$, and the bead's inertia is irrelevant. \markstep{1}
+
+Each half of the system is independently a string of length $L$ fixed at both ends. The normal mode condition is:
+
+$kL = n\pi, \quad n = 1, 2, 3, \ldots$
+
+$\lambda_n = \frac{2L}{n}, \qquad f_n = \frac{v}{\lambda_n} = \frac{nv}{2L}$ \fromsheet
+
+\finalanswer{$f_n = \dfrac{nv}{2L}$, \quad $n = 1, 2, 3, \ldots$ (same as a single string of length $L$ fixed at both ends).} \markstep{1}
+
+%% (c) Wave packet with dispersion [5 marks]
+\item
+
+\textbf{(i)} Using $\omega = \alpha k^2$ with $\alpha = 0.5\;\text{m}^2/\text{s}$: \markstep{1}
+
+$\omega_1 = 0.5\times 10^2 = 50\;\text{rad/s}$
+
+$\omega_2 = 0.5\times 12^2 = 0.5\times 144 = 72\;\text{rad/s}$
+
+\finalanswer{$\omega_1 = 50\;\text{rad/s}$, \quad $\omega_2 = 72\;\text{rad/s}$}
+
+\textbf{(ii)} Average wavenumber: $\bar{k} = (10+12)/2 = 11\;\text{rad/m}$.
+
+Phase velocity at $\bar{k}$: \recalled
+
+$v_p = \frac{\omega(\bar{k})}{\bar{k}} = \frac{\alpha\bar{k}^2}{\bar{k}} = \alpha\bar{k} = 0.5\times 11 = 5.5\;\text{m/s}$ \markstep{1}
+
+Group velocity at $\bar{k}$: \fromsheet
+
+$v_g = \frac{d\omega}{dk}\bigg|_{\bar{k}} = 2\alpha\bar{k} = 2\times 0.5\times 11 = 11\;\text{m/s}$ \markstep{1}
+
+\finalanswer{$v_p = 5.5\;\text{m/s}$, \quad $v_g = 11\;\text{m/s}$}
+
+Note that $v_g = 2v_p$ for this quadratic dispersion relation.
+
+\textbf{(iii)} Using the trig identity $\cos\alpha + \cos\beta = 2\cos\!\left(\frac{\alpha-\beta}{2}\right)\cos\!\left(\frac{\alpha+\beta}{2}\right)$ \fromsheet:
+
+Let $\Delta k = k_2 - k_1 = 2\;\text{rad/m}$ and $\Delta\omega = \omega_2 - \omega_1 = 22\;\text{rad/s}$. \markstep{1}
+
+$y(x,t) = 2A\cos\!\left(\frac{\Delta k}{2}\,x - \frac{\Delta\omega}{2}\,t\right)\cos\!\left(\bar{k}\,x - \bar{\omega}\,t\right)$
+
+where $\bar{\omega} = (\omega_1+\omega_2)/2 = 61\;\text{rad/s}$.
+
+\finalanswer{$y(x,t) = \underbrace{2A\cos(x - 11t)}_\text{envelope (slow)} \times \underbrace{\cos(11x - 61t)}_\text{carrier (fast)}$}
+
+The envelope moves at speed $\Delta\omega/\Delta k = 22/2 = 11\;\text{m/s} = v_g$ (the group velocity).
+
+The carrier moves at speed $\bar{\omega}/\bar{k} = 61/11 \approx 5.5\;\text{m/s} = v_p$ (the phase velocity). \markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Three-State System, Fermion States, and Pion Decay}
+
+\begin{parts}
+
+%% (a) Three-state Hamiltonian [4 marks]
+\item
+
+\textbf{(i)} Writing $H$ in the ordered basis $\{\ket{a},\,\ket{b},\,\ket{c}\}$: \markstep{1}
+
+The diagonal elements are $\bra{a}H\ket{a} = E_0$, $\bra{b}H\ket{b} = E_0$, $\bra{c}H\ket{c} = E_0$.
+
+The off-diagonal elements: $\bra{a}H\ket{b} = V$, $\bra{b}H\ket{a} = V$, and all others are zero.
+
+\finalanswer{$H = \begin{pmatrix} E_0 & V & 0 \\ V & E_0 & 0 \\ 0 & 0 & E_0 \end{pmatrix}$}
+
+\textbf{(ii)} The state $\ket{c}$ decouples completely (the third row and column have no off-diagonal elements coupling to $\ket{a}$ or $\ket{b}$). \markstep{1}
+
+Eigenvalue 1: $E_0$, eigenstate $\ket{c}$.
+
+For the $\{\ket{a},\ket{b}\}$ subspace, diagonalise the $2\times 2$ block:
+
+$\begin{pmatrix} E_0 & V \\ V & E_0 \end{pmatrix}$
+
+The eigenvalues satisfy $(E_0 - \lambda)^2 - V^2 = 0$, giving $\lambda = E_0 \pm V$. \markstep{1}
+
+For $\lambda = E_0 + V$: eigenstate $\ket{+} = \frac{1}{\sqrt{2}}(\ket{a} + \ket{b})$.
+
+For $\lambda = E_0 - V$: eigenstate $\ket{-} = \frac{1}{\sqrt{2}}(\ket{a} - \ket{b})$.
+
+\finalanswer{Eigenvalues: $E_0 + V$, $E_0 - V$, $E_0$. \\ Eigenstates: $\frac{1}{\sqrt{2}}(\ket{a}+\ket{b})$, $\frac{1}{\sqrt{2}}(\ket{a}-\ket{b})$, $\ket{c}$.} \markstep{1}
+
+%% (b) Time evolution [4 marks]
+\item
+
+\textbf{(i)} Express the initial state $\ket{a}$ in the energy eigenbasis:
+
+$\ket{a} = \frac{1}{\sqrt{2}}\ket{+} + \frac{1}{\sqrt{2}}\ket{-}$
+
+(This follows from inverting $\ket{\pm} = (\ket{a}\pm\ket{b})/\sqrt{2}$.)
+
+Applying time evolution \fromsheet: \markstep{1}
+
+$\ket{\psi(t)} = \frac{1}{\sqrt{2}}\,e^{-i(E_0+V)t/\hbar}\ket{+} + \frac{1}{\sqrt{2}}\,e^{-i(E_0-V)t/\hbar}\ket{-}$
+
+Factoring out the common phase $e^{-iE_0 t/\hbar}$:
+
+\finalanswer{$\ket{\psi(t)} = e^{-iE_0 t/\hbar}\!\left[\frac{1}{\sqrt{2}}\,e^{-iVt/\hbar}\ket{+} + \frac{1}{\sqrt{2}}\,e^{+iVt/\hbar}\ket{-}\right]$} \markstep{1}
+
+\textbf{(ii)} The probability amplitude to find the system in $\ket{a}$ is:
+
+$\braket{a}{\psi(t)} = \frac{1}{\sqrt{2}}\cdot\frac{1}{\sqrt{2}}\,e^{-i(E_0+V)t/\hbar} + \frac{1}{\sqrt{2}}\cdot\frac{1}{\sqrt{2}}\,e^{-i(E_0-V)t/\hbar}$ \markstep{1}
+
+(using $\braket{a}{+} = 1/\sqrt{2}$ and $\braket{a}{-} = 1/\sqrt{2}$)
+
+$= \frac{1}{2}\,e^{-iE_0 t/\hbar}\!\left(e^{-iVt/\hbar} + e^{+iVt/\hbar}\right) = e^{-iE_0 t/\hbar}\cos\!\left(\frac{Vt}{\hbar}\right)$
+
+\finalanswer{$P(a,t) = \left|\braket{a}{\psi(t)}\right|^2 = \cos^2\!\left(\dfrac{Vt}{\hbar}\right)$} \markstep{1}
+
+The system oscillates (``Rabi oscillation'') between states $\ket{a}$ and $\ket{b}$ with angular frequency $2V/\hbar$.
+
+%% (c) Fermion antisymmetric states [3 marks]
+\item
+
+Two identical spin-$\frac{1}{2}$ fermions require a total state (spatial $\otimes$ spin) that is antisymmetric under particle exchange. \recalled \markstep{1}
+
+\textbf{Spatial wavefunctions:}
+
+\emph{Symmetric} (3 states):
+$\ket{\alpha\alpha}$, \quad $\ket{\beta\beta}$, \quad $\frac{1}{\sqrt{2}}(\ket{\alpha\beta} + \ket{\beta\alpha})$
+
+\emph{Antisymmetric} (1 state):
+$\frac{1}{\sqrt{2}}(\ket{\alpha\beta} - \ket{\beta\alpha})$
+
+\textbf{Spin wavefunctions:}
+
+\emph{Symmetric (triplet)} (3 states):
+$\ket{\!\uparrow\uparrow}$, \quad $\frac{1}{\sqrt{2}}(\ket{\!\uparrow\downarrow} + \ket{\!\downarrow\uparrow})$, \quad $\ket{\!\downarrow\downarrow}$
+
+\emph{Antisymmetric (singlet)} (1 state):
+$\frac{1}{\sqrt{2}}(\ket{\!\uparrow\downarrow} - \ket{\!\downarrow\uparrow})$ \markstep{1}
+
+\textbf{Allowed combinations} (antisymmetric total = symmetric$\,\otimes\,$antisymmetric + antisymmetric$\,\otimes\,$symmetric):
+
+\begin{itemize}
+\item 3 symmetric spatial $\times$ 1 antisymmetric spin (singlet) $= 3$ states
+\item 1 antisymmetric spatial $\times$ 3 symmetric spin (triplet) $= 3$ states
+\end{itemize}
+
+\finalanswer{Total: $3 + 3 = 6$ antisymmetric two-particle states.} \markstep{1}
+
+%% (d) Pion decay [4 marks]
+\item
+
+\textbf{(i)} The $\pi^0$ meson is a bound state of a quark and antiquark ($u\bar{u}$ or $d\bar{d}$ superposition). Its quantum numbers are: \recalled
+
+\begin{center}
+\begin{tabular}{lccc}
+ & Charge & Baryon number & Lepton number \\
+\hline
+$\pi^0$ & 0 & 0 & 0 \\
+$\gamma + \gamma$ & $0 + 0 = 0$ & $0 + 0 = 0$ & $0 + 0 = 0$ \\
+\end{tabular}
+\end{center}
+
+\finalanswer{Charge: $0 = 0$ \checkmark. \quad Baryon number: $0 = 0$ \checkmark. \quad Lepton number: $0 = 0$ \checkmark. \\ All conserved.} \markstep{2}
+
+\textbf{(ii)} The $\pi^0$ has spin $J = 0$, so the total angular momentum of the two-photon system must be zero. \markstep{1}
+
+In the centre-of-mass frame, the two photons travel in opposite directions (say along the $z$-axis). Each photon has spin $1$ but, being massless, only has helicity $h = \pm 1$ (right-handed or left-handed circular polarisation). There is no $m = 0$ component for a photon.
+
+For the photon travelling in the $+z$ direction, $J_z = h_1 = \pm 1$. For the photon travelling in the $-z$ direction, its angular momentum projected onto $+z$ is $-h_2$ (since its momentum is reversed).
+
+The total $J_z = h_1 - h_2$. For $J_z = 0$, we need $h_1 = h_2$. Both photons must have the same helicity (both right-handed or both left-handed in their respective directions of travel). Equivalently, relative to a fixed axis, they have \emph{opposite} helicities.
+
+The $J = 0$ requirement is automatically satisfied since only $J_z = 0$ contributes and the overall angular momentum state is a scalar.
+
+\finalanswer{The two photons must have the same helicity (both RH or both LH). The decay is mediated by the \textbf{electromagnetic} force (involving photon emission from the quark-antiquark annihilation, described by the axial anomaly in QFT).} \markstep{1}
+
+\end{parts}
+
+\end{document}

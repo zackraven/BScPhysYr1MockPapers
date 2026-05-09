@@ -1,0 +1,573 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination 4 --- Solutions}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation
+\renewcommand{\marks}[1]{\hfill [#1]}
+\newcommand{\markstep}[1]{\hfill\textcolor{blue}{[#1]}}
+
+% Boxed final answer
+\newcommand{\finalanswer}[1]{%
+  \begin{tcolorbox}[colback=green!5!white,colframe=green!50!black,boxrule=0.5pt]
+  #1
+  \end{tcolorbox}
+}
+
+% Equation source notation
+\newcommand{\fromsheet}{\textit{(From formula sheet)}}
+\newcommand{\recalled}{\textit{(Recalled --- not on formula sheet)}}
+
+% MCQ answer format
+\newcounter{mcqcounter}
+\newcommand{\mcqanswer}[2]{%
+  \stepcounter{mcqcounter}%
+  \noindent\textbf{\themcqcounter.} \textbf{#1} --- #2\\[0.2cm]%
+}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION 4 --- SOLUTIONS AND MARK SCHEME}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Total Marks: 100}\\[0.3cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Marking Notes:}
+\begin{itemize}[itemsep=0.1cm]
+\item Mark allocations are shown in \textcolor{blue}{blue} at each step.
+\item Final answers are highlighted in green boxes.
+\item ``\fromsheet'' indicates the equation is on the provided formula sheet.
+\item ``\recalled'' indicates the equation must be known from memory.
+\item Award partial marks for correct method even if the final answer is wrong.
+\item Accept equivalent correct forms of answers.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ ANSWERS
+% ============================================================
+\section*{Section A: Oscillations and Waves --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{B}{The period of a simple pendulum is $T = 2\pi\sqrt{L/g}$ \fromsheet, so $T \propto \sqrt{L}$. For the period to double, we need $2T \propto \sqrt{L'}$, giving $L' = 4L$.}
+
+\mcqanswer{B}{The total energy of a simple harmonic oscillator is $E = \tfrac{1}{2}kA^2$ \recalled. Thus $E = \tfrac{1}{2}(200)(0.1)^2 = \tfrac{1}{2}(200)(0.01) = 1.0$~J.}
+
+\mcqanswer{B}{Critical damping is the boundary between underdamped ($\gamma < 2\omega_0$) and overdamped ($\gamma > 2\omega_0$) motion. It occurs when $\gamma = 2\omega_0$ \recalled.}
+
+\mcqanswer{C}{The average power absorbed by a driven oscillator is proportional to the imaginary part of the response, which peaks at $\omega = \omega_0$ (not at the amplitude resonance frequency $\omega_{\max} = \sqrt{\omega_0^2 - \gamma^2/2}$). Maximum power transfer occurs at $\omega = \omega_0$.}
+
+\mcqanswer{C}{The wave speed on a string is $v = \sqrt{T/\mu}$ \fromsheet. If the tension is quadrupled ($T \to 4T$), the new speed is $v' = \sqrt{4T/\mu} = 2\sqrt{T/\mu} = 2v$.}
+
+\mcqanswer{A}{The amplitude transmission coefficient is $t = 2Z_1/(Z_1 + Z_2)$ \fromsheet. With $Z_2 = 3Z_1$: $t = 2Z_1/(Z_1 + 3Z_1) = 2Z_1/(4Z_1) = 1/2$.}
+
+\mcqanswer{C}{From the decibel formula $\beta = 10\log_{10}(I/I_0)$ \fromsheet: $60 = 10\log_{10}(I/10^{-12})$, so $\log_{10}(I/10^{-12}) = 6$, giving $I/10^{-12} = 10^6$, hence $I = 10^{-6}$~W/m$^2$.}
+
+\mcqanswer{C}{The wall acts as a moving observer receiving frequency $f_1 = f_0(v + v_w)/v$. The wall then re-emits at this frequency as a moving source approaching the stationary source, so the frequency heard is $f_2 = f_1 \cdot v/(v - v_w) = f_0(v + v_w)/(v - v_w) = 500 \times 350/330 = 530.3$~Hz $\approx 530$~Hz.}
+
+\mcqanswer{B}{Open-open pipe: $f_n = nv/(2L)$, so the 2nd harmonic is $f_2 = 2v/(2L) = v/L$. Open-closed pipe: $f_n = nv/(4L)$ with $n = 1, 3, 5, \ldots$, so the fundamental is $f_1 = v/(4L)$. The ratio is $(v/L)/(v/(4L)) = 4$.}
+
+\mcqanswer{B}{Higher tension gives a higher frequency via $v = \sqrt{T/\mu}$ and $f \propto v$ (for a given string length). Since string~B has higher tension, $f_B > 440$~Hz. The beat frequency is $|f_B - f_A| = 3$~Hz, so $f_B = 443$~Hz.}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ ANSWERS
+% ============================================================
+\section*{Section B: Quantum Physics --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{C}{$\ket{\psi}\bra{\phi}$ is an outer product, which is a linear operator. It maps any ket $\ket{\chi}$ to $\ket{\psi}\braket{\phi}{\chi}$, which is a ket times a scalar, i.e.\ another ket.}
+
+\mcqanswer{C}{A global phase factor $e^{i\theta}$ does not affect any measurement probabilities: $|\!\braket{a}{e^{i\theta}\psi}\!|^2 = |e^{i\theta}|^2|\!\braket{a}{\psi}\!|^2 = |\!\braket{a}{\psi}\!|^2$. The two states are physically indistinguishable.}
+
+\mcqanswer{C}{Using a complete orthonormal basis $\{\ket{j}\}$: $\text{Tr}(\ketbra{a}{b}) = \sum_j \bra{j}\!\ketbra{a}{b}\!\ket{j} = \sum_j \braket{j}{a}\braket{b}{j} = \sum_j \braket{b}{j}\braket{j}{a} = \bra{b}\!\left(\sum_j \ketbra{j}{j}\right)\!\ket{a} = \braket{b}{a}$.}
+
+\mcqanswer{B}{Using the spin operators from the formula sheet, one can verify $[S_x, S_y] = S_x S_y - S_y S_x = i\hbar S_z$. This is the fundamental angular momentum commutation relation.}
+
+\mcqanswer{C}{By the Born rule \recalled, $P(\downarrow_z) = |\!\braket{\downarrow_z}{\psi}\!|^2 = \left|\sqrt{2/3}\right|^2 = 2/3$.}
+
+\mcqanswer{C}{After measuring $S_z = +\hbar/2$, the state is $\ket{\!\uparrow_z}$. We can write $\ket{\!\uparrow_z} = \frac{1}{\sqrt{2}}\ket{\!\uparrow_y} + \frac{1}{\sqrt{2}}\ket{\!\downarrow_y}$ \fromsheet. Therefore $P(\uparrow_y) = |1/\sqrt{2}|^2 = 1/2$.}
+
+\mcqanswer{B}{A stationary state is an eigenstate of the Hamiltonian. Under time evolution it acquires only a global phase: $\ket{E_n} \to e^{-iE_n t/\hbar}\ket{E_n}$. Since the global phase cancels in all probability calculations $|\!\braket{a}{\psi(t)}\!|^2$, the measurement probabilities in \emph{any} basis are time-independent.}
+
+\mcqanswer{C}{Each spin-$\tfrac{1}{2}$ particle has a 2-dimensional state space. The composite space is the tensor product: $\dim = 2 \times 2 = 4$.}
+
+\mcqanswer{B}{The Pauli exclusion principle states that no two identical fermions can occupy the same quantum state. This follows from the requirement that multi-fermion states must be antisymmetric under particle exchange, which is a consequence of the spin-statistics theorem for half-integer spin particles.}
+
+\mcqanswer{C}{Beta-minus decay involves the transformation of a down quark into an up quark ($d \to u + e^- + \bar{\nu}_e$), which is mediated by the exchange of a $W^-$ boson. This is a weak interaction process.}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER SOLUTIONS
+% ============================================================
+\section*{Section C: Long Answer Solutions}
+
+\setcounter{questioncounter}{0}
+
+% ---- SOLUTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Newton's Laws, Friction, and Circular Motion}
+
+\begin{parts}
+\item
+\begin{parts}
+\item The maximum static friction force is \recalled:
+\[
+f_{s,\max} = \mu_s \, m_1 g = 0.4 \times 5 \times 9.81 = 19.62 \;\text{N}
+\]
+\markstep{1} for the correct formula; \markstep{1} for the numerical answer.
+
+\finalanswer{$f_{s,\max} = 19.6$~N. The block will not move for any applied force $F \le 19.6$~N.}
+
+\item Since $F = 25$~N $> 19.6$~N, the block moves and kinetic friction applies \recalled:
+\[
+F - \mu_k\,m_1 g = m_1 a
+\]
+\[
+25 - 0.3 \times 5 \times 9.81 = 5a
+\]
+\[
+25 - 14.72 = 5a \implies a = \frac{10.28}{5} = 2.06 \;\text{m/s}^2
+\]
+\markstep{1} for the equation of motion; \markstep{1} for the numerical answer.
+
+\finalanswer{$a = 2.06$~m/s$^2$}
+\end{parts}
+
+\item First, determine the direction of acceleration. Compare the gravitational components:
+
+$m_1 g \sin 30^\circ = 5 \times 9.81 \times 0.5 = 24.53$~N (component pulling block down the incline)
+
+$m_2 g = 3 \times 9.81 = 29.43$~N (weight of hanging mass)
+
+Since $m_2 g > m_1 g \sin\theta$, the hanging mass descends and the block moves up the incline. \markstep{1}
+
+For the block on the incline (taking up the incline as positive):
+\[
+T - m_1 g \sin 30^\circ = m_1 a \quad \Rightarrow \quad T - 24.53 = 5a \tag{1}
+\]
+For the hanging mass (taking downward as positive):
+\[
+m_2 g - T = m_2 a \quad \Rightarrow \quad 29.43 - T = 3a \tag{2}
+\]
+\markstep{1} for both correct equations of motion.
+
+Adding (1) and (2):
+\[
+29.43 - 24.53 = (5 + 3)\,a \implies 4.90 = 8a \implies a = 0.613\;\text{m/s}^2
+\]
+\markstep{1}
+
+Substituting back into (2):
+\[
+T = 29.43 - 3 \times 0.613 = 29.43 - 1.84 = 27.59\;\text{N}
+\]
+\markstep{1}
+
+\finalanswer{$a = 0.61$~m/s$^2$ (block accelerates up the incline); $T = 27.6$~N.}
+
+\item On a banked curve with no friction, the only forces on the car are its weight $Mg$ (downward) and the normal force $N$ (perpendicular to the road surface). Resolving forces: \markstep{1}
+
+Vertical: $N\cos\alpha = Mg$
+
+Horizontal (centripetal): $N\sin\alpha = \dfrac{Mv^2}{r}$
+
+Dividing: \markstep{1}
+\[
+\tan\alpha = \frac{v^2}{rg}
+\]
+\[
+v = \sqrt{rg\tan\alpha} = \sqrt{80 \times 9.81 \times \tan 20^\circ} = \sqrt{80 \times 9.81 \times 0.3640} = \sqrt{285.7} = 16.9\;\text{m/s}
+\]
+\markstep{1}
+
+\finalanswer{Design speed $v = 16.9$~m/s ($\approx 60.8$~km/h)}
+
+\item For the conical pendulum, resolve forces on the mass: \markstep{1}
+
+Vertical: $T\cos\theta = mg$
+\[
+T = \frac{mg}{\cos\theta} = \frac{0.5 \times 9.81}{\cos 25^\circ} = \frac{4.905}{0.9063} = 5.41\;\text{N}
+\]
+\markstep{1}
+
+Radius of circular orbit:
+\[
+r = L\sin\theta = 1.0 \times \sin 25^\circ = 0.4226\;\text{m} \approx 0.423\;\text{m}
+\]
+\markstep{1}
+
+Horizontal (centripetal): $T\sin\theta = m\omega^2 r$
+\[
+\omega^2 = \frac{g}{L\cos\theta} = \frac{9.81}{1.0 \times 0.9063} = 10.82\;\text{rad}^2/\text{s}^2
+\]
+\[
+\omega = 3.290\;\text{rad/s}, \qquad T_{\text{period}} = \frac{2\pi}{\omega} = \frac{2\pi}{3.290} = 1.91\;\text{s}
+\]
+\markstep{1}
+
+\finalanswer{$T_{\text{tension}} = 5.41$~N, \quad $r = 0.423$~m, \quad $T_{\text{period}} = 1.91$~s}
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Maxwell--Boltzmann, Lennard-Jones, and Crystal Structure}
+
+\begin{parts}
+\item The three characteristic speeds from the Maxwell--Boltzmann distribution are \fromsheet:
+\[
+c_\mathrm{mp} = \sqrt{\frac{2k_B T}{m}} \markstep{1}
+\]
+\[
+c_\mathrm{avg} = \sqrt{\frac{8k_B T}{\pi m}} \markstep{1}
+\]
+\[
+c_\mathrm{rms} = \sqrt{\frac{3k_B T}{m}} \markstep{1}
+\]
+
+\item The molecular mass of N$_2$ is:
+\[
+m = \frac{M}{N_A} = \frac{28 \times 10^{-3}}{6.022 \times 10^{23}} = 4.65 \times 10^{-26}\;\text{kg}
+\]
+\markstep{1}
+
+\[
+c_\mathrm{mp} = \sqrt{\frac{2 \times 1.381 \times 10^{-23} \times 300}{4.65 \times 10^{-26}}} = \sqrt{\frac{8.286 \times 10^{-21}}{4.65 \times 10^{-26}}} = \sqrt{1.782 \times 10^5} = 422\;\text{m/s}
+\]
+\markstep{1}
+
+\[
+c_\mathrm{avg} = \sqrt{\frac{8 \times 1.381 \times 10^{-23} \times 300}{\pi \times 4.65 \times 10^{-26}}} = \sqrt{\frac{3.314 \times 10^{-20}}{1.461 \times 10^{-25}}} = \sqrt{2.268 \times 10^5} = 476\;\text{m/s}
+\]
+\markstep{1}
+
+\[
+c_\mathrm{rms} = \sqrt{\frac{3 \times 1.381 \times 10^{-23} \times 300}{4.65 \times 10^{-26}}} = \sqrt{\frac{1.243 \times 10^{-20}}{4.65 \times 10^{-26}}} = \sqrt{2.673 \times 10^5} = 517\;\text{m/s}
+\]
+\markstep{1}
+
+\finalanswer{$c_\mathrm{mp} = 422$~m/s, \quad $c_\mathrm{avg} = 476$~m/s, \quad $c_\mathrm{rms} = 517$~m/s. \\
+Since $422 < 476 < 517$, we confirm $c_\mathrm{mp} < c_\mathrm{avg} < c_\mathrm{rms}$.}
+
+\item The Lennard-Jones potential is \fromsheet:
+\[
+V(r) = 4\varepsilon\left[\left(\frac{a}{r}\right)^{12} - \left(\frac{a}{r}\right)^{6}\right]
+\]
+
+Differentiating:
+\[
+\frac{dV}{dr} = 4\varepsilon\left[-12\,\frac{a^{12}}{r^{13}} + 6\,\frac{a^{6}}{r^{7}}\right] = 0
+\]
+\markstep{1}
+
+\[
+12\,\frac{a^{12}}{r^{13}} = 6\,\frac{a^{6}}{r^{7}} \implies 2a^6 = r^6 \implies r_\mathrm{eq} = 2^{1/6}\,a
+\]
+\markstep{1}
+
+Substituting $r_\mathrm{eq} = 2^{1/6}\,a$ into $V(r)$:
+\[
+V(r_\mathrm{eq}) = 4\varepsilon\left[\left(\frac{a}{2^{1/6}a}\right)^{12} - \left(\frac{a}{2^{1/6}a}\right)^{6}\right] = 4\varepsilon\left[2^{-2} - 2^{-1}\right] = 4\varepsilon\left[\frac{1}{4} - \frac{1}{2}\right] = -\varepsilon
+\]
+\markstep{1}
+
+\finalanswer{$r_\mathrm{eq} = 2^{1/6}\,a \approx 1.122\,a$. \quad The binding energy is $|V(r_\mathrm{eq})| = \varepsilon$.}
+\markstep{1}
+
+\item A BCC unit cell contains 2 atoms \recalled. \markstep{1}
+
+Mass of one iron atom:
+\[
+m_\mathrm{atom} = 55.85 \times 1.661 \times 10^{-27} = 9.277 \times 10^{-26}\;\text{kg}
+\]
+\markstep{1}
+
+Volume of the unit cell:
+\[
+V_\mathrm{cell} = a_\mathrm{latt}^3 = (2.87 \times 10^{-10})^3 = 2.364 \times 10^{-29}\;\text{m}^3
+\]
+\markstep{1}
+
+Density:
+\[
+\rho = \frac{2\,m_\mathrm{atom}}{a_\mathrm{latt}^3} = \frac{2 \times 9.277 \times 10^{-26}}{2.364 \times 10^{-29}} = \frac{1.855 \times 10^{-25}}{2.364 \times 10^{-29}} = 7850\;\text{kg/m}^3
+\]
+\markstep{1}
+
+\finalanswer{$\rho \approx 7850$~kg/m$^3$ (the known density of iron is $\approx 7874$~kg/m$^3$).}
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{SHM, Superposition, and Organ Pipes}
+
+\begin{parts}
+\item The angular frequency is \fromsheet:
+\[
+\omega_0 = \sqrt{\frac{k}{m}} = \sqrt{\frac{160}{0.4}} = \sqrt{400} = 20\;\text{rad/s}
+\]
+\markstep{1}
+
+Released from rest at $x = 0.08$~m, so $A = 0.08$~m and $\phi = 0$ \fromsheet:
+\[
+x(t) = 0.08\cos(20t)\;\text{m}
+\]
+
+Maximum velocity \recalled:
+\[
+v_\mathrm{max} = A\omega_0 = 0.08 \times 20 = 1.6\;\text{m/s}
+\]
+\markstep{1}
+
+Maximum acceleration \recalled:
+\[
+a_\mathrm{max} = A\omega_0^2 = 0.08 \times 400 = 32\;\text{m/s}^2
+\]
+\markstep{1}
+
+\finalanswer{$x(t) = 0.08\cos(20t)$~m, \quad $v_\mathrm{max} = 1.6$~m/s, \quad $a_\mathrm{max} = 32$~m/s$^2$}
+
+\item Using $x(t) = A\cos(\omega_0 t + \phi)$ \fromsheet, with $\omega_0 = 20$~rad/s:
+
+At $t = 0$: $x(0) = A\cos\phi = 0.06$~m
+
+$v(0) = -A\omega_0\sin\phi = 1.20$~m/s, so $A\sin\phi = -v_0/\omega_0 = -1.20/20 = -0.06$~m. \markstep{1}
+
+Amplitude:
+\[
+A = \sqrt{x_0^2 + (v_0/\omega_0)^2} = \sqrt{0.06^2 + 0.06^2} = \sqrt{0.0072} = 0.0849\;\text{m} \approx 8.49\;\text{cm}
+\]
+\markstep{1}
+
+Phase:
+\[
+\tan\phi = \frac{-v_0/\omega_0}{x_0} = \frac{-0.06}{0.06} = -1
+\]
+Since $\cos\phi > 0$ and $\sin\phi < 0$, we are in the fourth quadrant: $\phi = -\pi/4$. \markstep{1}
+
+\finalanswer{$A = 0.0849$~m $\approx 8.49$~cm, \quad $\phi = -\pi/4$, \quad $x(t) = 0.0849\cos(20t - \pi/4)$~m.}
+\markstep{1}
+
+\item The two waves travelling in the $+x$ direction are:
+\[
+y_1 = A\sin(kx - \omega t), \qquad y_2 = A\sin(kx - \omega t + \delta)
+\]
+where $\delta = \pi/3$.
+
+Wavenumber and angular frequency: \markstep{1}
+\[
+k = \frac{2\pi f}{v} = \frac{2\pi \times 200}{100} = 4\pi\;\text{rad/m}, \qquad \omega = 2\pi f = 400\pi\;\text{rad/s}
+\]
+
+Resultant amplitude (using the superposition formula for two waves of equal amplitude) \recalled:
+\[
+A_R = 2A\cos\!\left(\frac{\delta}{2}\right) = 2 \times 3 \times \cos\!\left(\frac{\pi}{6}\right) = 6 \times \frac{\sqrt{3}}{2} = 3\sqrt{3} \approx 5.20\;\text{mm}
+\]
+\markstep{1}
+
+The resultant wave has a phase shifted by $\delta/2$ relative to $y_1$:
+\[
+y = A_R \sin\!\left(kx - \omega t + \frac{\delta}{2}\right) = 3\sqrt{3}\;\sin\!\left(4\pi x - 400\pi t + \frac{\pi}{6}\right)\;\text{mm}
+\]
+\markstep{1} for the resultant amplitude; \markstep{1} for the complete wave equation.
+
+\finalanswer{$A_R = 3\sqrt{3} \approx 5.20$~mm. \quad $y = 3\sqrt{3}\;\sin(4\pi x - 400\pi t + \pi/6)$~mm.}
+
+\item
+\begin{parts}
+\item Open-open pipe \fromsheet: $f_n = \dfrac{nv}{2L}$, $n = 1, 2, 3, \ldots$
+\[
+f_1 = \frac{340}{2 \times 1.7} = 100\;\text{Hz}, \quad f_2 = 200\;\text{Hz}, \quad f_3 = 300\;\text{Hz}, \quad f_4 = 400\;\text{Hz}
+\]
+\markstep{1} for the formula; \markstep{1} for all four frequencies.
+
+\finalanswer{$f_1 = 100$~Hz, $f_2 = 200$~Hz, $f_3 = 300$~Hz, $f_4 = 400$~Hz.}
+
+\item Open-closed pipe \fromsheet: $f_n = \dfrac{nv}{4L}$, $n = 1, 3, 5, \ldots$ (odd harmonics only)
+\[
+f_1 = \frac{340}{4 \times 1.7} = 50\;\text{Hz}, \quad f_3 = 150\;\text{Hz}, \quad f_5 = 250\;\text{Hz}
+\]
+\markstep{1} for recognising odd harmonics only; \markstep{1} for the frequencies.
+
+\finalanswer{$f_1 = 50$~Hz, $f_3 = 150$~Hz, $f_5 = 250$~Hz.}
+\end{parts}
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Time Evolution and Multi-Particle States}
+
+\begin{parts}
+\item The energy eigenstates of $H = \omega_0 S_z$ are $\ket{\!\uparrow}$ with eigenvalue $E_\uparrow = +\omega_0\hbar/2$ and $\ket{\!\downarrow}$ with eigenvalue $E_\downarrow = -\omega_0\hbar/2$. \markstep{1}
+
+At $t = 0$, with $\alpha = \pi/6$:
+\[
+\ket{\psi(0)} = \cos\!\left(\frac{\pi}{6}\right)\ket{\!\uparrow} + \sin\!\left(\frac{\pi}{6}\right)\ket{\!\downarrow} = \frac{\sqrt{3}}{2}\ket{\!\uparrow} + \frac{1}{2}\ket{\!\downarrow}
+\]
+
+Using time evolution \fromsheet: $\ket{\psi(t)} = \sum_n c_n\,e^{-iE_n t/\hbar}\ket{E_n}$:
+\[
+\ket{\psi(t)} = \frac{\sqrt{3}}{2}\,e^{-i\omega_0 t/2}\ket{\!\uparrow} + \frac{1}{2}\,e^{+i\omega_0 t/2}\ket{\!\downarrow}
+\]
+\markstep{1}
+
+Probabilities:
+\[
+P(\uparrow_z,\,t) = \left|\frac{\sqrt{3}}{2}\,e^{-i\omega_0 t/2}\right|^2 = \frac{3}{4}
+\]
+\[
+P(\downarrow_z,\,t) = \left|\frac{1}{2}\,e^{+i\omega_0 t/2}\right|^2 = \frac{1}{4}
+\]
+Both probabilities are \textbf{time-independent}. \markstep{1}
+
+This is expected: the state was written in the energy eigenbasis, so probabilities of energy (or equivalently $S_z$) measurements are constant. \markstep{1}
+
+\finalanswer{$\ket{\psi(t)} = \dfrac{\sqrt{3}}{2}\,e^{-i\omega_0 t/2}\ket{\!\uparrow} + \dfrac{1}{2}\,e^{+i\omega_0 t/2}\ket{\!\downarrow}$.\\[6pt]
+$P(\uparrow_z) = 3/4$ and $P(\downarrow_z) = 1/4$, both constant in time.}
+
+\item The spin operator $S_x = \dfrac{\hbar}{2}\left(\ketbra{\!\uparrow}{\downarrow\!} + \ketbra{\!\downarrow}{\uparrow\!}\right)$ \fromsheet.
+
+$\expect{S_x}(t) = \bra{\psi(t)}S_x\ket{\psi(t)}$. \markstep{1}
+
+Computing:
+\begin{align*}
+\expect{S_x} &= \frac{\hbar}{2}\left[\bra{\psi}\!\ketbra{\!\uparrow}{\downarrow\!}\!\ket{\psi} + \bra{\psi}\!\ketbra{\!\downarrow}{\uparrow\!}\!\ket{\psi}\right] \\
+&= \frac{\hbar}{2}\left[\braket{\psi}{\!\uparrow}\braket{\downarrow\!}{\psi} + \braket{\psi}{\!\downarrow}\braket{\uparrow\!}{\psi}\right]
+\end{align*}
+
+Now:
+\[
+\braket{\uparrow\!}{\psi(t)} = \frac{\sqrt{3}}{2}\,e^{-i\omega_0 t/2}, \qquad \braket{\downarrow\!}{\psi(t)} = \frac{1}{2}\,e^{+i\omega_0 t/2}
+\]
+
+So:
+\begin{align*}
+\expect{S_x} &= \frac{\hbar}{2}\left[\frac{\sqrt{3}}{2}\,e^{+i\omega_0 t/2}\cdot\frac{1}{2}\,e^{+i\omega_0 t/2} + \frac{1}{2}\,e^{-i\omega_0 t/2}\cdot\frac{\sqrt{3}}{2}\,e^{-i\omega_0 t/2}\right] \\
+&= \frac{\hbar}{2}\left[\frac{\sqrt{3}}{4}\,e^{+i\omega_0 t} + \frac{\sqrt{3}}{4}\,e^{-i\omega_0 t}\right] \\
+&= \frac{\hbar}{2}\cdot\frac{\sqrt{3}}{2}\cos(\omega_0 t) = \frac{\sqrt{3}\,\hbar}{4}\cos(\omega_0 t)
+\end{align*}
+\markstep{2}
+
+$\expect{S_x} = 0$ when $\cos(\omega_0 t) = 0$, i.e.:
+\[
+\omega_0 t = \frac{\pi}{2} + n\pi \quad (n = 0, 1, 2, \ldots) \implies t = \frac{(2n+1)\pi}{2\omega_0}
+\]
+\markstep{1}
+
+\finalanswer{$\expect{S_x}(t) = \dfrac{\sqrt{3}\,\hbar}{4}\cos(\omega_0 t)$. \quad $\expect{S_x} = 0$ at $t = \dfrac{(2n+1)\pi}{2\omega_0}$, $n = 0, 1, 2, \ldots$}
+
+\item For two distinguishable spin-$\tfrac{1}{2}$ particles, the composite state space is spanned by the tensor product of the individual bases. A complete orthonormal basis is: \markstep{1}
+\[
+\ket{\!\uparrow\uparrow}, \quad \ket{\!\uparrow\downarrow}, \quad \ket{\!\downarrow\uparrow}, \quad \ket{\!\downarrow\downarrow}
+\]
+where the first arrow refers to particle~1 and the second to particle~2.
+
+There are $2 \times 2 = 4$ basis states. \markstep{1}
+
+An example of an entangled state (one that cannot be written as a product $\ket{a}_1 \otimes \ket{b}_2$): \markstep{1}
+\[
+\ket{\Psi^-} = \frac{1}{\sqrt{2}}\left(\ket{\!\uparrow\downarrow} - \ket{\!\downarrow\uparrow}\right) \qquad \text{(the singlet state)}
+\]
+
+\finalanswer{Basis: $\{\ket{\!\uparrow\uparrow},\,\ket{\!\uparrow\downarrow},\,\ket{\!\downarrow\uparrow},\,\ket{\!\downarrow\downarrow}\}$, with 4 states total.\\
+Example entangled state: $\frac{1}{\sqrt{2}}(\ket{\!\uparrow\downarrow} - \ket{\!\downarrow\uparrow})$.}
+
+\item \textbf{Two identical bosons} in states $\{\ket{a},\ket{b},\ket{c}\}$:
+
+Bosonic states must be symmetric under particle exchange. The allowed states are: \markstep{1}
+
+Both in the same state (3 states):
+\[
+\ket{a}\ket{a}, \quad \ket{b}\ket{b}, \quad \ket{c}\ket{c}
+\]
+
+One in each of two different states (3 states):
+\[
+\frac{1}{\sqrt{2}}\left(\ket{a}\ket{b} + \ket{b}\ket{a}\right), \quad \frac{1}{\sqrt{2}}\left(\ket{a}\ket{c} + \ket{c}\ket{a}\right), \quad \frac{1}{\sqrt{2}}\left(\ket{b}\ket{c} + \ket{c}\ket{b}\right)
+\]
+
+Total: $\mathbf{6}$ two-boson states. \markstep{1}
+
+This agrees with the combinatorial formula $\binom{n+k-1}{k} = \binom{3+2-1}{2} = \binom{4}{2} = 6$.
+
+\textbf{Two identical fermions} in states $\{\ket{a},\ket{b},\ket{c}\}$:
+
+Fermionic states must be antisymmetric under exchange. Both particles cannot be in the same state (Pauli exclusion). The allowed states are: \markstep{1}
+\[
+\frac{1}{\sqrt{2}}\left(\ket{a}\ket{b} - \ket{b}\ket{a}\right), \quad \frac{1}{\sqrt{2}}\left(\ket{a}\ket{c} - \ket{c}\ket{a}\right), \quad \frac{1}{\sqrt{2}}\left(\ket{b}\ket{c} - \ket{c}\ket{b}\right)
+\]
+
+Total: $\mathbf{3}$ two-fermion states. \markstep{1}
+
+This agrees with $\binom{n}{k} = \binom{3}{2} = 3$.
+
+\finalanswer{Bosons: 6 states (3 with both particles in same state $+$ 3 symmetric combinations).\\
+Fermions: 3 states (antisymmetric combinations only; no double occupancy).}
+\end{parts}
+
+\end{document}

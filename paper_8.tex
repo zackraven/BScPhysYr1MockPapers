@@ -1,0 +1,423 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation in sub-parts
+\renewcommand{\marks}[1]{\hfill [#1]}
+
+% MCQ environment
+\newcounter{mcqcounter}
+\newcommand{\mcq}[1]{%
+  \stepcounter{mcqcounter}%
+  \vspace{0.3cm}%
+  \noindent\textbf{\themcqcounter.} #1 \hfill [2 marks]%
+  \vspace{0.1cm}%
+}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=\Alph*.,leftmargin=2.5em,itemsep=0.1cm}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- Paper 8 (Extreme)}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Duration: 3 Hours}\\[0.3cm]
+{\large Total Marks: 100}\\[0.5cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Instructions:}
+\begin{itemize}[itemsep=0.1cm]
+\item Answer \textbf{ALL} questions.
+\item \textbf{Section A} (Oscillations and Waves): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section B} (Quantum Physics): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section C}: 4 long-answer questions, 60 marks total.
+\item An approved calculator is permitted.
+\item A formula sheet is provided at the end of this paper.
+\item Show all working for Section C. Marks will be awarded for clear, logical solutions.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ
+% ============================================================
+\section*{Section A: Oscillations and Waves}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION A1: Non-linear SHM from cosine potential
+\mcq{A particle of mass $m$ moves in the potential $V(x) = V_0\!\left(1 - \cos\!\left(\dfrac{x}{a}\right)\right)$, where $V_0$ and $a$ are positive constants. For small displacements about $x = 0$, what is the angular frequency $\omega$ of oscillation?}
+\begin{choices}
+\item $\displaystyle\sqrt{\frac{V_0}{ma^2}}$
+\item $\displaystyle\sqrt{\frac{2V_0}{ma^2}}$
+\item $\displaystyle\sqrt{\frac{V_0}{2ma^2}}$
+\item $\displaystyle\sqrt{\frac{V_0}{ma}}$
+\end{choices}
+
+% QUESTION A2: Damped oscillation energy
+\mcq{A damped harmonic oscillator has damping constant $\gamma$ and initial energy $E_0$. The amplitude decays as $A(t) = A_0\,e^{-\gamma t/2}$. Which expression gives the energy $E(t)$ at time $t$?}
+\begin{choices}
+\item $E_0\,e^{-\gamma t/2}$
+\item $E_0\,e^{-\gamma t}$
+\item $E_0\,e^{-2\gamma t}$
+\item $E_0\,(1 - e^{-\gamma t})$
+\end{choices}
+
+% QUESTION A3: Forced oscillation FWHM
+\mcq{For a lightly damped forced oscillator with damping constant $\gamma$, the full-width at half-maximum (FWHM) of the \emph{power absorption} curve (plotted against driving frequency $\omega$) is approximately:}
+\begin{choices}
+\item $\gamma/2$
+\item $\gamma$
+\item $2\gamma$
+\item $\omega_0/Q$
+\end{choices}
+
+% QUESTION A4: Counter-propagating waves of different amplitudes
+\mcq{Two harmonic waves of the same frequency and wavenumber travel in opposite directions on a string: $y_1 = A_1\sin(kx - \omega t)$ and $y_2 = A_2\sin(kx + \omega t)$, where $A_1 \neq A_2$. The superposition $y_1 + y_2$ is:}
+\begin{choices}
+\item A pure standing wave.
+\item A pure travelling wave.
+\item A standing wave superimposed with a travelling wave.
+\item Zero everywhere.
+\end{choices}
+
+% QUESTION A5: Quarter-wave impedance transformer
+\mcq{Three strings under the same tension are joined in series: string~1 (impedance $Z_1$), a middle section of length $\ell$ (impedance $Z_m$), and string~3 (impedance $Z_3$). If the middle section has length $\ell = \lambda/4$ (a quarter-wavelength at the operating frequency), what value of $Z_m$ eliminates all reflection from an incident wave in string~1?}
+\begin{choices}
+\item $Z_m = (Z_1 + Z_3)/2$
+\item $Z_m = Z_1 Z_3 / (Z_1 + Z_3)$
+\item $Z_m = \sqrt{Z_1 Z_3}$
+\item $Z_m = Z_3$
+\end{choices}
+
+% QUESTION A6: Coupled oscillators matrix
+\mcq{Two identical masses $m$ are connected by springs of constant $k$ to fixed walls, and by a coupling spring $k_c$ to each other. In the matrix equation $m\ddot{\mathbf{x}} = -\mathbf{K}\mathbf{x}$ (where $\mathbf{x} = (x_1,\,x_2)^T$), which matrix $\mathbf{K}$ gives the correct equations of motion?}
+\begin{choices}
+\item $\displaystyle\begin{pmatrix} k + k_c & -k_c \\ -k_c & k + k_c \end{pmatrix}$
+\item $\displaystyle\begin{pmatrix} k & k_c \\ k_c & k \end{pmatrix}$
+\item $\displaystyle\begin{pmatrix} k + k_c & k_c \\ k_c & k + k_c \end{pmatrix}$
+\item $\displaystyle\begin{pmatrix} k & -k_c \\ -k_c & k \end{pmatrix}$
+\end{choices}
+
+% QUESTION A7: Non-linear dispersion — wave packet spreading
+\mcq{A wave packet propagates in a medium with dispersion relation $\omega(k)$. The wave packet will spread (disperse) over time if:}
+\begin{choices}
+\item $\dfrac{d\omega}{dk} \neq 0$
+\item $\dfrac{d^2\omega}{dk^2} \neq 0$
+\item $\dfrac{d\omega}{dk} = 0$
+\item $\omega/k$ is constant for all $k$
+\end{choices}
+
+% QUESTION A8: Relativistic Doppler vs classical
+\mcq{A source emitting frequency $f_0$ moves toward a stationary observer at speed $v_s \ll c$. The classical Doppler formula gives $f'_\text{cl} = f_0/(1 - v_s/c)$ and the relativistic formula gives $f'_\text{rel} = f_0\sqrt{(1+\beta)/(1-\beta)}$ where $\beta = v_s/c$. To first order in $\beta$, the relativistic correction modifies the classical result by a factor of approximately:}
+\begin{choices}
+\item $1 - \beta/2$
+\item $1 + \beta/2$
+\item $1 + \beta$
+\item There is no first-order correction; they agree to first order in $\beta$.
+\end{choices}
+
+% QUESTION A9: Energy in standing wave vs travelling wave
+\mcq{A standing wave $y = 2A\sin(kx)\cos(\omega t)$ is formed on a string of length $L = n\lambda/2$ (i.e.\ $n$ half-wavelengths fit). How does its total energy compare to that of a single travelling wave $y = A\sin(kx - \omega t)$ on the same string?}
+\begin{choices}
+\item The standing wave has twice the total energy.
+\item The standing wave has the same total energy.
+\item The standing wave has half the total energy.
+\item The energies cannot be compared without knowing $n$.
+\end{choices}
+
+% QUESTION A10: Mach cone angle
+\mcq{An object moves through air at Mach~2 (i.e.\ at twice the speed of sound). The half-angle $\theta$ of the Mach cone (shock wave cone) is:}
+\begin{choices}
+\item $60^\circ$
+\item $45^\circ$
+\item $30^\circ$
+\item $15^\circ$
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ
+% ============================================================
+\section*{Section B: Quantum Physics}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION B1: Commutator algebra
+\mcq{If $[\hat{A},\hat{B}] = i\hat{C}$ for operators $\hat{A}$, $\hat{B}$, and $\hat{C}$, what is $[\hat{B},\hat{A}]$?}
+\begin{choices}
+\item $i\hat{C}$
+\item $-i\hat{C}$
+\item $\hat{C}$
+\item $0$
+\end{choices}
+
+% QUESTION B2: Compatible observables
+\mcq{If two Hermitian operators $\hat{A}$ and $\hat{B}$ satisfy $[\hat{A},\hat{B}] = 0$, which statement is correct?}
+\begin{choices}
+\item Measuring $\hat{A}$ always gives the same result as measuring $\hat{B}$.
+\item $\hat{A}$ and $\hat{B}$ share a common set of eigenstates, and both can be measured simultaneously without mutual disturbance.
+\item $\hat{A}$ and $\hat{B}$ must be equal.
+\item The uncertainty product $\Delta A\,\Delta B$ must equal $\hbar/2$.
+\end{choices}
+
+% QUESTION B3: Unitary diagonalisation
+\mcq{Let $U$ be the unitary matrix whose columns are the normalised eigenvectors of a Hamiltonian $H$. Then $U^\dagger H\, U$ equals:}
+\begin{choices}
+\item The identity matrix $I$.
+\item $H$ itself.
+\item A diagonal matrix with the eigenvalues of $H$ on the diagonal.
+\item The zero matrix.
+\end{choices}
+
+% QUESTION B4: No-cloning theorem
+\mcq{The no-cloning theorem states that it is impossible to create an exact copy of an arbitrary unknown quantum state. This is fundamentally because:}
+\begin{choices}
+\item Copying requires infinite energy.
+\item The Heisenberg uncertainty principle forbids knowing the state precisely.
+\item Quantum evolution is linear (unitary), and linearity is incompatible with a universal cloning operation.
+\item Entanglement prevents the state from being localised.
+\end{choices}
+
+% QUESTION B5: Density matrix of pure state
+\mcq{For a system in a pure state $\ket{\psi}$, the density matrix is $\rho = \ketbra{\psi}{\psi}$. What is $\text{Tr}(\rho^2)$?}
+\begin{choices}
+\item $0$
+\item $1/2$
+\item $1$
+\item It depends on the state $\ket{\psi}$.
+\end{choices}
+
+% QUESTION B6: Time-energy uncertainty
+\mcq{Two energy eigenstates of a system have energies $E_1$ and $E_2$. A superposition of these states will exhibit oscillatory behaviour. The characteristic timescale $\tau$ of these oscillations is:}
+\begin{choices}
+\item $\tau = \hbar / (E_1 + E_2)$
+\item $\tau = \hbar / |E_1 - E_2|$
+\item $\tau = h / (E_1 E_2)$
+\item $\tau = (E_1 - E_2) / \hbar$
+\end{choices}
+
+% QUESTION B7: Singlet state correlations
+\mcq{Two spin-$\frac{1}{2}$ particles are in the singlet state $\ket{\Psi^-} = \frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow\downarrow} - \ket{\!\downarrow\uparrow}\bigr)$. What is the expectation value $\expect{S_{1z}\,S_{2z}}$?}
+\begin{choices}
+\item $+\hbar^2/4$
+\item $-\hbar^2/4$
+\item $0$
+\item $-\hbar^2/2$
+\end{choices}
+
+% QUESTION B8: Partial trace of Bell state
+\mcq{Two qubits are in the Bell state $\ket{\Phi^+} = \frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow\uparrow} + \ket{\!\downarrow\downarrow}\bigr)$. The reduced density matrix $\rho_1$ of qubit~1, obtained by tracing over qubit~2, is:}
+\begin{choices}
+\item $\ketbra{\!\uparrow}{\uparrow\!}$
+\item $\frac{1}{2}\ketbra{\!\uparrow}{\uparrow\!} + \frac{1}{2}\ketbra{\!\downarrow}{\downarrow\!}$
+\item $\frac{1}{2}\bigl(\ketbra{\!\uparrow}{\uparrow\!} + \ketbra{\!\uparrow}{\downarrow\!} + \ketbra{\!\downarrow}{\uparrow\!} + \ketbra{\!\downarrow}{\downarrow\!}\bigr)$
+\item $\frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow} + \ket{\!\downarrow}\bigr)\frac{1}{\sqrt{2}}\bigl(\bra{\!\uparrow} + \bra{\!\downarrow}\bigr)$
+\end{choices}
+
+% QUESTION B9: Fermion ground state energy
+\mcq{$N$ non-interacting spin-$\frac{1}{2}$ fermions are placed in a one-dimensional infinite square well of width $L$. Each single-particle energy level $E_n = n^2 E_1$ (where $E_1 = \pi^2\hbar^2/(2mL^2)$) can hold at most 2 fermions (one spin-up, one spin-down). The ground-state energy of the system for $N = 6$ fermions is:}
+\begin{choices}
+\item $6E_1$
+\item $14E_1$
+\item $28E_1$
+\item $42E_1$
+\end{choices}
+
+% QUESTION B10: Parity violation
+\mcq{Which discrete symmetry is violated in weak interactions but preserved in electromagnetic and strong interactions?}
+\begin{choices}
+\item Charge conjugation ($C$) only.
+\item Parity ($P$).
+\item Time reversal ($T$) only.
+\item The combined symmetry $CPT$.
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER QUESTIONS
+% ============================================================
+\section*{Section C: Long Answer Questions}
+\noindent\textit{Answer all 4 questions. Show all working.}
+
+\setcounter{questioncounter}{0}
+
+% ---- QUESTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Snooker Ball Impulse, Rolling Friction, and Loop-the-Loop}
+
+\begin{parts}
+\item A uniform solid sphere (billiard ball) of mass $M$ and radius $R$ rests on a horizontal surface with coefficient of kinetic friction $\mu_k$. A cue strikes the ball with a horizontal impulse $J$ at a height $h$ above the centre of the ball.
+\begin{parts}
+\item Find the initial translational velocity $v_0$ and the initial angular velocity $\omega_0$ of the ball immediately after the impulse. \qmarks{2}
+\item Show that if the cue strikes at height $h = \frac{2}{5}R$ above the centre, the ball immediately rolls without slipping (i.e.\ $v_0 = R\omega_0$), so no friction is needed. At what height above the \emph{table} (i.e.\ above the lowest point of the ball) should the cue strike? \qmarks{3}
+\end{parts}
+
+\item For a general strike height $h \neq \frac{2}{5}R$, the ball initially slides. Friction acts until rolling is achieved.
+\begin{parts}
+\item Write the equations of motion for the translational and rotational motion during the sliding phase. \qmarks{2}
+\item Find the time $t_\text{roll}$ at which rolling without slipping begins and the velocity $v_\text{roll}$ at that instant. For a centre-strike ($h = 0$), show that $v_\text{roll} = \frac{5}{7}\,v_0$. \qmarks{3}
+\end{parts}
+
+\item A solid disk of mass $M = 0.5\;\text{kg}$ and radius $R = 0.15\;\text{m}$ is released from rest at height $H$ (measured from the bottom of a circular loop) on an inclined track. At the bottom of the incline the track forms a vertical circular loop of radius $r = 0.8\;\text{m}$. The disk rolls without slipping throughout.
+
+Find the minimum height $H$ for the disk to maintain contact with the track at the top of the loop. \qmarks{5}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Advanced Entropy, Lennard-Jones Potential, and Maxwell--Boltzmann Distribution}
+
+\begin{parts}
+\item Two identical blocks of the same material (mass $m$, specific heat capacity $c$) are initially at temperatures $T_1$ and $T_2$ ($T_1 > T_2$). A series of Carnot engines operate between them, each extracting an infinitesimal amount of work, until the blocks reach the same final temperature $T_f$.
+\begin{parts}
+\item Show that $T_f = \sqrt{T_1\,T_2}$. \qmarks{2}
+\item Show that the total entropy change of the two blocks is zero. \qmarks{2}
+\end{parts}
+
+\item If instead the two blocks are simply placed in direct thermal contact (an irreversible process):
+\begin{parts}
+\item Show that the final temperature is $T_f' = \frac{T_1 + T_2}{2}$. \qmarks{1}
+\item Calculate the total entropy change $\Delta S_\text{total}$ and show that it is positive. \qmarks{2}
+\item Hence show that the maximum extractable work from the Carnot process in part~(a) was $W_\text{max} = mc\!\left(T_1 + T_2 - 2\sqrt{T_1 T_2}\right)$. \qmarks{1}
+\end{parts}
+
+\item The Lennard-Jones potential is $V(r) = 4\varepsilon\!\left[\left(\dfrac{a}{r}\right)^{12} - \left(\dfrac{a}{r}\right)^{6}\right]$.
+\begin{parts}
+\item Show that the equilibrium separation is $r_0 = 2^{1/6}\,a$ and that the depth of the potential well is $\varepsilon$. \qmarks{2}
+\item By expanding $V(r)$ about $r_0$ to second order, show that the effective spring constant is $k = 72\,\varepsilon / (2^{1/3}\,a^2)$. Hence estimate the frequency of small oscillations of a single argon atom about its equilibrium position, using $\varepsilon = 1.67\times 10^{-21}\;\text{J}$, $a = 3.40\times 10^{-10}\;\text{m}$, and $m_\text{Ar} = 6.63\times 10^{-26}\;\text{kg}$. \qmarks{2}
+\end{parts}
+
+\item The most probable speed in the Maxwell--Boltzmann distribution is $c_\text{mp} = \sqrt{2k_BT/m}$. At what temperature does the most probable speed of helium atoms ($m_\text{He} = 6.64\times 10^{-27}\;\text{kg}$) equal the escape velocity from the Earth's surface ($v_e = 11.2\;\text{km/s}$)? Comment on whether helium can escape from the Earth's atmosphere at room temperature. \qmarks{3}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Advanced Boundary Conditions, Beaded String, and Wave Packets}
+
+\begin{parts}
+\item A string of length $L$ is fixed at $x = 0$ and attached to a massless ring that slides freely (without friction) on a vertical rod at $x = L$.
+\begin{parts}
+\item What is the boundary condition on the displacement $y(x,t)$ at $x = L$? \qmarks{1}
+\item Show that the allowed wavelengths are $\lambda_n = \dfrac{4L}{2n - 1}$ for $n = 1, 2, 3, \ldots$ \qmarks{2}
+\item If $L = 2\;\text{m}$ and $v = 100\;\text{m/s}$, find the first three resonant frequencies. \qmarks{2}
+\end{parts}
+
+\item Two identical strings (same linear mass density $\mu$, same tension $T$) of length $L$ are connected at $x = 0$ by a bead of mass $m$. The left string is fixed at $x = -L$ and the right string is fixed at $x = +L$.
+\begin{parts}
+\item Write down the boundary conditions at $x = \pm L$ and the matching conditions at $x = 0$ (continuity of displacement and the force balance including the bead's inertia). \qmarks{3}
+\item For the \emph{symmetric} normal modes, the bead sits at a node (i.e.\ $y(0,t) = 0$). Show that in this case the resonant frequencies are $f_n = nv/(2L)$ for $n = 1, 2, 3, \ldots$ \qmarks{2}
+\end{parts}
+
+\item A wave packet is formed from two harmonic waves:
+\[
+y(x,t) = A\cos(k_1 x - \omega_1 t) + A\cos(k_2 x - \omega_2 t),
+\]
+where $k_1 = 10\;\text{rad/m}$, $k_2 = 12\;\text{rad/m}$, and the dispersion relation is $\omega = \alpha k^2$ with $\alpha = 0.5\;\text{m}^2/\text{s}$.
+\begin{parts}
+\item Calculate $\omega_1$ and $\omega_2$. \qmarks{1}
+\item Find the phase velocity $v_p$ and group velocity $v_g$ at the average wavenumber $\bar{k} = (k_1 + k_2)/2$. \qmarks{2}
+\item Rewrite $y(x,t)$ as a product of a slowly-varying envelope and a rapidly-varying carrier. Identify which factor moves at the group velocity and which at the phase velocity. \qmarks{2}
+\end{parts}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Three-State System, Fermion States, and Pion Decay}
+
+\begin{parts}
+\item Consider a three-state quantum system with orthonormal basis $\{\ket{a},\,\ket{b},\,\ket{c}\}$. The Hamiltonian is
+\[
+H = E_0\bigl(\ketbra{a}{a} + \ketbra{b}{b} + \ketbra{c}{c}\bigr) + V\bigl(\ketbra{a}{b} + \ketbra{b}{a}\bigr),
+\]
+where $E_0$ and $V$ are real constants.
+\begin{parts}
+\item Write $H$ as a $3\times 3$ matrix in the $\{\ket{a},\,\ket{b},\,\ket{c}\}$ basis. \qmarks{1}
+\item Find all three eigenvalues and the corresponding normalised eigenstates. \qmarks{3}
+\end{parts}
+
+\item At $t = 0$ the system is prepared in the state $\ket{\psi(0)} = \ket{a}$.
+\begin{parts}
+\item Find $\ket{\psi(t)}$. \qmarks{2}
+\item Calculate the probability $P(a,t) = |\braket{a}{\psi(t)}|^2$ of finding the system in state $\ket{a}$ at time $t$. \qmarks{2}
+\end{parts}
+
+\item Two identical spin-$\frac{1}{2}$ fermions occupy a system with two spatial orbitals $\ket{\alpha}$ and $\ket{\beta}$. Write down \emph{all} possible two-particle states that are antisymmetric under exchange of the two fermions (combining spatial and spin degrees of freedom). State the total number of such states. \qmarks{3}
+
+\item Consider the decay $\pi^0 \to \gamma + \gamma$ (neutral pion decaying into two photons).
+\begin{parts}
+\item Verify that charge, baryon number, and lepton number are all conserved in this decay. \qmarks{2}
+\item The $\pi^0$ has spin~0. Using conservation of angular momentum, discuss the constraint on the helicities (circular polarisation states) of the two emitted photons. Which force mediates this decay? \qmarks{2}
+\end{parts}
+\end{parts}
+
+\newpage
+
+% ============================================================
+% FORMULA SHEET
+% ============================================================
+\input{equation_sheet}
+
+\end{document}

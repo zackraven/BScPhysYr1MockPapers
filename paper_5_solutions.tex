@@ -1,0 +1,721 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination --- Solutions}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation
+\renewcommand{\marks}[1]{\hfill [#1]}
+\newcommand{\markstep}[1]{\hfill\textcolor{blue}{[#1]}}
+
+% Boxed final answer
+\newcommand{\finalanswer}[1]{%
+  \begin{tcolorbox}[colback=green!5!white,colframe=green!50!black,boxrule=0.5pt]
+  #1
+  \end{tcolorbox}
+}
+
+% Equation source notation
+\newcommand{\fromsheet}{\textit{(From formula sheet)}}
+\newcommand{\recalled}{\textit{(Recalled --- not on formula sheet)}}
+
+% MCQ answer format
+\newcounter{mcqcounter}
+\newcommand{\mcqanswer}[2]{%
+  \stepcounter{mcqcounter}%
+  \noindent\textbf{\themcqcounter.} \textbf{#1} --- #2\\[0.2cm]%
+}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- SOLUTIONS AND MARK SCHEME}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012 --- Paper 5}\\[0.5cm]
+{\large Total Marks: 100}\\[0.3cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Marking Notes:}
+\begin{itemize}[itemsep=0.1cm]
+\item Mark allocations are shown in \textcolor{blue}{blue} at each step.
+\item Final answers are highlighted in green boxes.
+\item ``\fromsheet'' indicates the equation is on the provided formula sheet.
+\item ``\recalled'' indicates the equation must be known from memory.
+\item Award partial marks for correct method even if the final answer is wrong.
+\item Accept equivalent correct forms of answers.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ ANSWERS
+% ============================================================
+\section*{Section A: Oscillations and Waves --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{B}{For a physical pendulum, $T = 2\pi\sqrt{I/(Mgh)}$. \fromsheet\ Here $I = \frac{1}{3}ML^2 = \frac{1}{3}(2)(1.5)^2 = 1.50$ kg$\cdot$m$^2$ and $h = L/2 = 0.75$ m. So $T = 2\pi\sqrt{1.50/(2\times 9.81\times 0.75)} = 2\pi\sqrt{1.50/14.715} = 2\pi\sqrt{0.10194} = 2\pi\times 0.3193 = 2.006 \approx 2.01$ s.}
+
+\mcqanswer{C}{In SHM, $v^2 = \omega_0^2(A^2 - x^2)$ and $v_{\max} = \omega_0 A$. \recalled\ Setting $v = v_{\max}/2$: $\omega_0^2(A^2 - x^2) = \omega_0^2 A^2/4$, so $A^2 - x^2 = A^2/4$, giving $x^2 = 3A^2/4$, hence $x = A\sqrt{3}/2$.}
+
+\mcqanswer{C}{An overdamped system ($\gamma > 2\omega_0$) returns to equilibrium without oscillating, but does so more slowly than the critically damped case. \recalled\ Critical damping is the fastest non-oscillatory return.}
+
+\mcqanswer{B}{At $\omega = 0$: $A(0) = (F_0/m)/\omega_0^2$. At $\omega = \omega_0$: $A(\omega_0) = (F_0/m)/(\gamma\omega_0)$ (since $(\omega_0^2-\omega_0^2)^2 + \gamma^2\omega_0^2 = \gamma^2\omega_0^2$). \fromsheet\ The ratio is $A(\omega_0)/A(0) = \omega_0^2/(\gamma\omega_0) = \omega_0/\gamma = 10/2 = 5$.}
+
+\mcqanswer{B}{$v = f\lambda$. \recalled\ $v = 120\times 0.50 = 60$ m/s.}
+
+\mcqanswer{D}{$\langle P\rangle = \frac{1}{2}\mu\omega^2 A^2 v$. \fromsheet\ $\langle P\rangle = \frac{1}{2}\times 0.05\times 50^2\times 0.04^2\times 10 = \frac{1}{2}\times 0.05\times 2500\times 0.0016\times 10 = \frac{1}{2}\times 2.0 = 1.00$ W.}
+
+\mcqanswer{B}{Two identical sources double the intensity: $I_{\text{total}} = 2I$. The new sound level is $\beta' = 10\log_{10}(2I/I_0) = 10\log_{10}(I/I_0) + 10\log_{10}2 = 80 + 3.01 \approx 83$ dB. \fromsheet}
+
+\mcqanswer{A}{Observer moving away from stationary source: $f' = f(v - v_o)/v$. \fromsheet\ $f' = 500\times(340-34)/340 = 500\times 306/340 = 500\times 0.900 = 450$ Hz.}
+
+\mcqanswer{D}{For a string fixed at both ends, $f_n = nf_1$. \fromsheet\ The 5th harmonic is $f_5 = 5\times 150 = 750$ Hz.}
+
+\mcqanswer{A}{When two waves of the same amplitude and frequency have a phase difference of $\pi$, the resultant amplitude is $A_{\text{res}} = 2A\cos(\pi/2) = 2A\times 0 = 0$. \recalled\ The waves cancel completely (destructive interference).}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ ANSWERS
+% ============================================================
+\section*{Section B: Quantum Physics --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{B}{The bra $\bra{\psi}$ is a linear functional that maps kets to complex numbers. It lives in the \textbf{dual space} of the Hilbert space. \recalled}
+
+\mcqanswer{C}{The time-evolution operator $U(t) = e^{-iHt/\hbar}$ is unitary: $U^\dagger U = I$. \fromsheet\ Unitarity preserves the norm of the state vector, $\braket{\psi(t)}{\psi(t)} = \braket{\psi(0)}{U^\dagger U|\psi(0)} = \braket{\psi(0)}{\psi(0)} = 1$, which guarantees $\sum_n |c_n|^2 = 1$ at all times.}
+
+\mcqanswer{B}{Using the completeness relation $I = \sum_j \ketbra{b_j}{b_j}$, the coefficient of $\ket{\psi}$ in the $\ket{a_i}$ basis is $\braket{a_i}{\psi} = \bra{a_i}I\ket{\psi} = \sum_j \braket{a_i}{b_j}\braket{b_j}{\psi}$. \recalled}
+
+\mcqanswer{B}{$\sigma_z$ is diagonal with entries $+1$ and $-1$ on the diagonal. Its eigenvalues are $+1$ and $-1$. \fromsheet\ (Note: the eigenvalues of $S_z = (\hbar/2)\sigma_z$ are $\pm\hbar/2$, but the question asks about $\sigma_z$ itself.)}
+
+\mcqanswer{C}{$\expect{\sigma_z} = \bra{\psi}\sigma_z\ket{\psi}$. In the state $\ket{\psi} = \frac{1}{\sqrt{2}}(\ket{\!\uparrow_z}+\ket{\!\downarrow_z})$, we have $\expect{\sigma_z} = \frac{1}{2}[(+1) + (-1)] = 0$. \recalled\ (Equal probability of $+1$ and $-1$ gives zero expectation value.)}
+
+\mcqanswer{C}{$\ket{\!\uparrow_y} = \frac{1}{\sqrt{2}}(\ket{\!\uparrow_z} + i\ket{\!\downarrow_z})$. \fromsheet\ The probability of $+\hbar/2$ is $|1/\sqrt{2}|^2 = 1/2$ and the probability of $-\hbar/2$ is $|i/\sqrt{2}|^2 = 1/2$.}
+
+\mcqanswer{C}{The probability oscillates as $\cos^2(\Delta E\, t / (2\hbar))$ where $\Delta E = E_2 - E_1$. The period of $\cos^2(\omega t/2)$ is $T = 2\pi/\omega = 2\pi\hbar/(E_2 - E_1)$. \fromsheet}
+
+\mcqanswer{B}{The SWAP operator exchanges the quantum states of the two particles. \recalled\ $\text{SWAP}\,\ket{\!\uparrow}_1\ket{\!\downarrow}_2 = \ket{\!\downarrow}_1\ket{\!\uparrow}_2$.}
+
+\mcqanswer{B}{Identical bosons have wave functions that are symmetric under particle exchange: $\text{SWAP}\ket{\Psi} = +\ket{\Psi}$. \recalled}
+
+\mcqanswer{C}{The up quark has electric charge $+2/3\;e$. \recalled\ (Down-type quarks have charge $-1/3\;e$.)}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER SOLUTIONS
+% ============================================================
+\section*{Section C: Long Answer Solutions}
+
+\setcounter{questioncounter}{0}
+
+% ---- SOLUTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Rocket Equation, Impulse, and Escape Velocity}
+
+\begin{parts}
+
+%% Part (a) — 4 marks
+\item \textbf{Tsiolkovsky rocket equation and final speed} \qmarks{4}
+
+The Tsiolkovsky rocket equation gives the maximum speed change: \fromsheet
+\[
+\Delta v = u\ln\!\left(\frac{m_0}{m_f}\right)
+\]
+\markstep{1}
+
+Substituting values:
+\[
+\Delta v = 3000\times\ln\!\left(\frac{5000}{1000}\right) = 3000\times\ln 5
+\]
+\markstep{1}
+
+Computing $\ln 5 = 1.6094$:
+\[
+\Delta v = 3000\times 1.6094 = 4828\text{ m/s}
+\]
+\markstep{1}
+
+Since the rocket starts from rest in deep space (no gravity), the final speed equals the speed change:
+
+\finalanswer{$\Delta v = 4828$ m/s. Final speed $= 4828$ m/s $\approx 4.83$ km/s.}
+\markstep{1}
+
+%% Part (b) — 3 marks
+\item \textbf{Mass flow rate and initial acceleration} \qmarks{3}
+
+The thrust is related to the exhaust velocity and mass flow rate by: \recalled
+\[
+F_{\text{thrust}} = u\left|\frac{dm}{dt}\right|
+\]
+\markstep{1}
+
+Solving for the mass flow rate:
+\[
+\left|\frac{dm}{dt}\right| = \frac{F_{\text{thrust}}}{u} = \frac{15{,}000}{3000} = 5\text{ kg/s}
+\]
+\markstep{1}
+
+The initial acceleration in deep space is given by Newton's second law:
+\[
+a_0 = \frac{F_{\text{thrust}}}{m_0} = \frac{15{,}000}{5000} = 3.0\text{ m/s}^2
+\]
+
+\finalanswer{$|dm/dt| = 5$ kg/s. \quad $a_0 = 3.0$ m/s$^2$.}
+\markstep{1}
+
+%% Part (c) — 4 marks
+\item \textbf{Escape velocity and maximum height} \qmarks{4}
+
+The escape velocity from the surface of the Earth is: \fromsheet
+\[
+v_e = \sqrt{\frac{2GM_\oplus}{R_\oplus}}
+\]
+\markstep{1}
+
+Computing $GM_\oplus = 6.674\times 10^{-11}\times 5.97\times 10^{24} = 3.984\times 10^{14}$ m$^3$/s$^2$:
+\[
+v_e = \sqrt{\frac{2\times 3.984\times 10^{14}}{6.37\times 10^{6}}} = \sqrt{\frac{7.968\times 10^{14}}{6.37\times 10^{6}}} = \sqrt{1.251\times 10^{8}} = 11{,}180\text{ m/s}
+\]
+
+\finalanswer{$v_e \approx 11.2$ km/s}
+\markstep{1}
+
+For a projectile launched at $v = 8000$ m/s, use energy conservation. \recalled\ At the surface:
+\[
+\frac{1}{2}mv^2 - \frac{GM_\oplus m}{R_\oplus} = -\frac{GM_\oplus m}{r_{\max}}
+\]
+
+Cancelling $m$ and solving for $r_{\max}$:
+\[
+\frac{1}{r_{\max}} = \frac{1}{R_\oplus} - \frac{v^2}{2GM_\oplus}
+\]
+
+Computing each term:
+\[
+\frac{GM_\oplus}{R_\oplus} = \frac{3.984\times 10^{14}}{6.37\times 10^{6}} = 6.254\times 10^{7}\text{ m}^2\text{/s}^2
+\]
+\[
+\frac{v^2}{2} = \frac{(8000)^2}{2} = \frac{6.4\times 10^{7}}{2} = 3.200\times 10^{7}\text{ m}^2\text{/s}^2
+\]
+\[
+r_{\max} = \frac{GM_\oplus}{GM_\oplus/R_\oplus - v^2/2} = \frac{3.984\times 10^{14}}{6.254\times 10^{7} - 3.200\times 10^{7}} = \frac{3.984\times 10^{14}}{3.054\times 10^{7}} = 1.304\times 10^{7}\text{ m}
+\]
+\markstep{1}
+
+The maximum height above the surface is:
+\[
+h = r_{\max} - R_\oplus = 1.304\times 10^{7} - 6.37\times 10^{6} = 6.67\times 10^{6}\text{ m}
+\]
+
+\finalanswer{$h \approx 6670$ km above the Earth's surface.}
+\markstep{1}
+
+%% Part (d) — 4 marks
+\item \textbf{Impulse and average force} \qmarks{4}
+
+Define the positive direction as the initial direction of the ball's motion. Then: \markstep{1}
+\begin{itemize}
+\item Initial velocity: $v_i = +20$ m/s
+\item Final velocity: $v_f = -15$ m/s (bounces back)
+\end{itemize}
+
+The impulse is: \recalled
+\[
+J = \Delta p = m(v_f - v_i) = 0.05\times(-15 - 20) = 0.05\times(-35) = -1.75\text{ N$\cdot$s}
+\]
+\markstep{1}
+
+The magnitude of the impulse is $|J| = 1.75$ N$\cdot$s. The negative sign indicates the impulse is directed opposite to the initial velocity (i.e.\ toward the ball, away from the wall). \markstep{1}
+
+The average force exerted by the wall on the ball is:
+\[
+F_{\text{avg}} = \frac{J}{\Delta t} = \frac{-1.75}{0.01} = -175\text{ N}
+\]
+
+\finalanswer{Impulse: $|J| = 1.75$ N$\cdot$s (directed away from the wall). Average force: $|F_{\text{avg}}| = 175$ N (directed away from the wall, toward the ball).}
+\markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Heat Engines and Entropy}
+
+\begin{parts}
+
+%% Part (a) — 3 marks
+\item \textbf{Laws of thermodynamics and definition of entropy} \qmarks{3}
+
+\textbf{First law:} The change in internal energy of a system equals the heat added to the system minus the work done by the system: $\Delta U = Q - W$. (Energy is conserved.) \recalled \markstep{1}
+
+\textbf{Second law:} The total entropy of an isolated system can never decrease; it either increases (for irreversible processes) or remains constant (for reversible processes): $\Delta S_{\text{total}} \geq 0$. \recalled \markstep{1}
+
+\textbf{Entropy:} For a reversible process, the infinitesimal entropy change is defined as: \fromsheet
+\[
+dS = \frac{dQ_{\text{rev}}}{T}
+\]
+
+\finalanswer{First law: $\Delta U = Q - W$. Second law: $\Delta S_{\text{total}} \geq 0$. Entropy: $dS = dQ_{\text{rev}}/T$.}
+\markstep{1}
+
+%% Part (b) — 4 marks
+\item \textbf{Carnot engine calculations} \qmarks{4}
+
+The Carnot efficiency is: \fromsheet
+\[
+\eta = 1 - \frac{T_c}{T_h} = 1 - \frac{200}{800} = 1 - 0.25 = 0.75 = 75\%
+\]
+\markstep{1}
+
+The work done per cycle: \recalled
+\[
+W = \eta Q_h = 0.75\times 4000 = 3000\text{ J}
+\]
+\markstep{1}
+
+The heat rejected per cycle (by energy conservation): \markstep{1}
+\[
+Q_c = Q_h - W = 4000 - 3000 = 1000\text{ J}
+\]
+
+\finalanswer{$\eta = 75\%$, \quad $W = 3000$ J, \quad $Q_c = 1000$ J.}
+\markstep{1}
+
+%% Part (c) — 4 marks
+\item \textbf{Aluminium block in a lake} \qmarks{4}
+
+Since the lake is an infinite reservoir, the final equilibrium temperature is:
+
+\finalanswer{$T_f = 300$ K (the lake temperature).}
+\markstep{1}
+
+The entropy change of the aluminium: \fromsheet
+\[
+\Delta S_{\text{Al}} = mc\ln\!\left(\frac{T_f}{T_i}\right) = 5\times 900\times\ln\!\left(\frac{300}{600}\right) = 4500\times\ln(0.5) = 4500\times(-0.6931)
+\]
+\[
+\Delta S_{\text{Al}} = -3119\text{ J/K}
+\]
+\markstep{1}
+
+The heat transferred to the lake is: \recalled
+\[
+Q = mc(T_i - T_f) = 5\times 900\times(600 - 300) = 5\times 900\times 300 = 1{,}350{,}000\text{ J}
+\]
+
+The entropy change of the lake (infinite reservoir at constant $T$): \recalled
+\[
+\Delta S_{\text{lake}} = \frac{Q}{T_{\text{lake}}} = \frac{1{,}350{,}000}{300} = 4500\text{ J/K}
+\]
+\markstep{1}
+
+The total entropy change:
+\[
+\Delta S_{\text{total}} = \Delta S_{\text{Al}} + \Delta S_{\text{lake}} = -3119 + 4500 = 1381\text{ J/K}
+\]
+
+\finalanswer{$\Delta S_{\text{Al}} = -3119$ J/K, \quad $\Delta S_{\text{lake}} = +4500$ J/K, \quad $\Delta S_{\text{total}} = +1381$ J/K $> 0$. The second law is satisfied since $\Delta S_{\text{total}} > 0$, as expected for this irreversible process.}
+\markstep{1}
+
+%% Part (d) — 4 marks
+\item \textbf{Two identical blocks and maximum work} \qmarks{4}
+
+When the two blocks are brought into thermal contact, the final temperature (by energy conservation for identical blocks):
+\[
+T_f = \frac{T_1 + T_2}{2} = \frac{400 + 200}{2} = 300\text{ K}
+\]
+\markstep{1}
+
+The total entropy change: \fromsheet
+\[
+\Delta S_1 = mc\ln\!\left(\frac{T_f}{T_1}\right) = 1\times 500\times\ln\!\left(\frac{300}{400}\right) = 500\times\ln(0.75) = 500\times(-0.2877) = -143.8\text{ J/K}
+\]
+\[
+\Delta S_2 = mc\ln\!\left(\frac{T_f}{T_2}\right) = 500\times\ln\!\left(\frac{300}{200}\right) = 500\times\ln(1.5) = 500\times 0.4055 = 202.7\text{ J/K}
+\]
+\[
+\Delta S_{\text{total}} = \Delta S_1 + \Delta S_2 = -143.8 + 202.7 = 58.9\text{ J/K}
+\]
+\markstep{1}
+
+For a reversible (Carnot) engine between the two finite blocks, the total entropy change must be zero. If both blocks reach a common final temperature $T_f'$:
+\[
+mc\ln\!\left(\frac{T_f'}{T_1}\right) + mc\ln\!\left(\frac{T_f'}{T_2}\right) = 0 \quad\Longrightarrow\quad \ln\!\left(\frac{T_f'^2}{T_1 T_2}\right) = 0 \quad\Longrightarrow\quad T_f' = \sqrt{T_1 T_2}
+\]
+\[
+T_f' = \sqrt{400\times 200} = \sqrt{80{,}000} = 282.8\text{ K}
+\]
+\markstep{1}
+
+The maximum work is the difference between the total heat extracted and the total heat deposited. By energy conservation:
+\[
+W_{\max} = mc(T_1 - T_f') - mc(T_f' - T_2) = mc(T_1 + T_2 - 2T_f')
+\]
+
+Wait --- more carefully: the heat extracted from the hot block is $Q_h = mc(T_1 - T_f')$ and the heat deposited into the cold block is $Q_c = mc(T_f' - T_2)$. The work done is:
+\[
+W_{\max} = Q_h - Q_c = mc(T_1 - T_f') - mc(T_f' - T_2) = mc(T_1 + T_2 - 2T_f')
+\]
+\[
+W_{\max} = 500\times(400 + 200 - 2\times 282.8) = 500\times(600 - 565.7) = 500\times 34.3
+\]
+
+\finalanswer{$T_f = 300$ K (direct contact). \quad $\Delta S_{\text{total}} = 58.9$ J/K.\\
+Maximum extractable work (Carnot): $W_{\max} = 17{,}150$ J $\approx 17.2$ kJ.}
+\markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Wave Reflection, Standing Waves, and Energy}
+
+\begin{parts}
+
+%% Part (a) — 3 marks
+\item \textbf{Derivation of reflection and transmission coefficients} \qmarks{3}
+
+Consider an incident wave $y_i = A_i \sin(k_1 x - \omega t)$, a reflected wave $y_r = A_r \sin(k_1 x + \omega t)$, and a transmitted wave $y_t = A_t \sin(k_2 x - \omega t)$.
+
+\textbf{Boundary condition 1 --- Continuity of displacement at $x = 0$:}
+\[
+A_i + A_r = A_t \qquad\text{...(i)}
+\]
+\markstep{1}
+
+\textbf{Boundary condition 2 --- Continuity of transverse force at $x = 0$:}
+
+The transverse force is $F_y = -T\,\partial y/\partial x$. On each side:
+\[
+T k_1(A_i - A_r) = T k_2 A_t
+\]
+Since $Z = \mu v = T/v = Tk/\omega$, and $\omega$ is the same on both sides, this becomes:
+\[
+Z_1(A_i - A_r) = Z_2 A_t \qquad\text{...(ii)}
+\]
+\markstep{1}
+
+Solving (i) and (ii): from (i), $A_t = A_i + A_r$. Substituting into (ii):
+\[
+Z_1(A_i - A_r) = Z_2(A_i + A_r)
+\]
+\[
+A_i(Z_1 - Z_2) = A_r(Z_1 + Z_2)
+\]
+\[
+r = \frac{A_r}{A_i} = \frac{Z_1 - Z_2}{Z_1 + Z_2}
+\]
+From (i): $t = A_t/A_i = 1 + r = 1 + \frac{Z_1 - Z_2}{Z_1 + Z_2} = \frac{2Z_1}{Z_1 + Z_2}$.
+
+\finalanswer{$r = \dfrac{Z_1 - Z_2}{Z_1 + Z_2}$, \qquad $t = \dfrac{2Z_1}{Z_1 + Z_2}$.}
+\markstep{1}
+
+%% Part (b) — 4 marks
+\item \textbf{Tension, wave speeds, and impedances} \qmarks{4}
+
+From the incident wave $y_i = 0.03\sin(5x - 40t)$: $k_1 = 5$ rad/m, $\omega = 40$ rad/s. \markstep{1}
+
+The wave speed on string 1:
+\[
+v_1 = \frac{\omega}{k_1} = \frac{40}{5} = 8\text{ m/s}
+\]
+
+The tension (same in both strings): \fromsheet
+\[
+v_1 = \sqrt{T/\mu_1} \quad\Longrightarrow\quad T = \mu_1 v_1^2 = 0.02\times 64 = 1.28\text{ N}
+\]
+\markstep{1}
+
+The wave speed on string 2:
+\[
+v_2 = \sqrt{T/\mu_2} = \sqrt{1.28/0.08} = \sqrt{16} = 4\text{ m/s}
+\]
+\markstep{1}
+
+The impedances: \fromsheet
+\[
+Z_1 = \mu_1 v_1 = 0.02\times 8 = 0.16\text{ kg/s}
+\]
+\[
+Z_2 = \mu_2 v_2 = 0.08\times 4 = 0.32\text{ kg/s}
+\]
+
+\finalanswer{$T = 1.28$ N, \quad $v_1 = 8$ m/s, \quad $v_2 = 4$ m/s, \quad $Z_1 = 0.16$ kg/s, \quad $Z_2 = 0.32$ kg/s.}
+\markstep{1}
+
+%% Part (c) — 4 marks
+\item \textbf{Reflected and transmitted wave amplitudes and equations} \qmarks{4}
+
+The reflection coefficient: \fromsheet
+\[
+r = \frac{Z_1 - Z_2}{Z_1 + Z_2} = \frac{0.16 - 0.32}{0.16 + 0.32} = \frac{-0.16}{0.48} = -\frac{1}{3}
+\]
+\markstep{1}
+
+The transmission coefficient:
+\[
+t = \frac{2Z_1}{Z_1 + Z_2} = \frac{2\times 0.16}{0.48} = \frac{0.32}{0.48} = \frac{2}{3}
+\]
+
+The reflected amplitude: $A_r = rA_i = -\frac{1}{3}\times 0.03 = -0.01$ m.
+
+The transmitted amplitude: $A_t = tA_i = \frac{2}{3}\times 0.03 = 0.02$ m.
+\markstep{1}
+
+The reflected wave travels in the $-x$ direction on string 1, so:
+\[
+y_r = -0.01\sin(5x + 40t)\text{ m}
+\]
+\markstep{1}
+
+For the transmitted wave, the wavenumber on string 2 is:
+\[
+k_2 = \frac{\omega}{v_2} = \frac{40}{4} = 10\text{ rad/m}
+\]
+\[
+y_t = 0.02\sin(10x - 40t)\text{ m}
+\]
+
+\finalanswer{$A_r = -0.01$ m, $A_t = 0.02$ m.\\
+$y_r = -0.01\sin(5x + 40t)$ m, \quad $y_t = 0.02\sin(10x - 40t)$ m.}
+\markstep{1}
+
+%% Part (d) — 4 marks
+\item \textbf{Power coefficients and incident power} \qmarks{4}
+
+The power reflection coefficient:
+\[
+R = r^2 = \left(-\frac{1}{3}\right)^2 = \frac{1}{9}
+\]
+\markstep{1}
+
+The power transmission coefficient:
+\[
+T_{\text{power}} = \frac{Z_2}{Z_1}\,t^2 = \frac{0.32}{0.16}\times\left(\frac{2}{3}\right)^2 = 2\times\frac{4}{9} = \frac{8}{9}
+\]
+\markstep{1}
+
+Verification:
+\[
+R + T_{\text{power}} = \frac{1}{9} + \frac{8}{9} = 1 \quad\checkmark
+\]
+\markstep{1}
+
+The average power of the incident wave: \fromsheet
+\[
+\langle P\rangle_{\text{inc}} = \frac{1}{2}\mu_1\omega^2 A_i^2 v_1 = \frac{1}{2}\times 0.02\times 40^2\times 0.03^2\times 8
+\]
+\[
+= \frac{1}{2}\times 0.02\times 1600\times 0.0009\times 8 = \frac{1}{2}\times 0.02\times 1600\times 0.0072
+\]
+\[
+= \frac{1}{2}\times 0.02\times 11.52 = \frac{1}{2}\times 0.2304 = 0.1152\text{ W}
+\]
+
+\finalanswer{$R + T_{\text{power}} = 1/9 + 8/9 = 1$ \checkmark. \quad $\langle P\rangle_{\text{inc}} = 0.115$ W.}
+\markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Two-Level System and Interferometry}
+
+\begin{parts}
+
+%% Part (a) — 4 marks
+\item \textbf{Time evolution and probability} \qmarks{4}
+
+The time evolution of energy eigenstates is given by: \fromsheet
+\[
+\ket{E_n} \to e^{-iE_n t/\hbar}\ket{E_n}
+\]
+\markstep{1}
+
+Since $E_1 = 0$ and $E_2 = E_0$:
+\[
+\ket{\psi(t)} = \frac{1}{\sqrt{2}}\bigl(e^{-i\cdot 0\cdot t/\hbar}\ket{1} + e^{-iE_0 t/\hbar}\ket{2}\bigr) = \frac{1}{\sqrt{2}}\bigl(\ket{1} + e^{-iE_0 t/\hbar}\ket{2}\bigr)
+\]
+\markstep{1}
+
+The probability of finding the system in state $\ket{1}$ at time $t$: \recalled
+\[
+P(1,t) = \bigl|\braket{1}{\psi(t)}\bigr|^2 = \left|\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2}
+\]
+\markstep{1}
+
+\finalanswer{$\ket{\psi(t)} = \dfrac{1}{\sqrt{2}}\bigl(\ket{1} + e^{-iE_0 t/\hbar}\ket{2}\bigr)$. \quad $P(1,t) = 1/2$ (constant in time).}
+\markstep{1}
+
+%% Part (b) — 3 marks
+\item \textbf{Expectation value of $\hat{P}$} \qmarks{3}
+
+With $\hat{P} = \ketbra{1}{2} + \ketbra{2}{1}$, we compute:
+
+$\hat{P}\ket{\psi(t)} = \frac{1}{\sqrt{2}}\bigl(\hat{P}\ket{1} + e^{-iE_0 t/\hbar}\hat{P}\ket{2}\bigr)$
+
+Now $\hat{P}\ket{1} = \ket{2}$ and $\hat{P}\ket{2} = \ket{1}$, so:
+\[
+\hat{P}\ket{\psi(t)} = \frac{1}{\sqrt{2}}\bigl(\ket{2} + e^{-iE_0 t/\hbar}\ket{1}\bigr)
+\]
+\markstep{1}
+
+Therefore:
+\[
+\expect{\hat{P}}(t) = \bra{\psi(t)}\hat{P}\ket{\psi(t)} = \frac{1}{2}\bigl(\bra{1} + e^{+iE_0 t/\hbar}\bra{2}\bigr)\bigl(\ket{2} + e^{-iE_0 t/\hbar}\ket{1}\bigr)
+\]
+\[
+= \frac{1}{2}\bigl[\braket{1}{2} + e^{-iE_0 t/\hbar}\braket{1}{1} + e^{+iE_0 t/\hbar}\braket{2}{2} + e^{+iE_0 t/\hbar}e^{-iE_0 t/\hbar}\braket{2}{1}\bigr]
+\]
+
+Using orthonormality ($\braket{1}{2}=\braket{2}{1}=0$, $\braket{1}{1}=\braket{2}{2}=1$): \markstep{1}
+\[
+\expect{\hat{P}}(t) = \frac{1}{2}\bigl(e^{-iE_0 t/\hbar} + e^{+iE_0 t/\hbar}\bigr) = \cos\!\left(\frac{E_0 t}{\hbar}\right)
+\]
+
+\finalanswer{$\expect{\hat{P}}(t) = \cos(E_0 t/\hbar)$.}
+\markstep{1}
+
+%% Part (c) — 4 marks
+\item \textbf{Mach--Zehnder interferometer} \qmarks{4}
+
+Starting from input $\ket{T}$.
+
+\textbf{After BS1:} \recalled
+\[
+\ket{T} \to \frac{1}{\sqrt{2}}\bigl(\ket{T} + i\ket{B}\bigr)
+\]
+\markstep{1}
+
+\textbf{After mirrors} (each path gets a factor of $i$):
+\[
+\frac{1}{\sqrt{2}}\bigl(i\ket{T} + i\cdot i\ket{B}\bigr) = \frac{1}{\sqrt{2}}\bigl(i\ket{T} - \ket{B}\bigr)
+\]
+
+\textbf{After phase shifter} ($e^{i\phi}$ on the top arm only):
+\[
+\frac{1}{\sqrt{2}}\bigl(ie^{i\phi}\ket{T} - \ket{B}\bigr)
+\]
+\markstep{1}
+
+\textbf{After BS2:} Apply the beam splitter transformations to each component:
+\begin{align*}
+&ie^{i\phi}\ket{T} \to ie^{i\phi}\cdot\frac{1}{\sqrt{2}}\bigl(\ket{T} + i\ket{B}\bigr) \\
+&(-1)\ket{B} \to (-1)\cdot\frac{1}{\sqrt{2}}\bigl(i\ket{T} + \ket{B}\bigr)
+\end{align*}
+
+Combining with the overall $1/\sqrt{2}$ factor:
+\[
+\ket{\psi_{\text{out}}} = \frac{1}{2}\bigl[ie^{i\phi}\ket{T} - e^{i\phi}\ket{B} - i\ket{T} - \ket{B}\bigr]
+\]
+\[
+= \frac{1}{2}\bigl[i(e^{i\phi} - 1)\ket{T} + (-e^{i\phi} - 1)\ket{B}\bigr]
+\]
+\markstep{1}
+
+This confirms the output state is proportional to $i(e^{i\phi}-1)\ket{T} + (-e^{i\phi}-1)\ket{B}$.
+
+The detection probabilities (normalising by the factor of $1/2$):
+\[
+P(T) = \frac{|e^{i\phi}-1|^2}{4} = \frac{(e^{i\phi}-1)(e^{-i\phi}-1)}{4} = \frac{2 - 2\cos\phi}{4} = \sin^2\!\left(\frac{\phi}{2}\right)
+\]
+\[
+P(B) = \frac{|e^{i\phi}+1|^2}{4} = \frac{2 + 2\cos\phi}{4} = \cos^2\!\left(\frac{\phi}{2}\right)
+\]
+
+Check: $P(T) + P(B) = \sin^2(\phi/2) + \cos^2(\phi/2) = 1$ \checkmark
+
+\finalanswer{$P(T) = \sin^2(\phi/2)$, \quad $P(B) = \cos^2(\phi/2)$.}
+\markstep{1}
+
+%% Part (d) — 4 marks
+\item \textbf{Which-way detector destroys interference} \qmarks{4}
+
+\textbf{Qualitative explanation:} When the which-way detector records which path the photon takes, the photon becomes entangled with the detector. This entanglement means the photon is no longer in a coherent superposition of the two paths --- the relative phase information between the two arms is effectively lost. As a result, the interference pattern is destroyed, and the photon is equally likely to be found at either output port. \markstep{1}
+
+\textbf{After BS1 + detector interaction:} The combined photon+detector state is: \markstep{1}
+\[
+\ket{\Psi} = \frac{1}{\sqrt{2}}\bigl(\ket{T}\ket{d_T} + i\ket{B}\ket{d_B}\bigr)
+\]
+where $\ket{d_T}$ and $\ket{d_B}$ are orthogonal detector states recording which path the photon took.
+
+\textbf{Tracing through the rest of the interferometer:} After mirrors, phase shifter, and BS2, the top and bottom photon paths evolve independently, but the detector state is correlated with each path. The key point is that when we compute the probability of detecting the photon at, say, output $T$, we must trace over (sum over) the detector states: \markstep{1}
+\[
+P(T) = |\text{amplitude from top path}|^2 + |\text{amplitude from bottom path}|^2
+\]
+
+Since the detector states $\ket{d_T}$ and $\ket{d_B}$ are orthogonal, the cross-terms (interference terms) vanish. Each path independently contributes a probability of $1/4$ to each output port (the factors of $i$ and $e^{i\phi}$ only affect phases, which no longer interfere), giving:
+
+\finalanswer{$P(T) = P(B) = 1/2$, regardless of $\phi$. The interference pattern is completely destroyed by the which-way measurement.}
+\markstep{1}
+
+More explicitly: following the top-path component through mirrors, phase shifter ($e^{i\phi}$), and BS2 gives a contribution $\frac{i e^{i\phi}}{2}(\ket{T}+i\ket{B})\ket{d_T}$. Following the bottom-path component gives $\frac{-1}{2}(i\ket{T}+\ket{B})\ket{d_B}$. The probability of output $T$ is:
+\[
+P(T) = \left|\frac{ie^{i\phi}}{2}\right|^2 + \left|\frac{-i}{2}\right|^2 = \frac{1}{4} + \frac{1}{4} = \frac{1}{2}
+\]
+and similarly $P(B) = 1/4 + 1/4 = 1/2$, independent of $\phi$.
+
+\end{parts}
+
+\end{document}

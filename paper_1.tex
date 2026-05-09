@@ -1,0 +1,383 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation in sub-parts
+\renewcommand{\marks}[1]{\hfill [#1]}
+
+% MCQ environment
+\newcounter{mcqcounter}
+\newcommand{\mcq}[1]{%
+  \stepcounter{mcqcounter}%
+  \vspace{0.3cm}%
+  \noindent\textbf{\themcqcounter.} #1 \hfill [2 marks]%
+  \vspace{0.1cm}%
+}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=\Alph*.,leftmargin=2.5em,itemsep=0.1cm}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- Paper 1}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012}\\[0.5cm]
+{\large Duration: 3 Hours}\\[0.3cm]
+{\large Total Marks: 100}\\[0.5cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Instructions:}
+\begin{itemize}[itemsep=0.1cm]
+\item Answer \textbf{ALL} questions.
+\item \textbf{Section A} (Oscillations and Waves): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section B} (Quantum Physics): 10 multiple-choice questions, 20 marks total.
+\item \textbf{Section C}: 4 long-answer questions, 60 marks total.
+\item An approved calculator is permitted.
+\item A formula sheet is provided at the end of this paper.
+\item Show all working for Section C. Marks will be awarded for clear, logical solutions.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ
+% ============================================================
+\section*{Section A: Oscillations and Waves}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION A1: SHM — extract period/frequency from x(t)
+\mcq{A particle undergoes simple harmonic motion described by $x(t) = 0.05\cos(6\pi t + \pi/4)$, where $x$ is in metres and $t$ in seconds. What is the period of oscillation?}
+\begin{choices}
+\item $\dfrac{1}{6}$ s
+\item $\dfrac{1}{3}$ s
+\item $3$ s
+\item $6\pi$ s
+\end{choices}
+
+% QUESTION A2: SHM energy — find max velocity from given k and A
+\mcq{A block of mass $0.4$ kg is attached to a spring with spring constant $k = 160$ N/m and oscillates with amplitude $A = 0.08$ m. What is the maximum speed of the block?}
+\begin{choices}
+\item $0.80$ m/s
+\item $1.60$ m/s
+\item $3.20$ m/s
+\item $6.40$ m/s
+\end{choices}
+
+% QUESTION A3: Damped oscillation — identify damping regime
+\mcq{A damped oscillator has mass $m = 0.25$ kg, spring constant $k = 100$ N/m, and damping coefficient $b = 10$ kg/s. The damping parameter is $\gamma = b/m$ and the natural frequency is $\omega_0 = \sqrt{k/m}$. What is the damping regime of this system?}
+\begin{choices}
+\item Underdamped ($\gamma < 2\omega_0$)
+\item Critically damped ($\gamma = 2\omega_0$)
+\item Overdamped ($\gamma > 2\omega_0$)
+\item Undamped ($\gamma = 0$)
+\end{choices}
+
+% QUESTION A4: Forced oscillation — what happens at resonance (qualitative)
+\mcq{A lightly damped oscillator is driven by an external sinusoidal force. At resonance, which of the following statements is correct?}
+\begin{choices}
+\item The amplitude is at its maximum and the phase lag of the displacement behind the driving force is $\pi/2$.
+\item The amplitude is at its maximum and the displacement is in phase with the driving force.
+\item The amplitude is zero and the phase lag is $\pi$.
+\item The amplitude is at its maximum and the phase lag is $\pi$.
+\end{choices}
+
+% QUESTION A5: Wave speed on a string
+\mcq{A guitar string has a linear mass density of $\mu = 0.004$ kg/m and is held under a tension of $T = 100$ N. What is the speed of transverse waves on this string?}
+\begin{choices}
+\item $25$ m/s
+\item $50$ m/s
+\item $158$ m/s
+\item $250$ m/s
+\end{choices}
+
+% QUESTION A6: Impedance matching — when is there no reflection?
+\mcq{Two strings are joined together. The impedance of string 1 is $Z_1$ and the impedance of string 2 is $Z_2$. Under what condition is there \textbf{no} reflected wave when a wave travelling on string 1 reaches the junction?}
+\begin{choices}
+\item $Z_1 = 0$
+\item $Z_2 = 0$
+\item $Z_1 = Z_2$
+\item $Z_1 Z_2 = 1$
+\end{choices}
+
+% QUESTION A7: Sound intensity in decibels
+\mcq{A jet engine at a certain distance produces a sound intensity of $I = 0.01$ W/m$^2$. What is the corresponding sound level in decibels? (Take $I_0 = 10^{-12}$ W/m$^2$.)}
+\begin{choices}
+\item $80$ dB
+\item $90$ dB
+\item $100$ dB
+\item $120$ dB
+\end{choices}
+
+% QUESTION A8: Doppler effect — ambulance approaching
+\mcq{An ambulance siren emits sound at a frequency of $f = 600$ Hz. The ambulance is approaching a stationary observer at a speed of $v_s = 34$ m/s. Taking the speed of sound in air as $v = 340$ m/s, what frequency does the observer hear?}
+\begin{choices}
+\item $540$ Hz
+\item $600$ Hz
+\item $660$ Hz
+\item $667$ Hz
+\end{choices}
+
+% QUESTION A9: Standing waves on a string — fundamental frequency
+\mcq{A string of length $L = 0.80$ m is fixed at both ends and supports transverse waves with speed $v = 320$ m/s. What is the fundamental frequency of vibration?}
+\begin{choices}
+\item $100$ Hz
+\item $200$ Hz
+\item $400$ Hz
+\item $640$ Hz
+\end{choices}
+
+% QUESTION A10: Beats
+\mcq{Two tuning forks are sounded together. Fork A has a frequency of $440$ Hz and fork B has a frequency of $446$ Hz. How many beats per second are heard?}
+\begin{choices}
+\item $3$
+\item $6$
+\item $443$
+\item $886$
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ
+% ============================================================
+\section*{Section B: Quantum Physics}
+\noindent\textit{Answer all 10 questions. Each question is worth 2 marks.}\\[0.3cm]
+
+\setcounter{mcqcounter}{0}
+
+% QUESTION B1: Identify which expression is a valid ket/bra/operator
+\mcq{Which of the following expressions represents a \textbf{linear operator} acting on a Hilbert space?}
+\begin{choices}
+\item $\braket{\alpha}{\beta}$
+\item $\ketbra{\alpha}{\beta}$
+\item $\ket{\alpha}$
+\item $\bra{\beta}$
+\end{choices}
+
+% QUESTION B2: Normalisation — find normalisation constant
+\mcq{A quantum state is written as $\ket{\psi} = \alpha\bigl(\ket{1} + 2\ket{2}\bigr)$, where $\ket{1}$ and $\ket{2}$ are orthonormal basis states and $\alpha$ is a real, positive normalisation constant. What is the value of $\alpha$?}
+\begin{choices}
+\item $1/3$
+\item $1/\sqrt{3}$
+\item $1/\sqrt{5}$
+\item $1/5$
+\end{choices}
+
+% QUESTION B3: Inner product calculation
+\mcq{Let $\ket{\phi} = \dfrac{1}{\sqrt{2}}\ket{1} + \dfrac{i}{\sqrt{2}}\ket{2}$ and $\ket{\psi} = \dfrac{1}{\sqrt{2}}\ket{1} - \dfrac{i}{\sqrt{2}}\ket{2}$, where $\{\ket{1}, \ket{2}\}$ is an orthonormal basis. What is $\braket{\phi}{\psi}$?}
+\begin{choices}
+\item $0$
+\item $1$
+\item $i$
+\item $-i$
+\end{choices}
+
+% QUESTION B4: Hermitian operator test
+\mcq{Consider the following operators defined on a two-state orthonormal basis $\{\ket{1}, \ket{2}\}$. Which one is Hermitian?}
+\begin{choices}
+\item $\hat{A} = i\ketbra{1}{2} + i\ketbra{2}{1}$
+\item $\hat{B} = \ketbra{1}{2} - \ketbra{2}{1}$
+\item $\hat{C} = \ketbra{1}{2} + \ketbra{2}{1}$
+\item $\hat{D} = i\ketbra{1}{2} - i\ketbra{2}{1}$
+\end{choices}
+
+% QUESTION B5: Born rule — given state in energy eigenbasis, find P(E1)
+\mcq{A particle is in the state $\ket{\psi} = \dfrac{3}{5}\ket{E_1} + \dfrac{4}{5}\ket{E_2}$, where $\ket{E_1}$ and $\ket{E_2}$ are orthonormal energy eigenstates with energies $E_1$ and $E_2$ respectively. If the energy is measured, what is the probability of obtaining $E_1$?}
+\begin{choices}
+\item $3/5$
+\item $9/25$
+\item $16/25$
+\item $4/5$
+\end{choices}
+
+% QUESTION B6: Spin measurement — particle in |↑z⟩, measure S_x
+\mcq{A spin-1/2 particle is prepared in the state $\ket{\!\uparrow_z}$. A measurement of $S_x$ is performed. What is the probability of obtaining $+\hbar/2$?}
+\begin{choices}
+\item $0$
+\item $1/4$
+\item $1/2$
+\item $1$
+\end{choices}
+
+% QUESTION B7: Time evolution — which quantity is conserved
+\mcq{A quantum system has Hamiltonian $H$. A state is prepared at $t=0$ and then evolves in time under $H$. Which of the following quantities is \textbf{always} conserved during this time evolution?}
+\begin{choices}
+\item The probabilities of measuring each position eigenvalue
+\item The expectation value of $S_x$
+\item The probability of measuring each energy eigenvalue
+\item The expectation value of $S_z$
+\end{choices}
+
+% QUESTION B8: Entanglement — identify which 2-particle state is entangled
+\mcq{Consider two spin-1/2 particles, labelled 1 and 2. Which of the following two-particle states is \textbf{entangled}?}
+\begin{choices}
+\item $\ket{\!\uparrow_z}_1 \ket{\!\downarrow_z}_2$
+\item $\dfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z}_1 + \ket{\!\downarrow_z}_1\bigr)\ket{\!\uparrow_z}_2$
+\item $\dfrac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z}_1\ket{\!\downarrow_z}_2 - \ket{\!\downarrow_z}_1\ket{\!\uparrow_z}_2\bigr)$
+\item $\ket{\!\downarrow_z}_1 \ket{\!\downarrow_z}_2$
+\end{choices}
+
+% QUESTION B9: Identical particles — swapping two fermions
+\mcq{Two identical fermions occupy a joint quantum state $\ket{\Psi}$. What happens to $\ket{\Psi}$ when the labels of the two particles are exchanged (i.e.\ the SWAP operator is applied)?}
+\begin{choices}
+\item $\ket{\Psi}$ is unchanged: $\text{SWAP}\ket{\Psi} = +\ket{\Psi}$
+\item $\ket{\Psi}$ acquires a factor of $-1$: $\text{SWAP}\ket{\Psi} = -\ket{\Psi}$
+\item $\ket{\Psi}$ acquires a factor of $i$: $\text{SWAP}\ket{\Psi} = i\ket{\Psi}$
+\item $\ket{\Psi}$ becomes orthogonal to the original state
+\end{choices}
+
+% QUESTION B10: Particle physics — quark content of neutron
+\mcq{A neutron is a composite particle made of quarks. What is the quark content of a neutron?}
+\begin{choices}
+\item $uuu$
+\item $uud$
+\item $udd$
+\item $ddd$
+\end{choices}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER QUESTIONS
+% ============================================================
+\section*{Section C: Long Answer Questions}
+\noindent\textit{Answer all 4 questions. Show all working.}
+
+\setcounter{questioncounter}{0}
+
+% ---- QUESTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Projectile Motion and Energy Conservation}
+
+\noindent A ball is launched from ground level at speed $v_0 = 25$ m/s at an angle $\theta = 53^\circ$ above the horizontal. Take $g = 9.81$ m/s$^2$.
+
+\begin{parts}
+\item Find the maximum height $H$ reached by the ball. \qmarks{4}
+
+\item Find the range $R$ of the ball (the horizontal distance when it returns to ground level). \qmarks{3}
+
+\item A second ball of mass $m = 0.2$ kg is dropped from rest at height $H$ (the value found in part~(a)). It falls onto a vertical spring of spring constant $k = 500$ N/m resting on the ground. Using conservation of energy, find the maximum compression $x$ of the spring. \qmarks{4}
+
+\item The fully compressed spring is now used to launch a marble of mass $m_{\text{marble}} = 0.1$ kg horizontally from the top of a $20$ m high cliff. Using the compression found in part~(c), find the speed of the marble at the instant it hits the ground. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Thermodynamic Processes}
+
+\noindent Two moles ($n = 2$) of a monatomic ideal gas are initially at temperature $T_1 = 300$ K and volume $V_1 = 0.05$ m$^3$. Take $R = 8.314$ J/(mol$\cdot$K), $\gamma = 5/3$ for a monatomic ideal gas, and $C_V = \frac{3}{2}R$ per mole.
+
+\begin{parts}
+\item The gas undergoes a \textbf{reversible isothermal expansion} to volume $V_2 = 0.15$ m$^3$. Calculate the work done by the gas. \qmarks{3}
+
+\item Calculate the heat absorbed by the gas during this isothermal expansion. \qmarks{3}
+
+\item The gas then undergoes a \textbf{reversible adiabatic expansion} from $(T_2 = 300\text{ K},\; V_2 = 0.15\text{ m}^3)$ to a final volume $V_3 = 0.30$ m$^3$. Find the final temperature $T_3$. \qmarks{4}
+
+\item Calculate the work done by the gas during the adiabatic expansion. \qmarks{2}
+
+\item Calculate the total entropy change of the universe for the isothermal process in part~(a). Comment on whether this result is consistent with the process being reversible. \qmarks{3}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Damped and Forced Oscillations}
+
+\begin{parts}
+\item Write down the equation of motion for a damped harmonic oscillator of mass $m$, spring constant $k$, and damping coefficient $b$ (where the damping force is $-b\dot{x}$). Define the damping parameter $\gamma$ in terms of $b$ and $m$. \qmarks{2}
+
+\item A block of mass $m = 0.5$ kg is attached to a spring with spring constant $k = 200$ N/m and experiences a damping coefficient $b = 2$ kg/s. Calculate the natural angular frequency $\omega_0$, the damping parameter $\gamma$, and the damped angular frequency $\omega_d$. \qmarks{3}
+
+\item Calculate the quality factor $Q$ of this system. State whether the system is underdamped, critically damped, or overdamped, giving a brief justification. \qmarks{2}
+
+\item The system is now driven by an external force $F(t) = F_0\cos(\omega t)$ with $F_0 = 5$ N. Find the steady-state amplitude of oscillation when the driving angular frequency is $\omega = 19$ rad/s. \qmarks{4}
+
+\item Find the driving angular frequency $\omega_{\text{res}}$ at which the steady-state amplitude is maximum (the amplitude resonance frequency). Calculate the maximum amplitude $A_{\text{max}}$ at this resonance frequency. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ---- QUESTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Spin-1/2 and Measurement}
+
+\noindent A spin-1/2 particle is prepared in the state
+\[
+\ket{\psi} = \frac{1}{\sqrt{3}}\ket{\!\uparrow_z} + \sqrt{\frac{2}{3}}\,\ket{\!\downarrow_z}.
+\]
+
+\begin{parts}
+\item Verify that $\ket{\psi}$ is normalised. If $S_z$ is measured, state the possible outcomes and their probabilities. \qmarks{3}
+
+\item Express $\ket{\psi}$ in the $S_x$ eigenbasis $\{\ket{\!\uparrow_x},\, \ket{\!\downarrow_x}\}$. Hence, if $S_x$ is measured on the original state $\ket{\psi}$, find the probability of each outcome. \qmarks{4}
+
+\item After measuring $S_x$ and obtaining the result $+\hbar/2$, the particle's state collapses to $\ket{\!\uparrow_x}$. If $S_z$ is then measured on this post-measurement state, find the probability of each outcome. \qmarks{4}
+
+\item Consider the operator $\hat{A} = \hbar\bigl(\ketbra{\!\uparrow_z}{\downarrow_z\!} + \ketbra{\!\downarrow_z}{\uparrow_z\!}\bigr)$. Find the eigenvalues and normalised eigenvectors of $\hat{A}$. Determine whether $\hat{A}$ is Hermitian, justifying your answer. \qmarks{4}
+\end{parts}
+
+\newpage
+
+% ============================================================
+% FORMULA SHEET
+% ============================================================
+\input{equation_sheet}
+
+\end{document}

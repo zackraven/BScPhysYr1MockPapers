@@ -1,0 +1,625 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{PHYS10012}
+\rhead{Mock Examination --- Solutions}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% Question numbering
+\newcounter{questioncounter}
+\newcommand{\question}[1]{%
+  \stepcounter{questioncounter}%
+  \vspace{0.5cm}%
+  \noindent\textbf{Question \thequestioncounter.} \hfill [#1 marks]%
+  \vspace{0.2cm}%
+  \par%
+}
+
+% Sub-part environments
+\newlist{parts}{enumerate}{2}
+\setlist[parts,1]{label=(\alph*),leftmargin=2em,itemsep=0.3cm}
+\setlist[parts,2]{label=(\roman*),leftmargin=2em,itemsep=0.2cm}
+
+% Mark allocation
+\renewcommand{\marks}[1]{\hfill [#1]}
+\newcommand{\markstep}[1]{\hfill\textcolor{blue}{[#1]}}
+
+% Boxed final answer
+\newcommand{\finalanswer}[1]{%
+  \begin{tcolorbox}[colback=green!5!white,colframe=green!50!black,boxrule=0.5pt]
+  #1
+  \end{tcolorbox}
+}
+
+% Equation source notation
+\newcommand{\fromsheet}{\textit{(From formula sheet)}}
+\newcommand{\recalled}{\textit{(Recalled --- not on formula sheet)}}
+
+% MCQ answer format
+\newcounter{mcqcounter}
+\newcommand{\mcqanswer}[2]{%
+  \stepcounter{mcqcounter}%
+  \noindent\textbf{\themcqcounter.} \textbf{#1} --- #2\\[0.2cm]%
+}
+
+% Dirac notation shortcuts
+\renewcommand{\ket}[1]{\left|#1\right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1\right|}
+\renewcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\renewcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle #2\right|}
+\renewcommand{\expect}[1]{\left\langle #1\right\rangle}
+
+\begin{document}
+
+% Title block
+\begin{center}
+{\Large\textbf{UNIVERSITY OF BRISTOL}}\\[0.3cm]
+{\large Faculty of Science}\\[0.5cm]
+{\Large\textbf{MOCK EXAMINATION --- SOLUTIONS AND MARK SCHEME}}\\[0.3cm]
+{\large\textbf{Core Physics I --- Classical, Quantum and Thermal Physics}}\\[0.2cm]
+{\large Module Code: PHYS10012 --- Paper 1}\\[0.5cm]
+{\large Total Marks: 100}\\[0.3cm]
+\end{center}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.3cm}
+\noindent\textbf{Marking Notes:}
+\begin{itemize}[itemsep=0.1cm]
+\item Mark allocations are shown in \textcolor{blue}{blue} at each step.
+\item Final answers are highlighted in green boxes.
+\item ``\fromsheet'' indicates the equation is on the provided formula sheet.
+\item ``\recalled'' indicates the equation must be known from memory.
+\item Award partial marks for correct method even if the final answer is wrong.
+\item Accept equivalent correct forms of answers.
+\end{itemize}
+
+\noindent\rule{\textwidth}{0.4pt}
+\newpage
+
+% ============================================================
+% SECTION A: OSCILLATIONS AND WAVES MCQ ANSWERS
+% ============================================================
+\section*{Section A: Oscillations and Waves --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{B}{The displacement is $x(t)=0.05\cos(6\pi t + \pi/4)$. The angular frequency is $\omega = 6\pi$ rad/s. \fromsheet\ The period is $T = 2\pi/\omega = 2\pi/(6\pi) = 1/3$ s.}
+
+\mcqanswer{B}{The total energy is $E = \frac{1}{2}kA^2$. \recalled\ At maximum speed all energy is kinetic: $\frac{1}{2}mv_{\max}^2 = \frac{1}{2}kA^2$, so $v_{\max} = A\sqrt{k/m} = 0.08\times\sqrt{160/0.4} = 0.08\times 20 = 1.60$ m/s.}
+
+\mcqanswer{B}{We have $\omega_0 = \sqrt{k/m} = \sqrt{100/0.25} = \sqrt{400} = 20$ rad/s and $\gamma = b/m = 10/0.25 = 40$ s$^{-1}$. \recalled\ The critical damping condition is $\gamma = 2\omega_0$. Here $2\omega_0 = 2\times 20 = 40$ s$^{-1}$, and $\gamma = 40$ s$^{-1}$, so $\gamma = 2\omega_0$ exactly. The system is \textbf{critically damped}.}
+
+\mcqanswer{A}{At (amplitude) resonance, the displacement amplitude is maximum and the phase lag $\delta$ of the displacement behind the driving force satisfies $\tan\delta \to \infty$, giving $\delta = \pi/2$. \fromsheet\ (from $\tan\delta = \gamma\omega/(\omega_0^2 - \omega^2)$, and at resonance $\omega \approx \omega_0$ for light damping, so $\delta = \pi/2$).}
+
+\mcqanswer{C}{The wave speed on a string is $v = \sqrt{T/\mu}$. \fromsheet\ $v = \sqrt{100/0.004} = \sqrt{25000} = 158$ m/s (to 3 significant figures).}
+
+\mcqanswer{C}{The reflection coefficient is $r = (Z_1 - Z_2)/(Z_1 + Z_2)$. \fromsheet\ For no reflection, $r = 0$, which requires $Z_1 = Z_2$ (impedance matching).}
+
+\mcqanswer{C}{$\beta = 10\log_{10}(I/I_0) = 10\log_{10}(0.01/10^{-12}) = 10\log_{10}(10^{10}) = 10 \times 10 = 100$ dB. \fromsheet}
+
+\mcqanswer{D}{For a source approaching a stationary observer: $f' = f\cdot v/(v - v_s)$. \fromsheet\ $f' = 600\times 340/(340-34) = 600\times 340/306 = 600\times 1.111 = 666.7 \approx 667$ Hz.}
+
+\mcqanswer{B}{The fundamental frequency for a string fixed at both ends is $f_1 = v/(2L)$. \fromsheet\ $f_1 = 320/(2\times 0.80) = 320/1.60 = 200$ Hz.}
+
+\mcqanswer{B}{The beat frequency is $f_{\text{beat}} = |f_1 - f_2| = |440 - 446| = 6$ beats per second. \recalled}
+
+\newpage
+
+% ============================================================
+% SECTION B: QUANTUM PHYSICS MCQ ANSWERS
+% ============================================================
+\section*{Section B: Quantum Physics --- Answers}
+
+\setcounter{mcqcounter}{0}
+
+\mcqanswer{B}{$\braket{\alpha}{\beta}$ is a scalar (inner product). $\ket{\alpha}$ is a ket vector. $\bra{\beta}$ is a bra (dual vector). $\ketbra{\alpha}{\beta}$ is an outer product, which is a \textbf{linear operator} that maps kets to kets.}
+
+\mcqanswer{C}{Normalisation requires $\braket{\psi}{\psi} = 1$. We have $\braket{\psi}{\psi} = |\alpha|^2(1^2 + 2^2) = 5\alpha^2 = 1$, so $\alpha = 1/\sqrt{5}$.}
+
+\mcqanswer{A}{$\braket{\phi}{\psi} = \left(\frac{1}{\sqrt{2}}\right)^*\!\!\left(\frac{1}{\sqrt{2}}\right) + \left(\frac{i}{\sqrt{2}}\right)^*\!\!\left(\frac{-i}{\sqrt{2}}\right) = \frac{1}{2} + \frac{(-i)(-i)}{2} = \frac{1}{2} + \frac{i^2}{2} = \frac{1}{2} + \frac{-1}{2} = 0$. The states are orthogonal.}
+
+\mcqanswer{C}{For an operator to be Hermitian, $\hat{O}^\dagger = \hat{O}$. We have $(\ketbra{1}{2})^\dagger = \ketbra{2}{1}$ and $(i\ketbra{1}{2})^\dagger = -i\ketbra{2}{1}$. So: $\hat{A}^\dagger = -i\ketbra{2}{1} - i\ketbra{1}{2} \neq \hat{A}$. $\hat{B}^\dagger = \ketbra{2}{1} - \ketbra{1}{2} = -\hat{B} \neq \hat{B}$. $\hat{C}^\dagger = \ketbra{2}{1} + \ketbra{1}{2} = \hat{C}$ --- Hermitian. $\hat{D}^\dagger = -i\ketbra{2}{1} + i\ketbra{1}{2} = -\hat{D} \neq \hat{D}$.}
+
+\mcqanswer{B}{By the Born rule \recalled, $P(E_1) = |\braket{E_1}{\psi}|^2 = (3/5)^2 = 9/25$.}
+
+\mcqanswer{C}{From the formula sheet, $\ket{\!\uparrow_z} = \frac{1}{\sqrt{2}}\ket{\!\uparrow_x} + \frac{1}{\sqrt{2}}\ket{\!\downarrow_x}$. \fromsheet\ Therefore $P(S_x = +\hbar/2) = |\braket{\uparrow_x}{\uparrow_z}|^2 = (1/\sqrt{2})^2 = 1/2$.}
+
+\mcqanswer{C}{Time evolution multiplies each energy eigenstate coefficient by a phase factor $e^{-iE_n t/\hbar}$, which does not change the modulus of the coefficient. \fromsheet\ Therefore the probabilities of measuring each energy eigenvalue $P(E_n) = |c_n|^2$ are conserved. The other quantities are generally not conserved unless the corresponding operator commutes with $H$.}
+
+\mcqanswer{C}{Option A is a product state $\ket{\!\uparrow_z}_1\ket{\!\downarrow_z}_2$. Option B can be written as $\frac{1}{\sqrt{2}}(\ket{\!\uparrow_z}_1\ket{\!\uparrow_z}_2 + \ket{\!\downarrow_z}_1\ket{\!\uparrow_z}_2)$, which factorises as $\frac{1}{\sqrt{2}}(\ket{\!\uparrow_z}_1 + \ket{\!\downarrow_z}_1)\otimes\ket{\!\uparrow_z}_2$ --- a product state. Option D is a product state. Option C, $\frac{1}{\sqrt{2}}(\ket{\!\uparrow_z}_1\ket{\!\downarrow_z}_2 - \ket{\!\downarrow_z}_1\ket{\!\uparrow_z}_2)$, cannot be factorised into a product of single-particle states, so it is entangled.}
+
+\mcqanswer{B}{Fermions have antisymmetric states under particle exchange. \recalled\ The SWAP operator applied to a two-fermion state gives $\text{SWAP}\ket{\Psi} = -\ket{\Psi}$.}
+
+\mcqanswer{C}{The neutron is a baryon with quark content $udd$. \recalled\ Its charge is $+2/3 + (-1/3) + (-1/3) = 0$, consistent with the neutron being electrically neutral.}
+
+\newpage
+
+% ============================================================
+% SECTION C: LONG ANSWER SOLUTIONS
+% ============================================================
+\section*{Section C: Long Answer Solutions}
+
+\setcounter{questioncounter}{0}
+
+% ---- SOLUTION C1: MECHANICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Projectile Motion and Energy Conservation}
+
+\begin{parts}
+
+%% Part (a) — 4 marks
+\item \textbf{Maximum height} \qmarks{4}
+
+The vertical component of the initial velocity is:
+\[
+v_{0y} = v_0\sin\theta = 25\sin 53^\circ = 25\times 0.7986 = 19.97\text{ m/s}
+\]
+\markstep{1}
+
+At maximum height, the vertical velocity is zero. Using $v^2 = u^2 + 2as$ \fromsheet\ with $v = 0$, $u = v_{0y}$, $a = -g$:
+\[
+0 = v_{0y}^2 - 2gH
+\]
+\markstep{1}
+
+Solving for $H$:
+\[
+H = \frac{v_{0y}^2}{2g} = \frac{v_0^2\sin^2\theta}{2g} = \frac{625 \times 0.6378}{19.62} = \frac{398.6}{19.62}
+\]
+\markstep{1}
+
+\finalanswer{$H = 20.3$ m}
+\markstep{1}
+
+%% Part (b) — 3 marks
+\item \textbf{Range} \qmarks{3}
+
+Using the range formula (derived from SUVAT, with launch and landing at the same height):
+\[
+R = \frac{v_0^2\sin 2\theta}{g}
+\]
+\markstep{1}
+
+Substituting values, with $\sin 2\theta = \sin 106^\circ = 0.9613$:
+\[
+R = \frac{625\times 0.9613}{9.81} = \frac{600.8}{9.81}
+\]
+\markstep{1}
+
+\finalanswer{$R = 61.2$ m}
+\markstep{1}
+
+%% Part (c) — 4 marks
+\item \textbf{Maximum compression of the spring} \qmarks{4}
+
+The ball is dropped from rest at height $H = 20.3$ m. By conservation of energy \recalled, the gravitational potential energy at the top equals the elastic potential energy stored in the spring at maximum compression (taking the ground as the reference level, and noting that at maximum compression the ball is momentarily at rest):
+\[
+mgH = \frac{1}{2}kx^2
+\]
+\markstep{1}
+
+(Here we neglect the small additional distance $x$ the ball descends while compressing the spring --- or equivalently, we note the problem says the ball falls \emph{onto} the spring on the ground, and for this setup the height from which it falls is $H$.)
+\markstep{1}
+
+Solving for $x$:
+\[
+x^2 = \frac{2mgH}{k} = \frac{2\times 0.2\times 9.81\times 20.3}{500} = \frac{79.66}{500} = 0.1593\text{ m}^2
+\]
+\markstep{1}
+
+\finalanswer{$x = \sqrt{0.1593} = 0.399 \approx 0.40$ m}
+\markstep{1}
+
+%% Part (d) — 4 marks
+\item \textbf{Speed of marble at impact} \qmarks{4}
+
+The energy stored in the compressed spring is:
+\[
+E_{\text{spring}} = \frac{1}{2}kx^2 = \frac{1}{2}\times 500\times 0.1593 = 39.8\text{ J}
+\]
+\markstep{1}
+
+This energy is converted to kinetic energy of the marble (mass $m_{\text{marble}} = 0.1$ kg), giving it a horizontal launch speed:
+\[
+\frac{1}{2}m_{\text{marble}}v_x^2 = E_{\text{spring}} \quad\Rightarrow\quad v_x = \sqrt{\frac{2\times 39.8}{0.1}} = \sqrt{796} = 28.2\text{ m/s}
+\]
+\markstep{1}
+
+The marble is launched horizontally from the top of a 20 m cliff. The vertical speed acquired in falling $h = 20$ m from rest is:
+\[
+v_y = \sqrt{2gh} = \sqrt{2\times 9.81\times 20} = \sqrt{392.4} = 19.8\text{ m/s}
+\]
+\markstep{1}
+
+The speed at impact is the magnitude of the total velocity:
+\[
+v = \sqrt{v_x^2 + v_y^2} = \sqrt{28.2^2 + 19.8^2} = \sqrt{795.2 + 392.0} = \sqrt{1187}
+\]
+
+\finalanswer{$v = 34.5$ m/s}
+\markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C2: PROPERTIES OF MATTER (15 marks) ----
+\question{15}
+
+\noindent\textbf{Thermodynamic Processes}
+
+\begin{parts}
+
+%% Part (a) — 3 marks
+\item \textbf{Work done in isothermal expansion} \qmarks{3}
+
+For a reversible isothermal expansion of an ideal gas: \fromsheet
+\[
+W = nRT\ln\!\left(\frac{V_2}{V_1}\right)
+\]
+\markstep{1}
+
+Substituting:
+\[
+W = 2\times 8.314\times 300\times\ln\!\left(\frac{0.15}{0.05}\right) = 4988.4\times\ln 3 = 4988.4\times 1.0986
+\]
+\markstep{1}
+
+\finalanswer{$W = 5480$ J $\approx 5.48$ kJ}
+\markstep{1}
+
+%% Part (b) — 3 marks
+\item \textbf{Heat absorbed during isothermal expansion} \qmarks{3}
+
+For an isothermal process involving an ideal gas, the internal energy depends only on temperature, so $\Delta U = 0$. \markstep{1}
+
+By the first law of thermodynamics \recalled: $\Delta U = Q - W$, so:
+\[
+0 = Q - W \quad\Rightarrow\quad Q = W
+\]
+\markstep{1}
+
+\finalanswer{$Q = 5480$ J $\approx 5.48$ kJ}
+\markstep{1}
+
+%% Part (c) — 4 marks
+\item \textbf{Final temperature after adiabatic expansion} \qmarks{4}
+
+For a reversible adiabatic process: \fromsheet
+\[
+TV^{\gamma-1} = \text{const}
+\]
+\markstep{1}
+
+Therefore:
+\[
+T_2 V_2^{\gamma-1} = T_3 V_3^{\gamma-1}
+\]
+\markstep{1}
+
+Solving for $T_3$, with $\gamma - 1 = 5/3 - 1 = 2/3$:
+\[
+T_3 = T_2\left(\frac{V_2}{V_3}\right)^{\gamma-1} = 300\times\left(\frac{0.15}{0.30}\right)^{2/3} = 300\times(0.5)^{2/3}
+\]
+\markstep{1}
+
+$(0.5)^{2/3} = (2^{-1})^{2/3} = 2^{-2/3} = 1/2^{2/3} = 1/\sqrt[3]{4} = 1/1.587 = 0.630$.
+
+\finalanswer{$T_3 = 300\times 0.630 = 189$ K}
+\markstep{1}
+
+%% Part (d) — 2 marks
+\item \textbf{Work done during adiabatic expansion} \qmarks{2}
+
+For an adiabatic process, $Q = 0$, so by the first law: $\Delta U = -W$, i.e., $W = -\Delta U$. \markstep{1}
+
+For a monatomic ideal gas, $\Delta U = nC_V(T_3 - T_2) = nC_V\Delta T$:
+\[
+W = -nC_V(T_3 - T_2) = nC_V(T_2 - T_3) = 2\times\frac{3}{2}\times 8.314\times(300 - 189)
+\]
+\[
+W = 2\times 12.471\times 111 = 2768.6\text{ J}
+\]
+
+\finalanswer{$W \approx 2770$ J $\approx 2.77$ kJ}
+\markstep{1}
+
+%% Part (e) — 3 marks
+\item \textbf{Entropy change of the universe for the isothermal process} \qmarks{3}
+
+The entropy change of the gas during the isothermal expansion: \fromsheet
+\[
+\Delta S_{\text{gas}} = nR\ln\!\left(\frac{V_2}{V_1}\right) = 2\times 8.314\times\ln 3 = 16.628\times 1.0986 = 18.27\text{ J/K}
+\]
+\markstep{1}
+
+The gas absorbs heat $Q = 5480$ J from a thermal reservoir at temperature $T = 300$ K, so the entropy change of the reservoir is:
+\[
+\Delta S_{\text{reservoir}} = -\frac{Q}{T} = -\frac{5480}{300} = -18.27\text{ J/K}
+\]
+\markstep{1}
+
+The total entropy change of the universe is:
+\[
+\Delta S_{\text{universe}} = \Delta S_{\text{gas}} + \Delta S_{\text{reservoir}} = 18.27 + (-18.27) = 0
+\]
+
+\finalanswer{$\Delta S_{\text{universe}} = 0$. This is consistent with the process being reversible: reversible processes produce no net entropy in the universe, in accordance with the second law of thermodynamics.}
+\markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C3: OSCILLATIONS AND WAVES (15 marks) ----
+\question{15}
+
+\noindent\textbf{Damped and Forced Oscillations}
+
+\begin{parts}
+
+%% Part (a) — 2 marks
+\item \textbf{Equation of motion and definition of $\gamma$} \qmarks{2}
+
+The equation of motion for a damped harmonic oscillator is: \recalled
+\[
+m\ddot{x} + b\dot{x} + kx = 0
+\]
+or equivalently:
+\[
+\ddot{x} + \gamma\dot{x} + \omega_0^2 x = 0
+\]
+\markstep{1}
+
+where the damping parameter is defined as:
+\[
+\gamma = \frac{b}{m}
+\]
+\markstep{1}
+
+%% Part (b) — 3 marks
+\item \textbf{Calculate $\omega_0$, $\gamma$, and $\omega_d$} \qmarks{3}
+
+The natural angular frequency: \fromsheet
+\[
+\omega_0 = \sqrt{\frac{k}{m}} = \sqrt{\frac{200}{0.5}} = \sqrt{400} = 20\text{ rad/s}
+\]
+\markstep{1}
+
+The damping parameter: \recalled
+\[
+\gamma = \frac{b}{m} = \frac{2}{0.5} = 4\text{ s}^{-1}
+\]
+\markstep{1}
+
+The damped angular frequency: \fromsheet
+\[
+\omega_d = \sqrt{\omega_0^2 - \gamma^2/4} = \sqrt{400 - 16/4} = \sqrt{400 - 4} = \sqrt{396}
+\]
+
+\finalanswer{$\omega_0 = 20$ rad/s, $\gamma = 4$ s$^{-1}$, $\omega_d = \sqrt{396} \approx 19.9$ rad/s}
+\markstep{1}
+
+%% Part (c) — 2 marks
+\item \textbf{Quality factor and damping regime} \qmarks{2}
+
+The quality factor: \fromsheet
+\[
+Q = \frac{\omega_0}{\gamma} = \frac{20}{4} = 5
+\]
+\markstep{1}
+
+To determine the damping regime, compare $\gamma$ with $2\omega_0$: \recalled
+\[
+\gamma = 4 \quad\text{vs}\quad 2\omega_0 = 40
+\]
+Since $\gamma < 2\omega_0$, the system is \textbf{underdamped}. (Equivalently, $\omega_d^2 = \omega_0^2 - \gamma^2/4 = 396 > 0$, confirming oscillatory behaviour.)
+
+\finalanswer{$Q = 5$. The system is underdamped.}
+\markstep{1}
+
+%% Part (d) — 4 marks
+\item \textbf{Steady-state amplitude at $\omega = 19$ rad/s} \qmarks{4}
+
+The steady-state amplitude for a driven damped oscillator is: \fromsheet
+\[
+A(\omega) = \frac{F_0/m}{\sqrt{(\omega_0^2 - \omega^2)^2 + \gamma^2\omega^2}}
+\]
+\markstep{1}
+
+Compute the required quantities:
+\[
+\frac{F_0}{m} = \frac{5}{0.5} = 10\text{ m/s}^2
+\]
+\markstep{1}
+
+\[
+\omega_0^2 - \omega^2 = 400 - 361 = 39
+\]
+\[
+\gamma^2\omega^2 = 16\times 361 = 5776
+\]
+\[
+(\omega_0^2 - \omega^2)^2 + \gamma^2\omega^2 = 39^2 + 5776 = 1521 + 5776 = 7297
+\]
+\markstep{1}
+
+\[
+A(19) = \frac{10}{\sqrt{7297}} = \frac{10}{85.4}
+\]
+
+\finalanswer{$A(19) = 0.117$ m $\approx 11.7$ cm}
+\markstep{1}
+
+%% Part (e) — 4 marks
+\item \textbf{Resonance frequency and maximum amplitude} \qmarks{4}
+
+The amplitude resonance occurs at the driving frequency that maximises $A(\omega)$. To find this, minimise the denominator $(\omega_0^2 - \omega^2)^2 + \gamma^2\omega^2$ with respect to $\omega$.
+
+Let $u = \omega^2$. Then we minimise $f(u) = (\omega_0^2 - u)^2 + \gamma^2 u$:
+\[
+\frac{df}{du} = -2(\omega_0^2 - u) + \gamma^2 = 0 \quad\Rightarrow\quad u = \omega_0^2 - \frac{\gamma^2}{2}
+\]
+\markstep{1}
+
+Therefore:
+\[
+\omega_{\text{res}} = \sqrt{\omega_0^2 - \frac{\gamma^2}{2}} = \sqrt{400 - 8} = \sqrt{392}
+\]
+
+\finalanswer{$\omega_{\text{res}} = \sqrt{392} \approx 19.8$ rad/s}
+\markstep{1}
+
+At this frequency, the denominator is:
+\[
+(\omega_0^2 - \omega_{\text{res}}^2)^2 + \gamma^2\omega_{\text{res}}^2 = \left(\frac{\gamma^2}{2}\right)^2 + \gamma^2\!\left(\omega_0^2 - \frac{\gamma^2}{2}\right) = \frac{\gamma^4}{4} + \gamma^2\omega_0^2 - \frac{\gamma^4}{2}
+\]
+\[
+= \gamma^2\omega_0^2 - \frac{\gamma^4}{4} = \gamma^2\!\left(\omega_0^2 - \frac{\gamma^2}{4}\right) = \gamma^2\omega_d^2
+\]
+\markstep{1}
+
+So the maximum amplitude is:
+\[
+A_{\max} = \frac{F_0/m}{\gamma\omega_d} = \frac{10}{4\times\sqrt{396}} = \frac{10}{4\times 19.9} = \frac{10}{79.6}
+\]
+
+\finalanswer{$A_{\max} = 0.126$ m $\approx 12.6$ cm}
+\markstep{1}
+
+\end{parts}
+
+\newpage
+
+% ---- SOLUTION C4: QUANTUM PHYSICS (15 marks) ----
+\question{15}
+
+\noindent\textbf{Spin-1/2 and Measurement}
+
+\begin{parts}
+
+%% Part (a) — 3 marks
+\item \textbf{Normalisation and $S_z$ measurement} \qmarks{3}
+
+Check normalisation: \recalled
+\[
+\braket{\psi}{\psi} = \left|\frac{1}{\sqrt{3}}\right|^2 + \left|\sqrt{\frac{2}{3}}\right|^2 = \frac{1}{3} + \frac{2}{3} = 1 \quad\checkmark
+\]
+\markstep{1}
+
+The possible outcomes of an $S_z$ measurement are the eigenvalues of $S_z$: \markstep{1}
+\begin{itemize}
+\item $S_z = +\hbar/2$ with probability $P(\uparrow_z) = |1/\sqrt{3}|^2 = 1/3$
+\item $S_z = -\hbar/2$ with probability $P(\downarrow_z) = |\sqrt{2/3}|^2 = 2/3$
+\end{itemize}
+
+\finalanswer{The state is normalised. Outcomes: $+\hbar/2$ with probability $1/3$; $-\hbar/2$ with probability $2/3$.}
+\markstep{1}
+
+%% Part (b) — 4 marks
+\item \textbf{Express $\ket{\psi}$ in the $S_x$ eigenbasis} \qmarks{4}
+
+From the formula sheet: \fromsheet
+\[
+\ket{\!\uparrow_z} = \frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_x} + \ket{\!\downarrow_x}\bigr), \qquad \ket{\!\downarrow_z} = \frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_x} - \ket{\!\downarrow_x}\bigr)
+\]
+\markstep{1}
+
+Substituting into $\ket{\psi}$:
+\[
+\ket{\psi} = \frac{1}{\sqrt{3}}\cdot\frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_x} + \ket{\!\downarrow_x}\bigr) + \sqrt{\frac{2}{3}}\cdot\frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_x} - \ket{\!\downarrow_x}\bigr)
+\]
+\[
+= \frac{1}{\sqrt{6}}\bigl(\ket{\!\uparrow_x} + \ket{\!\downarrow_x}\bigr) + \frac{\sqrt{2}}{\sqrt{6}}\bigl(\ket{\!\uparrow_x} - \ket{\!\downarrow_x}\bigr)
+\]
+\markstep{1}
+
+\[
+= \frac{1+\sqrt{2}}{\sqrt{6}}\ket{\!\uparrow_x} + \frac{1-\sqrt{2}}{\sqrt{6}}\ket{\!\downarrow_x}
+\]
+\markstep{1}
+
+The probabilities of each $S_x$ outcome are:
+\[
+P(S_x = +\hbar/2) = \left(\frac{1+\sqrt{2}}{\sqrt{6}}\right)^2 = \frac{(1+\sqrt{2})^2}{6} = \frac{1 + 2\sqrt{2} + 2}{6} = \frac{3+2\sqrt{2}}{6} \approx 0.971
+\]
+\[
+P(S_x = -\hbar/2) = \left(\frac{1-\sqrt{2}}{\sqrt{6}}\right)^2 = \frac{(1-\sqrt{2})^2}{6} = \frac{1 - 2\sqrt{2} + 2}{6} = \frac{3-2\sqrt{2}}{6} \approx 0.029
+\]
+
+Check: $(3+2\sqrt{2})/6 + (3-2\sqrt{2})/6 = 6/6 = 1$ \checkmark
+
+\finalanswer{$P(S_x = +\hbar/2) = (3+2\sqrt{2})/6 \approx 0.971$;\quad $P(S_x = -\hbar/2) = (3-2\sqrt{2})/6 \approx 0.029$.}
+\markstep{1}
+
+%% Part (c) — 4 marks
+\item \textbf{Post-measurement $S_z$ probabilities} \qmarks{4}
+
+After measuring $S_x = +\hbar/2$, the state collapses to: \markstep{1}
+\[
+\ket{\!\uparrow_x} = \frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} + \ket{\!\downarrow_z}\bigr)
+\]
+\fromsheet \markstep{1}
+
+If $S_z$ is now measured on $\ket{\!\uparrow_x}$: \markstep{1}
+\[
+P(S_z = +\hbar/2) = \left|\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2}
+\]
+\[
+P(S_z = -\hbar/2) = \left|\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2}
+\]
+
+\finalanswer{$P(S_z = +\hbar/2) = 1/2$;\quad $P(S_z = -\hbar/2) = 1/2$.}
+\markstep{1}
+
+%% Part (d) — 4 marks
+\item \textbf{Eigenvalues, eigenvectors, and Hermiticity of $\hat{A}$} \qmarks{4}
+
+In the $\{\ket{\!\uparrow_z}, \ket{\!\downarrow_z}\}$ basis, the matrix representation of $\hat{A}$ is:
+\[
+\hat{A} = \hbar\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+\]
+\markstep{1}
+
+(Note: this is $\hbar\sigma_x$ where $\sigma_x$ is the Pauli-$x$ matrix from the formula sheet.)
+
+Finding eigenvalues from $\det(\hat{A} - \lambda I) = 0$:
+\[
+\det\begin{pmatrix} -\lambda & \hbar \\ \hbar & -\lambda \end{pmatrix} = \lambda^2 - \hbar^2 = 0 \quad\Rightarrow\quad \lambda = \pm\hbar
+\]
+\markstep{1}
+
+For $\lambda = +\hbar$: $\hat{A}\ket{v} = \hbar\ket{v}$ gives $\ket{v_+} = \frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} + \ket{\!\downarrow_z}\bigr) = \ket{\!\uparrow_x}$.
+
+For $\lambda = -\hbar$: $\hat{A}\ket{v} = -\hbar\ket{v}$ gives $\ket{v_-} = \frac{1}{\sqrt{2}}\bigl(\ket{\!\uparrow_z} - \ket{\!\downarrow_z}\bigr) = \ket{\!\downarrow_x}$.
+\markstep{1}
+
+To check Hermiticity: $\hat{A}^\dagger = \hbar\bigl(\ketbra{\!\downarrow_z}{\uparrow_z\!} + \ketbra{\!\uparrow_z}{\downarrow_z\!}\bigr) = \hat{A}$.
+
+Alternatively, the matrix $\hbar\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ is real and symmetric, hence Hermitian.
+
+\finalanswer{Eigenvalues: $\lambda = +\hbar$ and $\lambda = -\hbar$. Eigenvectors: $\ket{v_+} = \frac{1}{\sqrt{2}}(\ket{\!\uparrow_z} + \ket{\!\downarrow_z})$ and $\ket{v_-} = \frac{1}{\sqrt{2}}(\ket{\!\uparrow_z} - \ket{\!\downarrow_z})$. $\hat{A}$ is Hermitian since $\hat{A}^\dagger = \hat{A}$.}
+\markstep{1}
+
+\end{parts}
+
+\end{document}
